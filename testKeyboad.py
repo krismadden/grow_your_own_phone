@@ -35,19 +35,18 @@ def speak(str):
 #            pass         
 
 # curses.wrapper(main)
-stdscr.init()
-stdscr.nodelay(True)
-key=""
-stdscr.clear()                
-stdscr.addstr("Detected key:")
+curses.stdscr.nodelay(True)
+curses.key=""
+curses.stdscr.clear()                
+curses.stdscr.addstr("Detected key:")
 while 1:          
 	try:                 
-		key = stdscr.getkey()         
-		stdscr.clear()                
-		stdscr.addstr("Detected key:")
-		stdscr.addstr(str(key)) 
-		speak(str(key))
-		if key == os.linesep:
+		curses.key = curses.stdscr.getkey()         
+		curses.stdscr.clear()                
+		curses.stdscr.addstr("Detected key:")
+		curses.stdscr.addstr(str(curses.key)) 
+		curses.speak(str(curses.key))
+		if curses.key == os.linesep:
 			break           
 	except Exception as e:
 		# No input   
