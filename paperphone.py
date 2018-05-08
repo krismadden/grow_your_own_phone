@@ -38,7 +38,7 @@ while True:
 
 	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print "pin okay. let's go."
-		speak("pin okay. let's go."
+		speak("pin okay. let's go.")
 		break
 	elif response[2] == "+CPIN: SIM PIN\r\n":
 		pin = raw_input("Enter your SIM's PIN code::\n")
