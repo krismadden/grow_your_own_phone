@@ -12,4 +12,8 @@ def getchar():
    
 while 1:
     ch = getchar()
-    print 'You pressed', ch
+    if ch.strip() == '':
+        print('bye!')
+        break
+    else:
+        print 'You pressed', ch
