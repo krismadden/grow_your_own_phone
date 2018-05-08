@@ -93,7 +93,7 @@ while True:
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
 
-	elif len(phoneNumber) > 13 or len(phoneNumber) < 10:
+	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		continue
 	else:
