@@ -93,6 +93,7 @@ while True:
 
 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+		print len(phoneNumber)
 		continue
 	else:
 		speak("Sending to " + phoneNumber)
