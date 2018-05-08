@@ -35,9 +35,10 @@ def enterPhoneNumber():
 		ch = getchar()
 		if ch.strip() == '':
 			print(phoneNumber)
-# 			speak("Sending to " + phoneNumber)
 			break
 		else:
+			phoneNumber = phoneNumber + ch
+			print "numbers typed " + len(phoneNumber)
 			print 'You pressed', ch
 			speak(ch)
 			phoneNumber = phoneNumber + ch
@@ -46,9 +47,7 @@ def enterPhoneNumber():
 	
 letter = ""
 message = ""
-number = ""
 numberstring = ""
-number_kris = "0033637165118"
 response = ""
 pin = ""
 
