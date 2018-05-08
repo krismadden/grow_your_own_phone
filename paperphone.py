@@ -26,8 +26,8 @@ number_kris = "0033637165118"
 response = ""
 pin = ""
 
+speak("Initialising Modem & Checking pin")
 print "Initialising Modem & Checking PIN.."
-speak("Initialising Modem & Checking PIN")
 
 modem = m590()
 modem.init()
@@ -84,104 +84,143 @@ while True:
     letter = raw_input("Message = " + message + "\n")
 
     if letter == "2":
+	speak("a")
         message = message + "a"
     elif letter == "22":
-        message = message + "b"
+        speak("b")
+	message = message + "b"
     elif letter == "222":
-        message = message + "c"
+        speak("c")
+	message = message + "c"
     elif letter == "2222":
-        message = message + "2"
+        speak("2")
+	message = message + "2"
 
     elif letter == "3":
-        message = message + "d"
+        speak("d")
+	message = message + "d"
     elif letter == "33":
-        message = message + "e"
+        speak("e")
+	message = message + "e"
     elif letter == "333":
-        message = message + "f"
+        speak("f")
+	message = message + "f"
     elif letter == "3333":
-        message = message + "3"
+        speak("3")
+	message = message + "3"
 
     elif letter == "4":
-        message = message + "g"
+        speak("g")
+	message = message + "g"
     elif letter == "44":
-        message = message + "h"
+        speak("h")
+	message = message + "h"
     elif letter == "444":
-        message = message + "i"
+        speak("i")
+	message = message + "i"
     elif letter == "4444":
-        message = message + "4"
+        speak("4")
+	message = message + "4"
 
     elif letter == "5":
-        message = message + "j"
+        speak("j")
+	message = message + "j"
     elif letter == "55":
-        message = message + "k"
+        speak("k")
+	message = message + "k"
     elif letter == "555":
-        message = message + "l"
+        speak("l")
+	message = message + "l"
     elif letter == "5555":
-        message = message + "5"
+        speak("5")
+	message = message + "5"
 
     elif letter == "6":
-        message = message + "m"
+        speak("m")
+	message = message + "m"
     elif letter == "66":
-        message = message + "n"
+        speak("n")
+	message = message + "n"
     elif letter == "666":
-        message = message + "o"
+        speak("o")
+	message = message + "o"
     elif letter == "6666":
-        message = message + "6"
+        speak("6")
+	message = message + "6"
 
     elif letter == "7":
-        message = message + "p"
+        speak("p")
+	message = message + "p"
     elif letter == "77":
-        message = message + "q"
+        speak("q")
+	message = message + "q"
     elif letter == "777":
-        message = message + "r"
+        speak("r")
+	message = message + "r"
     elif letter == "7777":
-        message = message + "s"
+        speak("s")
+	message = message + "s"
     elif letter == "77777":
-        message = message + "7"
+        speak("7")
+	message = message + "7"
 
     elif letter == "8":
-        message = message + "t"
+        speak("t")
+	message = message + "t"
     elif letter == "88":
-        message = message + "u"
+        speak("u")
+	message = message + "u"
     elif letter == "888":
-        message = message + "v"
+        speak("v")
+	message = message + "v"
     elif letter == "8888":
-        message = message + "8"
+        speak("8")
+	message = message + "8"
 
     elif letter == "9":
-        message = message + "w"
+        speak("w")
+	message = message + "w"
     elif letter == "99":
-        message = message + "x"
+        speak("x")
+	message = message + "x"
     elif letter == "999":
-        message = message + "y"
+        speak("y")
+	message = message + "y"
     elif letter == "9999":
-        message = message + "z"
+        speak("z")
+	message = message + "z"
     elif letter == "99999":
-        message = message + "9"
+        speak("9")
+	message = message + "9"
 
     elif letter == "0":
-        message = message + " "
+        speak("space")
+	message = message + " "
     elif letter == "00":
-        message = message + "."
+        speak("period")
+	message = message + "."
     elif letter == "000":
-        message = message + "?"
+        speak("question mark")
+	message = message + "?"
     elif letter == "0000":
-        message = message + "!"
+        speak("exclamation mark")
+	message = message + "!"
     elif letter == "00000":
-        message = message + "0"
+        speak("0")
+	message = message + "0"
 
     elif letter == "1":
         message = message + "1"
         #break
 
     elif letter == "01":
-        print "Sending: " + message
 	speak(message)
+        print "Sending: " + message
         break
 
     else:
-        print "\"" + letter + "\" is not recognized. Try again."
 	speak("\"" + letter + "\" is not recognized. Try again.")
+        print "\"" + letter + "\" is not recognized. Try again."
 
     continue
 
@@ -193,9 +232,10 @@ modem.send_sms(number, message)
 
 response = m590.ser.readlines(None)
 if response[0] == "\n":
-	print "Sent!"
 	speak("Sent!")
+	print "Sent!"
 else:
+	speak("error")
 	print response
 
 #READ ALL SMS
