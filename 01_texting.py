@@ -41,12 +41,12 @@ def enterPhoneNumber():
 			print "numbers typed " , len(phoneNumber)
 			print 'You pressed', ch
 			speak(ch)
+	return phoneNumber
 	
 	
 	
 letter = ""
 message = ""
-number = ""
 numberstring = ""
 response = ""
 pin = ""
@@ -91,14 +91,14 @@ while True:
  	speak("Enter a Phone number")
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
-	print len(number)
+	print len(phoneNumber)
 	
-	if len(number) > 13 or len(number) < 10:
-		print len(number)
+	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+		print len(phoneNumber)
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		continue
 	else:
-		speak("Sending to " + number)
+		speak("Sending to " + phoneNumber)
 		break
 
 #message = raw_input("Enter Message::\n")
