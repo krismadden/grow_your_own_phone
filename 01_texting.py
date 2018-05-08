@@ -34,7 +34,7 @@ def enterPhoneNumber():
 	while 1:
 		ch = getchar()
 		if ch.strip() == '':
-# 			print('Sending to ' + phoneNumber)
+			print(phoneNumber)
 # 			speak("Sending to " + phoneNumber)
 			break
 		else:
@@ -52,7 +52,7 @@ number_kris = "0033637165118"
 response = ""
 pin = ""
 
-speak("Initialising Modem & Checking pin")
+speak("Initialising")
 print "Initialising Modem & Checking PIN.."
 
 modem = m590()
