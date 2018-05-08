@@ -27,6 +27,7 @@ response = ""
 pin = ""
 
 print "Initialising Modem & Checking PIN.."
+speak("Initialising Modem & Checking PIN")
 
 modem = m590()
 modem.init()
@@ -62,8 +63,8 @@ while True:
 		print "check your SIM card. If all looks good, get Kris."
 
 while True:
-	number = raw_input("Enter Phone number::\n")
 	speak("Enter a Phone number")
+	number = raw_input("Enter Phone number::\n")
 
 	if number == "Kris" or number == "kris" or number == "KRIS":
 		number = number_kris
@@ -77,7 +78,7 @@ while True:
 		break
 
 #message = raw_input("Enter Message::\n")
-
+speak("Enter your message")
 print "Enter message.\n- Press 2-9 for letters.\n- Enter 0 for spaces and punctuation.\n- Press enter after each character.\n- Enter 01 as the last character to send."
 while True:
     letter = raw_input("Message = " + message + "\n")
