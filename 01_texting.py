@@ -40,7 +40,7 @@ def enterPhoneNumber():
 		else:
 			print 'You pressed', ch
 			speak(ch)
-			message = message + ch
+			phoneNumber = phoneNumber + ch
 	
 	
 	
@@ -89,7 +89,7 @@ while True:
 		print "check your SIM card. If all looks good, get Kris."
 
 while True:
-# 	speak("Enter a Phone number")
+ 	speak("Enter a Phone number")
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
 
