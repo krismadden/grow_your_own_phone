@@ -63,7 +63,7 @@ while True:
 
 	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print "pin okay. let's go."
-		speak("pin okay. let's go.")
+# 		speak("pin okay. let's go.")
 		break
 	elif response[2] == "+CPIN: SIM PIN\r\n":
 		pin = raw_input("Enter your SIM's PIN code::\n")
@@ -90,10 +90,11 @@ while True:
  	speak("Enter a Phone number")
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
-
+	print len(phoneNumber)
+	
 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		print len(phoneNumber)
+		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		continue
 	else:
 		speak("Sending to " + phoneNumber)
