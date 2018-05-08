@@ -37,7 +37,7 @@ def enterPhoneNumber():
 			print(phoneNumber)
 			break
 		else:
-			phoneNumber = phoneNumber + ch
+			phoneNumber = phoneNumber , ch
 			print "numbers typed " + len(phoneNumber)
 			print 'You pressed', ch
 			speak(ch)
