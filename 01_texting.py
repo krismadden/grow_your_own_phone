@@ -16,6 +16,34 @@ def speak(str):
 	voiceEngine.runAndWait()
 #end of definintion od speak function for text to speach
 
+def getchar():
+   #Returns a single character from standard input
+	import tty, termios, sys
+	fd = sys.stdin.fileno()
+	old_settings = termios.tcgetattr(fd)
+	try:
+		tty.setraw(sys.stdin.fileno())
+		ch = sys.stdin.read(1)
+	finally:
+		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+	return ch
+
+phoneNumber = ""
+def enterPhoneNumber():
+	phoneNumber = ""
+	while 1:
+		ch = getchar()
+		if ch.strip() == '':
+			print('Sending to' + phoneNumber)
+			speak("Sending to " + phoneNumber)
+			break
+		else:
+			print 'You pressed', ch
+			speak(ch)
+			message = message + ch
+	
+	
+	
 letter = ""
 message = ""
 number = ""
@@ -61,8 +89,9 @@ while True:
 		print "check your SIM card. If all looks good, get Kris."
 
 while True:
-	speak("Enter a Phone number")
-	number = raw_input("Enter Phone number::\n")
+# 	speak("Enter a Phone number")
+# 	number = raw_input("Enter Phone number::\n")
+	enterPhoneNumber()
 
 	if number == "Kris" or number == "kris" or number == "KRIS":
 		number = number_kris
