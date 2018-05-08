@@ -33,7 +33,6 @@ def enterPhoneNumber():
 	while 1:
 		ch = getchar()
 		if ch.strip() == '':
-			number = phoneNumber
 			print(phoneNumber)
 			break
 		else:
