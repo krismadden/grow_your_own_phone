@@ -51,7 +51,7 @@ numberstring = ""
 response = ""
 pin = ""
 
-speak("Initialising")
+# speak("Initialising")
 print "Initialising Modem & Checking PIN.."
 
 modem = m590()
