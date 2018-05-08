@@ -3,6 +3,21 @@
 from m590_setup import m590
 import time
 
+#start setup for text to speach
+import sys
+import pyttsx
+voiceEngine = pyttsx.init()
+voiceEngine.setProperty('rate', 150)
+#end setup for text to speach
+
+#define speak function for text to speach
+def speak(str):
+	if len(sys.argv) > 1:
+		str = sys.argv[1]
+	voiceEngine.say(str)
+	voiceEngine.runAndWait()
+#end of definintion od speak function for text to speach
+
 letter = ""
 message = ""
 number = ""
@@ -23,6 +38,7 @@ while True:
 
 	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print "pin okay. let's go."
+		speak("pin okay. let's go."
 		break
 	elif response[2] == "+CPIN: SIM PIN\r\n":
 		pin = raw_input("Enter your SIM's PIN code::\n")
@@ -47,9 +63,11 @@ while True:
 
 while True:
 	number = raw_input("Enter Phone number::\n")
+	speak("Enter a Phone number")
 
 	if number == "Kris" or number == "kris" or number == "KRIS":
 		number = number_kris
+		speak("texting kris")
 		print "texting kris..."
 		break
 	elif len(number) > 13 or len(number) < 10:
@@ -157,21 +175,25 @@ while True:
 
     elif letter == "01":
         print "Sending: " + message
+	speak(message)
         break
 
     else:
         print "\"" + letter + "\" is not recognized. Try again."
+	speak("\"" + letter + "\" is not recognized. Try again.")
 
     continue
 
 
 #SEND SMS
 print "Sending text.."
+speak("Sending text")
 modem.send_sms(number, message)
 
 response = m590.ser.readlines(None)
 if response[0] == "\n":
 	print "Sent!"
+	speak("Sent!")
 else:
 	print response
 
