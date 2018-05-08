@@ -41,7 +41,6 @@ def enterPhoneNumber():
 			print "numbers typed " , len(phoneNumber)
 			print 'You pressed', ch
 			speak(ch)
-			phoneNumber = phoneNumber + ch
 	
 	
 	
