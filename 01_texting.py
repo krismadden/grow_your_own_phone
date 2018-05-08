@@ -28,12 +28,12 @@ def getchar():
 		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 	return ch
 
-phoneNumber = ""
 def enterPhoneNumber():
 # 	phoneNumber = ""
 	while 1:
 		ch = getchar()
 		if ch.strip() == '':
+			number = phoneNumber
 			print(phoneNumber)
 			break
 		else:
@@ -46,6 +46,7 @@ def enterPhoneNumber():
 	
 letter = ""
 message = ""
+number = ""
 numberstring = ""
 response = ""
 pin = ""
@@ -90,14 +91,14 @@ while True:
  	speak("Enter a Phone number")
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
-	print len(phoneNumber)
+	print len(number)
 	
-	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-		print len(phoneNumber)
+	if len(number) > 13 or len(number) < 10:
+		print len(number)
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		continue
 	else:
-		speak("Sending to " + phoneNumber)
+		speak("Sending to " + number)
 		break
 
 #message = raw_input("Enter Message::\n")
