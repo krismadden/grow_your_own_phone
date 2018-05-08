@@ -16,37 +16,26 @@ def speak(str):
 	voiceEngine.runAndWait()
 
 
-# def main(win):
-#     win.nodelay(False)
-#     key=""
-#     win.clear()                
-#     win.addstr("Detected key:")
-#     while 1:          
-#         try:                 
-#            key = win.getkey()         
-#            win.clear()                
-#            win.addstr("Detected key:")
-#            win.addstr(str(key)) 
-#            speak(str(key))
-#            if key == os.linesep:
-#               break           
-#         except Exception as e:
-#            # No input   
-#            pass         
-
-# curses.wrapper(main)
-
-
 def main(stdscr):
-    # Clear screen
-    stdscr.clear()
+    stdscr.nodelay(True)
+    key=""
+    stdscr.clear()                
+    stdscr.addstr("Detected key:")
+    while 1:          
+        try:                 
+           key = stdscr.getkey()         
+           stdscr.clear()                
+           stdscr.addstr("Detected key:")
+           stdscr.addstr(str(key)) 
+           speak(str(key))
+           if key == os.linesep:
+              break           
+        except Exception as e:
+           # No input   
+           pass         
 
+curses.wrapper(main)
 
-
-    stdscr.refresh()
-    stdscr.getkey()
-
-wrapper(main)
 
 # import curses  
 # while True:
