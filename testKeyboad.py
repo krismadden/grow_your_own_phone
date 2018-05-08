@@ -35,6 +35,7 @@ def speak(str):
 #            pass         
 
 # curses.wrapper(main)
+stdscr.init()
 stdscr.nodelay(True)
 key=""
 stdscr.clear()                
