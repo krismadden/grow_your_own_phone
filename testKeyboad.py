@@ -1,4 +1,19 @@
+
+
 import curses
+
+import sys
+import pyttsx
+
+voiceEngine = pyttsx.init()
+voiceEngine.setProperty('rate', 150)
+
+def speak(str):
+	if len(sys.argv) > 1:
+		str = sys.argv[1]
+	voiceEngine.say(str)
+	voiceEngine.runAndWait()
+
 
 def main(win):
     win.nodelay(False)
@@ -11,6 +26,7 @@ def main(win):
            win.clear()                
            win.addstr("Detected key:")
            win.addstr(str(key)) 
+           speak(str(key))
            if key == os.linesep:
               break           
         except Exception as e:
