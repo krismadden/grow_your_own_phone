@@ -30,7 +30,7 @@ def getchar():
 
 phoneNumber = ""
 def enterPhoneNumber():
-	phoneNumber = ""
+# 	phoneNumber = ""
 	while 1:
 		ch = getchar()
 		if ch.strip() == '':
