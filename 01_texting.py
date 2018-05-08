@@ -91,6 +91,7 @@ while True:
  	speak("Enter a Phone number")
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
+	phoneNumber = enterPhoneNumber()
 	print len(phoneNumber)
 	
 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
