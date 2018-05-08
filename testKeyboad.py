@@ -1,6 +1,6 @@
 
 
-import curses
+# import curses
 from curses import wrapper
 
 import sys
