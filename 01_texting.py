@@ -89,11 +89,8 @@ while True:
 
 while True:
  	speak("Enter a Phone number")
-# 	number = raw_input("Enter Phone number::\n")
-	enterPhoneNumber()
 	phoneNumber = enterPhoneNumber()
-	print len(phoneNumber)
-	
+
 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
 		print len(phoneNumber)
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
@@ -253,7 +250,7 @@ while True:
 #SEND SMS
 print "Sending text.."
 speak("Sending text")
-modem.send_sms(number, message)
+modem.send_sms(phoneNumber, message)
 
 response = m590.ser.readlines(None)
 if response[0] == "\n":
