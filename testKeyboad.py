@@ -1,7 +1,7 @@
 
 
-# import curses
-from curses import wrapper
+import curses
+
 
 import sys
 import pyttsx
