@@ -15,25 +15,40 @@ def speak(str):
 	voiceEngine.runAndWait()
 
 
-def main(win):
-    win.nodelay(False)
-    key=""
-    win.clear()                
-    win.addstr("Detected key:")
-    while 1:          
-        try:                 
-           key = win.getkey()         
-           win.clear()                
-           win.addstr("Detected key:")
-           win.addstr(str(key)) 
-           speak(str(key))
-           if key == os.linesep:
-              break           
-        except Exception as e:
-           # No input   
-           pass         
+# def main(win):
+#     win.nodelay(False)
+#     key=""
+#     win.clear()                
+#     win.addstr("Detected key:")
+#     while 1:          
+#         try:                 
+#            key = win.getkey()         
+#            win.clear()                
+#            win.addstr("Detected key:")
+#            win.addstr(str(key)) 
+#            speak(str(key))
+#            if key == os.linesep:
+#               break           
+#         except Exception as e:
+#            # No input   
+#            pass         
 
-curses.wrapper(main)
+# curses.wrapper(main)
+
+
+def main(stdscr):
+    # Clear screen
+    stdscr.clear()
+
+    # This raises ZeroDivisionError when i == 10.
+    for i in range(0, 11):
+        v = i-10
+        stdscr.addstr(i, 0, '10 divided by {} is {}'.format(v, 10/v))
+
+    stdscr.refresh()
+    stdscr.getkey()
+
+wrapper(main)
 
 # import curses  
 # while True:
