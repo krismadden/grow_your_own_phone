@@ -34,8 +34,8 @@ def enterPhoneNumber():
 	while 1:
 		ch = getchar()
 		if ch.strip() == '':
-			print('Sending to' + phoneNumber)
-			speak("Sending to " + phoneNumber)
+# 			print('Sending to ' + phoneNumber)
+# 			speak("Sending to " + phoneNumber)
 			break
 		else:
 			print 'You pressed', ch
@@ -93,15 +93,11 @@ while True:
 # 	number = raw_input("Enter Phone number::\n")
 	enterPhoneNumber()
 
-	if number == "Kris" or number == "kris" or number == "KRIS":
-		number = number_kris
-		speak("texting kris")
-		print "texting kris..."
-		break
-	elif len(number) > 13 or len(number) < 10:
+	elif len(phoneNumber) > 13 or len(phoneNumber) < 10:
 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
 		continue
 	else:
+		speak("Sending to " + phoneNumber)
 		break
 
 #message = raw_input("Enter Message::\n")
