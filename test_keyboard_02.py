@@ -28,7 +28,7 @@ while 1:
 	ch = getchar()
 	if ch.strip() == '':
 		print('bye!' + message)
-		speak("Goodbye" + message)
+		speak("Goodbye " + message)
 		break
 	if ch.strip() == '=':
 		speak(message)
