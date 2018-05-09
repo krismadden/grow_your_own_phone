@@ -60,7 +60,7 @@ def enterMessage():
 		newButton = str(newButton)
 		if tempChar != "" and time.time() >= timeLimit:
 				message = message + tempChar
-				os.system("espeak '" + message + "'")
+				os.system("espeak '" + message + "' 2>/dev/null")
 				tempChar = ""
 				print("time set " + message + tempChar)
 				
@@ -70,8 +70,8 @@ def enterMessage():
 			break
 		elif newButton.strip() == "*":
 			message = message + tempChar
-			os.system("espeak 'deleting'")
-			os.system("espeak '" + tempChar + "'")
+			os.system("espeak 'deleting' 2>/dev/null")
+			os.system("espeak '" + tempChar + "' 2>/dev/null")
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
@@ -81,7 +81,7 @@ def enterMessage():
 			
 			if newButton != oldButton and oldButton != "":
 				message = message + tempChar
-				os.system("espeak '" + message + "'")
+				os.system("espeak '" + message + "' 2>/dev/null")
 				tempChar = ""
 				print("new button set " + message + tempChar)
 			if newButton == "1":
