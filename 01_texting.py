@@ -45,7 +45,7 @@ def enterPhoneNumber():
 def enterMessage():
 	tempChar = ""
 	oldButton = ""
-	message = "Test: "
+	message = ""
 	waitTime = 2 #in seconds
 	while True:
 		if tempChar != "" and time.time() >= timeLimit:
