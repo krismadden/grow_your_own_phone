@@ -1,5 +1,6 @@
 from m590_setup import m590
 import time
+import os
 
 #start setup for text to speach
 import sys
@@ -58,7 +59,8 @@ def enterMessage():
 		newButton = getchar()
 		newButton = str(newButton)
 		if tempChar != "" and time.time() >= timeLimit:
-				message = doSomething(message, tempChar)
+				message = message + tempChar
+				os.system("espeak '" + message + "'")
 				tempChar = ""
 				print("time set " + message + tempChar)
 				
@@ -68,10 +70,8 @@ def enterMessage():
 			break
 		elif newButton.strip() == "*":
 			message = message + tempChar
-			print("test3")
-			speak("deleting " + tempChar)
-			time.sleep(0.5) 
-			print("test4")
+			os.system("espeak 'deleting'")
+			os.system("espeak '" + tempChar + "'")
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
@@ -80,7 +80,8 @@ def enterMessage():
 			timeLimit = time.time() + waitTime
 			
 			if newButton != oldButton and oldButton != "":
-				message = doSomething(message, tempChar)
+				message = message + tempChar
+				os.system("espeak '" + message + "'")
 				tempChar = ""
 				print("new button set " + message + tempChar)
 			if newButton == "1":
