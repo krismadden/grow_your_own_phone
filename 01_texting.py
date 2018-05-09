@@ -30,7 +30,7 @@ def getchar():
 
 def enterPhoneNumber():
 	phoneNumber = ""
-	while 1:
+	while True:
 		ch = getchar()
 		if ch.strip() == '':
 			print(phoneNumber)
@@ -41,9 +41,36 @@ def enterPhoneNumber():
 			print 'You pressed', ch
 			speak(ch)
 	return phoneNumber
-	
-	
-	
+
+def enterMessage():
+	tempChar = ""
+	oldChar = ""
+	message = ""
+	while True:
+		newChar = getchar()
+		if newChar.strip() == "":
+			print(message)
+			break
+		else:
+			if newChar != oldChar or time >= timeLimit:
+				message = message + tempChar
+				tempChar = ""
+				timeLimit = time + waitTime
+			elif newChar == oldChar and time < timeLimit:
+				if newChar == "1":
+					if(tempChar == ""):
+						tempChar = "1"
+					elif(tempChar == "1"):
+						tempChar = "1"
+				elif newChar == "2":
+				elif newChar == "3":
+				elif newChar == "4":
+				elif newChar == "5":
+				elif newChar == "6":
+				elif newChar == "7":
+				elif newChar == "8":
+				elif newChar == "9":
+				elif newChar == "0":
 letter = ""
 message = ""
 numberstring = ""
