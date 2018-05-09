@@ -51,6 +51,7 @@ def enterMessage():
 		newButton = getchar()
 		newButton = str(newButton)
 		if newButton.strip() == "/":
+			message = message + tempChar
 			print("sending: " + message)
 			break
 		else:
