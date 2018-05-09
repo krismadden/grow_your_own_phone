@@ -62,7 +62,8 @@ def enterMessage():
 			oldButton = ""
 
 		newButton = getchar()
-
+		newButton = str(newButton)
+		
 		if newButton.strip() == "/":
 			print("sending: " + message)
 			break
