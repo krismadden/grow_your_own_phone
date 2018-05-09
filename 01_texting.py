@@ -52,8 +52,8 @@ def enterMessage():
 		newButton = getchar()
 		newButton = str(newButton)
 		if tempChar != "" and time.time() >= timeLimit:
-				message = message + tempChar
 				speak(tempChar)
+				message = message + tempChar
 				tempChar = ""
 				print("time set " + message + tempChar)
 				
@@ -72,8 +72,8 @@ def enterMessage():
 			timeLimit = time.time() + waitTime
 			
 			if newButton != oldButton and oldButton != "":
-				message = message + tempChar
 				speak(tempChar)
+				message = message + tempChar
 				tempChar = ""
 				print("new button set " + message + tempChar)
 			if newButton == "1":
