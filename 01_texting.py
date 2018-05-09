@@ -42,6 +42,12 @@ def enterPhoneNumber():
 			speak(ch)
 	return phoneNumber
 
+def doSomething(message, tempChar):
+	speak(speakChar)
+	time.sleep(0.5) 
+	print("test2")
+	message = message + tempChar
+	
 def enterMessage():
 	tempChar = ""
 	oldButton = ""
@@ -52,12 +58,7 @@ def enterMessage():
 		newButton = getchar()
 		newButton = str(newButton)
 		if tempChar != "" and time.time() >= timeLimit:
-				print("test1")
-				speakChar = str(tempChar)
-				speak(speakChar)
-				time.sleep(0.5) 
-				print("test2")
-				message = message + tempChar
+				message = doSomething(message, tempChar)
 				tempChar = ""
 				print("time set " + message + tempChar)
 				
