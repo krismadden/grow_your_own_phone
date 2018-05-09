@@ -49,6 +49,7 @@ def enterMessage():
 	waitTime = 1000
 	timeLimit = time.time() + waitTime
 	while True:
+		print(message + "\n")
 		newChar = getchar()
 		if newChar.strip() == "/":
 			print(message)
@@ -227,7 +228,7 @@ while True:
 
 #message = raw_input("Enter Message::\n")
 speak("Enter your message")
-print "Enter message."
+print "Enter message.\n"
 message = enterMessage()
 
 
