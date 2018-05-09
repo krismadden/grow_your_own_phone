@@ -56,7 +56,7 @@ def enterMessage():
 			print(message)
 			break
 		else:
-			if ((newButton != oldButton) and (tempChar != "")) or (time.time() >= timeLimit):
+			if ((tempChar != "") and ((newButton != oldButton) or (time.time() >= timeLimit)):
 				message = message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
