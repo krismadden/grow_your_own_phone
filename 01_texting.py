@@ -53,7 +53,7 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
-	waitTime = 1.5 #in seconds
+	waitTime = 2 #in seconds
 	while True:
 		
 		newButton = getchar()
@@ -74,17 +74,15 @@ def enterMessage():
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
-		elif newButton.strip() == "=":
-			os.system("espeak '" +  message + "' 2>/dev/null")
 		else:
 			#everytime a button is pressed it restarts the wait time for setting the character
 			timeLimit = time.time() + waitTime
 			
-# 			if newButton != oldButton and oldButton != "":
-# 				message = message + tempChar
-# 				os.system("espeak '" + message + "' 2>/dev/null")
-# 				tempChar = ""
-# 				print("new button set " + message + tempChar)
+			if newButton != oldButton and oldButton != "":
+				message = message + tempChar
+				os.system("espeak '" + message + "' 2>/dev/null")
+				tempChar = ""
+				print("new button set " + message + tempChar)
 			if newButton == "1":
 				if(tempChar == ""):
 					tempChar = "1"
