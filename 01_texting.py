@@ -44,28 +44,28 @@ def enterPhoneNumber():
 
 def enterMessage():
 	tempChar = ""
-	oldChar = ""
+	oldButton = ""
 	message = ""
 	waitTime = 1000
 	timeLimit = time.time() + waitTime
 	while True:
-		print(message + "\n")
-		newChar = getchar()
+		print("message: " + message)
+		newButton = getchar()
 		if newChar.strip() == "/":
 			print(message)
 			break
 		else:
-			if newChar != oldChar and newChar != "" or time.time() >= timeLimit:
+			if newButton != oldButton and tempChar != "" or time.time() >= timeLimit:
 				message = message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
-			elif newChar == oldChar and time < timeLimit:
-				if newChar == "1":
+			elif newButton == oldButton and time < timeLimit:
+				if newButton == "1":
 					if(tempChar == ""):
 						tempChar = "1"
 					elif(tempChar == "1"):
 						tempChar = "1"
-				elif newChar == "2":
+				elif newButton == "2":
 					if(tempChar == ""):
 						tempChar = "a"
 					elif(tempChar == "a"):
@@ -87,7 +87,7 @@ def enterMessage():
 						tempChar = "3"
 					elif(tempChar == "3"):
 						tempChar = "d"
-				elif newChar == "4":
+				elif newButton == "4":
 					if(tempChar == ""):
 						tempChar = "g"
 					elif(tempChar == "g"):
@@ -98,7 +98,7 @@ def enterMessage():
 						tempChar = "4"
 					elif(tempChar == "4"):
 						tempChar = "g"
-				elif newChar == "5":
+				elif newButton == "5":
 					if(tempChar == ""):
 						tempChar = "j"
 					elif(tempChar == "j"):
@@ -109,7 +109,7 @@ def enterMessage():
 						tempChar = "5"
 					elif(tempChar == "5"):
 						tempChar = "j"
-				elif newChar == "6":
+				elif newButton == "6":
 					if(tempChar == ""):
 						tempChar = "m"
 					elif(tempChar == "m"):
@@ -120,7 +120,7 @@ def enterMessage():
 						tempChar = "6"
 					elif(tempChar == "6"):
 						tempChar = "m"
-				elif newChar == "7":
+				elif newButton == "7":
 					if(tempChar == ""):
 						tempChar = "p"
 					elif(tempChar == "p"):
@@ -133,7 +133,7 @@ def enterMessage():
 						tempChar = "7"
 					elif(tempChar == "7"):
 						tempChar = "p"
-				elif newChar == "8":
+				elif newButton == "8":
 					if(tempChar == ""):
 						tempChar = "t"
 					elif(tempChar == "t"):
@@ -144,7 +144,7 @@ def enterMessage():
 						tempChar = "8"
 					elif(tempChar == "8"):
 						tempChar = "t"
-				elif newChar == "9":
+				elif newButton == "9":
 					if(tempChar == ""):
 						tempChar = "w"
 					elif(tempChar == "w"):
@@ -157,7 +157,7 @@ def enterMessage():
 						tempChar = "9"
 					elif(tempChar == "9"):
 						tempChar = "w"
-				elif newChar == "0":
+				elif newButton == "0":
 					if(tempChar == ""):
 						tempChar = " "
 					elif(tempChar == " "):
