@@ -54,146 +54,148 @@ def enterMessage():
 			print("sending: " + message)
 			break
 		else:
-			#everytime a button is pressed it restarts the wait time for setting the character
-			timeLimit = time.time() + waitTime
-			
+			while time.time() < timeLimit:
+				
+				#everytime a button is pressed it restarts the wait time for setting the character
+				timeLimit = time.time() + waitTime
+
+				if newButton != oldButton and oldButton != "":
+					#everytime a button is pressed it restarts the wait time for setting the character
+					timeLimit = time.time() + waitTime
+					message = message + tempChar
+					tempChar = ""
+					print("new button set " + message + tempChar)
+				else:
+					#everytime a button is pressed it restarts the wait time for setting the character
+					timeLimit = time.time() + waitTime
+					if newButton == "1":
+						if(tempChar == ""):
+							tempChar = "1"
+						elif(tempChar == "1"):
+							tempChar = "1"
+						print(message + tempChar)
+					elif newButton == "2":
+						if(tempChar == ""):
+							tempChar = "a"
+						elif(tempChar == "a"):
+							tempChar = "b"
+						elif(tempChar == "b"):
+							tempChar = "c"
+						elif(tempChar == "c"):
+							tempChar = "2"
+						elif(tempChar == "2"):
+							tempChar = "a"
+						print(message + tempChar)
+					elif newButton == "3":
+						if(tempChar == ""):
+							tempChar = "d"
+						elif(tempChar == "d"):
+							tempChar = "e"
+						elif(tempChar == "e"):
+							tempChar = "f"
+						elif(tempChar == "f"):
+							tempChar = "3"
+						elif(tempChar == "3"):
+							tempChar = "d"
+						print(message + tempChar)
+					elif newButton == "4":
+						if(tempChar == ""):
+							tempChar = "g"
+						elif(tempChar == "g"):
+							tempChar = "h"
+						elif(tempChar == "h"):
+							tempChar = "i"
+						elif(tempChar == "i"):
+							tempChar = "4"
+						elif(tempChar == "4"):
+							tempChar = "g"
+						print(message + tempChar)
+					elif newButton == "5":
+						if(tempChar == ""):
+							tempChar = "j"
+						elif(tempChar == "j"):
+							tempChar = "k"
+						elif(tempChar == "k"):
+							tempChar = "l"
+						elif(tempChar == "l"):
+							tempChar = "5"
+						elif(tempChar == "5"):
+							tempChar = "j"
+						print(message + tempChar)
+					elif newButton == "6":
+						if(tempChar == ""):
+							tempChar = "m"
+						elif(tempChar == "m"):
+							tempChar = "n"
+						elif(tempChar == "n"):
+							tempChar = "o"
+						elif(tempChar == "o"):
+							tempChar = "6"
+						elif(tempChar == "6"):
+							tempChar = "m"
+						print(message + tempChar)
+					elif newButton == "7":
+						if(tempChar == ""):
+							tempChar = "p"
+						elif(tempChar == "p"):
+							tempChar = "q"
+						elif(tempChar == "q"):
+							tempChar = "r"
+						elif(tempChar == "r"):
+							tempChar = "s"
+						elif(tempChar == "s"):
+							tempChar = "7"
+						elif(tempChar == "7"):
+							tempChar = "p"
+						print(message + tempChar)
+					elif newButton == "8":
+						if(tempChar == ""):
+							tempChar = "t"
+						elif(tempChar == "t"):
+							tempChar = "u"
+						elif(tempChar == "u"):
+							tempChar = "v"
+						elif(tempChar == "v"):
+							tempChar = "8"
+						elif(tempChar == "8"):
+							tempChar = "t"
+						print(message + tempChar)
+					elif newButton == "9":
+						if(tempChar == ""):
+							tempChar = "w"
+						elif(tempChar == "w"):
+							tempChar = "x"
+						elif(tempChar == "x"):
+							tempChar = "y"
+						elif(tempChar == "y"):
+							tempChar = "z"
+						elif(tempChar == "z"):
+							tempChar = "9"
+						elif(tempChar == "9"):
+							tempChar = "w"
+						print(message + tempChar)
+					elif newButton == "0":
+						if(tempChar == ""):
+							tempChar = " "
+						elif(tempChar == " "):
+							tempChar = "."
+						elif(tempChar == "."):
+							tempChar = "?"
+						elif(tempChar == "?"):
+							tempChar = "!"
+						elif(tempChar == "!"):
+							tempChar = ","
+						elif(tempChar == ","):
+							tempChar = "0"
+						elif(tempChar == "0"):
+							tempChar = " "
+						print(message + tempChar)
+				oldButton = newButton
+
 			if tempChar != "" and time.time() >= timeLimit:
 				message = message + tempChar
 				tempChar = ""
 				print("time set " + message + tempChar)
-			elif newButton != oldButton and oldButton != "":
-				message = message + tempChar
-				tempChar = ""
-				print("new button set " + message + tempChar)
-			else:
-				if newButton == "1":
-					if(tempChar == ""):
-						tempChar = "1"
-					elif(tempChar == "1"):
-						tempChar = "1"
-					print(message + tempChar)
-				elif newButton == "2":
-					if(tempChar == ""):
-						tempChar = "a"
-					elif(tempChar == "a"):
-						tempChar = "b"
-					elif(tempChar == "b"):
-						tempChar = "c"
-					elif(tempChar == "c"):
-						tempChar = "2"
-					elif(tempChar == "2"):
-						tempChar = "a"
-					print(message + tempChar)
-				elif newButton == "3":
-					if(tempChar == ""):
-						tempChar = "d"
-					elif(tempChar == "d"):
-						tempChar = "e"
-					elif(tempChar == "e"):
-						tempChar = "f"
-					elif(tempChar == "f"):
-						tempChar = "3"
-					elif(tempChar == "3"):
-						tempChar = "d"
-					print(message + tempChar)
-				elif newButton == "4":
-					if(tempChar == ""):
-						tempChar = "g"
-					elif(tempChar == "g"):
-						tempChar = "h"
-					elif(tempChar == "h"):
-						tempChar = "i"
-					elif(tempChar == "i"):
-						tempChar = "4"
-					elif(tempChar == "4"):
-						tempChar = "g"
-					print(message + tempChar)
-				elif newButton == "5":
-					if(tempChar == ""):
-						tempChar = "j"
-					elif(tempChar == "j"):
-						tempChar = "k"
-					elif(tempChar == "k"):
-						tempChar = "l"
-					elif(tempChar == "l"):
-						tempChar = "5"
-					elif(tempChar == "5"):
-						tempChar = "j"
-					print(message + tempChar)
-				elif newButton == "6":
-					if(tempChar == ""):
-						tempChar = "m"
-					elif(tempChar == "m"):
-						tempChar = "n"
-					elif(tempChar == "n"):
-						tempChar = "o"
-					elif(tempChar == "o"):
-						tempChar = "6"
-					elif(tempChar == "6"):
-						tempChar = "m"
-					print(message + tempChar)
-				elif newButton == "7":
-					if(tempChar == ""):
-						tempChar = "p"
-					elif(tempChar == "p"):
-						tempChar = "q"
-					elif(tempChar == "q"):
-						tempChar = "r"
-					elif(tempChar == "r"):
-						tempChar = "s"
-					elif(tempChar == "s"):
-						tempChar = "7"
-					elif(tempChar == "7"):
-						tempChar = "p"
-					print(message + tempChar)
-				elif newButton == "8":
-					if(tempChar == ""):
-						tempChar = "t"
-					elif(tempChar == "t"):
-						tempChar = "u"
-					elif(tempChar == "u"):
-						tempChar = "v"
-					elif(tempChar == "v"):
-						tempChar = "8"
-					elif(tempChar == "8"):
-						tempChar = "t"
-					print(message + tempChar)
-				elif newButton == "9":
-					if(tempChar == ""):
-						tempChar = "w"
-					elif(tempChar == "w"):
-						tempChar = "x"
-					elif(tempChar == "x"):
-						tempChar = "y"
-					elif(tempChar == "y"):
-						tempChar = "z"
-					elif(tempChar == "z"):
-						tempChar = "9"
-					elif(tempChar == "9"):
-						tempChar = "w"
-					print(message + tempChar)
-				elif newButton == "0":
-					if(tempChar == ""):
-						tempChar = " "
-					elif(tempChar == " "):
-						tempChar = "."
-					elif(tempChar == "."):
-						tempChar = "?"
-					elif(tempChar == "?"):
-						tempChar = "!"
-					elif(tempChar == "!"):
-						tempChar = ","
-					elif(tempChar == ","):
-						tempChar = "0"
-					elif(tempChar == "0"):
-						tempChar = " "
-					print(message + tempChar)
-			oldButton = newButton
-			
-		if tempChar != "" and time.time() >= timeLimit:
-			message = message + tempChar
-			tempChar = ""
-			print("time set " + message + tempChar)
 			
 	return message
 
