@@ -60,6 +60,11 @@ def enterMessage():
 			message = message + tempChar
 			print("sending: " + message)
 			break
+		elif newButton.strip() == "*":
+			message = message + tempChar
+			tempChar = ""
+			message = message[:-1]
+			print("new message " + message)
 		else:
 			#everytime a button is pressed it restarts the wait time for setting the character
 			timeLimit = time.time() + waitTime
