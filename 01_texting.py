@@ -57,11 +57,11 @@ def enterMessage():
 			break
 		else:
 			if tempChar != "" and time.time() >= timeLimit:
-				message = message + tempChar
+				message = "set " + message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
 			elif tempChar != "" and newButton != oldButton:
-				message = message + tempChar
+				message = "set " + message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
 			else:
@@ -123,7 +123,7 @@ def enterMessage():
 						tempChar = "5"
 					elif(tempChar == "5"):
 						tempChar = "j"
-					print(tempChar)
+					print(message + tempChar)
 				elif newButton == "6":
 					if(tempChar == ""):
 						tempChar = "m"
@@ -136,7 +136,7 @@ def enterMessage():
 						tempChar = "6"
 					elif(tempChar == "6"):
 						tempChar = "m"
-					print(tempChar)
+					print(message + tempChar)
 				elif newButton == "7":
 					if(tempChar == ""):
 						tempChar = "p"
@@ -240,17 +240,19 @@ while True:
 		print response[2] + "\n"
 		print "check your SIM card. If all looks good, get Kris."
 
-while True:
- 	speak("Enter a Phone number")
-	phoneNumber = enterPhoneNumber()
+# while True:
+#  	speak("Enter a Phone number")
+# 	phoneNumber = enterPhoneNumber()
 
-	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-		print len(phoneNumber)
-		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
-		continue
-	else:
-		speak("Sending to " + phoneNumber)
-		break
+# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+# 		print len(phoneNumber)
+# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+# 		continue
+# 	else:
+# 		speak("Sending to " + phoneNumber)
+# 		break
+
+phoneNumber = "0637165118"
 
 #message = raw_input("Enter Message::\n")
 speak("Enter your message")
