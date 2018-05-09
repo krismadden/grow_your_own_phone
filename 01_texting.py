@@ -52,6 +52,7 @@ def enterMessage():
 		print("message: " + message)
 		print("time: " + str(time.time()))
 		newButton = getchar()
+		newButton = str(newButton)
 		if newButton.strip() == "/":
 			print("/ typed")
 			print(message)
