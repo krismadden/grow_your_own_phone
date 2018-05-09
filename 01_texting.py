@@ -53,10 +53,12 @@ def enterMessage():
 		print("time: " + str(time.time()))
 		newButton = getchar()
 		if newButton.strip() == "/":
+			print("/ typed")
 			print(message)
 			print("newButton.strip() == ")
 			break
 		else:
+			print("else")
 			if (tempChar != "") and ((newButton != oldButton) or (time.time() >= timeLimit)):
 				print("(tempChar != ) and ((newButton != oldButton) or (time.time() >= timeLimit))")
 				message = message + tempChar
