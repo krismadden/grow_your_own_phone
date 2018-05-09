@@ -57,7 +57,7 @@ def enterMessage():
 			if newChar != oldChar or time.time() >= timeLimit:
 				message = message + tempChar
 				tempChar = ""
-				timeLimit = time + waitTime
+				timeLimit = time.time() + waitTime
 			elif newChar == oldChar and time < timeLimit:
 				if newChar == "1":
 					if(tempChar == ""):
