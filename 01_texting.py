@@ -47,11 +47,12 @@ def enterMessage():
 	oldButton = ""
 	message = "Test: "
 	waitTime = 2 #in seconds
-	if tempChar != "" and time.time() >= timeLimit:
-		message = message + tempChar
-		tempChar = ""
-		print("time set " + message + tempChar)
 	while True:
+		if tempChar != "" and time.time() >= timeLimit:
+			message = message + tempChar
+			tempChar = ""
+			print("time set " + message + tempChar)
+		
 		newButton = getchar()
 		newButton = str(newButton)
 		if newButton.strip() == "/":
@@ -193,7 +194,6 @@ def enterMessage():
 						tempChar = " "
 					print(message + tempChar)
 			oldButton = newButton
-		timeLimit = time.time() + waitTime
 	return message
 
 
