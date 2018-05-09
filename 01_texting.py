@@ -51,7 +51,7 @@ def enterMessage():
 	while True:
 		print("message: " + message)
 		newButton = getchar()
-		if newChar.strip() == "/":
+		if newButton.strip() == "/":
 			print(message)
 			break
 		else:
@@ -76,7 +76,7 @@ def enterMessage():
 						tempChar = "2"
 					elif(tempChar == "2"):
 						tempChar = "a"
-				elif newChar == "3":
+				elif newButton == "3":
 					if(tempChar == ""):
 						tempChar = "d"
 					elif(tempChar == "d"):
