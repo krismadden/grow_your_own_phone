@@ -53,7 +53,7 @@ def enterMessage():
 		newButton = str(newButton)
 		if tempChar != "" and time.time() >= timeLimit:
 				print("test1")
-				speakChar = tempChar
+				speakChar = str(tempChar)
 				speak(speakChar)
 				print("test2")
 				message = message + tempChar
