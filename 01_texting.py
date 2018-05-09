@@ -52,7 +52,6 @@ def enterMessage():
 	setCharacter = False
 	while True:
 		newButton = getchar()
-		newButton = str(newButton)
 		
 		if time.time() > timeLimit:
 			setCharacter = True
