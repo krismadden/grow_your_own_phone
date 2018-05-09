@@ -49,6 +49,7 @@ def enterMessage():
 	message = ""
 	waitTime = 2 #in seconds
 	timeLimit = time.time() + waitTime
+	setCharacter = False
 	while True:
 		if time.time() > timeLimit:
 			setCharacter = True
