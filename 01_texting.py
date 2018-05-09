@@ -59,7 +59,7 @@ def enterMessage():
 		
 		newButton = getchar()
 		newButton = str(newButton)
-		if tempChar != "" and time.time() >= timeLimit:
+		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
 				message = message + tempChar
 				os.system("espeak '" + message + "' 2>/dev/null")
 				tempChar = ""
