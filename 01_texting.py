@@ -50,6 +50,7 @@ def enterMessage():
 	timeLimit = time.time() + waitTime
 	while True:
 		print("message: " + message)
+		print("time: " + time.time())
 		newButton = getchar()
 		if newButton.strip() == "/":
 			print(message)
