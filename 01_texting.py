@@ -81,6 +81,7 @@ def enterMessage():
 						tempChar = "2"
 					elif(tempChar == "2"):
 						tempChar = "a"
+					print(tempChar)
 				elif newButton == "3":
 					if(tempChar == ""):
 						tempChar = "d"
@@ -92,6 +93,7 @@ def enterMessage():
 						tempChar = "3"
 					elif(tempChar == "3"):
 						tempChar = "d"
+					print(tempChar)
 				elif newButton == "4":
 					if(tempChar == ""):
 						tempChar = "g"
@@ -103,6 +105,7 @@ def enterMessage():
 						tempChar = "4"
 					elif(tempChar == "4"):
 						tempChar = "g"
+					print(tempChar)
 				elif newButton == "5":
 					if(tempChar == ""):
 						tempChar = "j"
