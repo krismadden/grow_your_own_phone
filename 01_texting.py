@@ -70,8 +70,9 @@ def enterMessage():
 			break
 		elif newButton.strip() == "*":
 			message = message + tempChar
+			speakChar = tempChar
 			os.system("espeak 'deleting' 2>/dev/null")
-			os.system("espeak '" + tempChar + "' 2>/dev/null")
+			os.system("espeak '" + speakChar + "' 2>/dev/null")
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
