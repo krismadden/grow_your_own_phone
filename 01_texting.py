@@ -47,7 +47,10 @@ def enterMessage():
 	oldButton = ""
 	message = "Test: "
 	waitTime = 2 #in seconds
-	timeLimit = time.time() + waitTime
+	if tempChar != "" and time.time() >= timeLimit:
+		message = message + tempChar
+		tempChar = ""
+		print("time set " + message + tempChar)
 	while True:
 		newButton = getchar()
 		newButton = str(newButton)
@@ -70,14 +73,12 @@ def enterMessage():
 				if newButton == "1":
 					if(tempChar == ""):
 						tempChar = "1"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "1"):
 						tempChar = "1"
 					print(message + tempChar)
 				elif newButton == "2":
 					if(tempChar == ""):
 						tempChar = "a"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "a"):
 						tempChar = "b"
 					elif(tempChar == "b"):
@@ -90,7 +91,6 @@ def enterMessage():
 				elif newButton == "3":
 					if(tempChar == ""):
 						tempChar = "d"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "d"):
 						tempChar = "e"
 					elif(tempChar == "e"):
@@ -103,7 +103,6 @@ def enterMessage():
 				elif newButton == "4":
 					if(tempChar == ""):
 						tempChar = "g"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "g"):
 						tempChar = "h"
 					elif(tempChar == "h"):
@@ -116,7 +115,6 @@ def enterMessage():
 				elif newButton == "5":
 					if(tempChar == ""):
 						tempChar = "j"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "j"):
 						tempChar = "k"
 					elif(tempChar == "k"):
@@ -129,7 +127,6 @@ def enterMessage():
 				elif newButton == "6":
 					if(tempChar == ""):
 						tempChar = "m"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "m"):
 						tempChar = "n"
 					elif(tempChar == "n"):
@@ -142,7 +139,6 @@ def enterMessage():
 				elif newButton == "7":
 					if(tempChar == ""):
 						tempChar = "p"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "p"):
 						tempChar = "q"
 					elif(tempChar == "q"):
@@ -157,7 +153,6 @@ def enterMessage():
 				elif newButton == "8":
 					if(tempChar == ""):
 						tempChar = "t"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "t"):
 						tempChar = "u"
 					elif(tempChar == "u"):
@@ -170,7 +165,6 @@ def enterMessage():
 				elif newButton == "9":
 					if(tempChar == ""):
 						tempChar = "w"
-						timeLimit = time.time() + waitTime
 					elif(tempChar == "w"):
 						tempChar = "x"
 					elif(tempChar == "x"):
@@ -185,7 +179,6 @@ def enterMessage():
 				elif newButton == "0":
 					if(tempChar == ""):
 						tempChar = " "
-						timeLimit = time.time() + waitTime
 					elif(tempChar == " "):
 						tempChar = "."
 					elif(tempChar == "."):
@@ -200,6 +193,7 @@ def enterMessage():
 						tempChar = " "
 					print(message + tempChar)
 			oldButton = newButton
+		timeLimit = time.time() + waitTime
 	return message
 
 
