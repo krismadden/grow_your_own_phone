@@ -53,18 +53,18 @@ def enterMessage():
 		newButton = str(newButton)
 		if newButton.strip() == "/":
 			print("sending: " + message)
-			print("newButton.strip() == ")
 			break
 		else:
+			#everytime a button is pressed it restarts the wait time for setting the character
+			timeLimit = time.time() + waitTime
+			
 			if tempChar != "" and time.time() >= timeLimit:
 				message = message + tempChar
 				tempChar = ""
-				timeLimit = time.time() + waitTime
 				print("time set " + message + tempChar)
 			elif newButton != oldButton and oldButton != "":
-				message = "set " + message + tempChar
+				message = message + tempChar
 				tempChar = ""
-				timeLimit = time.time() + waitTime
 				print("new button set " + message + tempChar)
 			else:
 				if newButton == "1":
