@@ -60,7 +60,7 @@ def enterMessage():
 				message = "set " + message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
-			elif tempChar != "" and newButton != oldButton:
+			elif newButton != oldButton:
 				message = "set " + message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
