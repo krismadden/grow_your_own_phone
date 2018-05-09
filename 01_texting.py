@@ -81,7 +81,7 @@ def enterMessage():
 			timeLimit = time.time() + waitTime
 			
 			if newButton != oldButton and oldButton != "":
-				if newButton.strip() != "*" || newButton.strip() != "=":
+				if newButton.strip() != "*" or newButton.strip() != "=":
 					message = message + tempChar
 					os.system("espeak '" + message + "' 2>/dev/null")
 					tempChar = ""
