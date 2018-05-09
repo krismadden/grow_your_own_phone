@@ -172,6 +172,7 @@ def enterMessage():
 						tempChar = "0"
 					elif(tempChar == "0"):
 						tempChar = " "
+				oldChar = tempChar
 	return message
 
 
