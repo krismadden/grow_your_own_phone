@@ -80,9 +80,7 @@ def enterMessage():
 			timeLimit = time.time() + waitTime
 			
 			if newButton != oldButton and oldButton != "":
-				speak(tempChar)
-				time.sleep(0.5) 
-				message = message + tempChar
+				message = doSomething(message, tempChar)
 				tempChar = ""
 				print("new button set " + message + tempChar)
 			if newButton == "1":
