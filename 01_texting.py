@@ -68,6 +68,7 @@ def enterMessage():
 				
 		if newButton.strip() == "/":
 			message = message + tempChar
+			os.system("espeak '" + message + "' 2>/dev/null")
 			print("sending: " + message)
 			break
 		elif newButton.strip() == "*":
