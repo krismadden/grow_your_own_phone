@@ -58,7 +58,7 @@ def enterMessage():
 			print("newButton.strip() == ")
 			break
 		else:
-			print("else")
+			print("else " + newbutton)
 			if (tempChar != "") and ((newButton != oldButton) or (time.time() >= timeLimit)):
 				print("(tempChar != ) and ((newButton != oldButton) or (time.time() >= timeLimit))")
 				message = message + tempChar
