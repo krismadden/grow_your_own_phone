@@ -55,6 +55,7 @@ def enterMessage():
 				print("test1")
 				speakChar = str(tempChar)
 				speak(speakChar)
+				time.sleep(0.5) 
 				print("test2")
 				message = message + tempChar
 				tempChar = ""
@@ -68,6 +69,7 @@ def enterMessage():
 			message = message + tempChar
 			print("test3")
 			speak("deleting " + tempChar)
+			time.sleep(0.5) 
 			print("test4")
 			tempChar = ""
 			message = message[:-1]
@@ -78,6 +80,7 @@ def enterMessage():
 			
 			if newButton != oldButton and oldButton != "":
 				speak(tempChar)
+				time.sleep(0.5) 
 				message = message + tempChar
 				tempChar = ""
 				print("new button set " + message + tempChar)
