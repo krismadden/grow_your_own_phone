@@ -49,29 +49,22 @@ def enterMessage():
 	waitTime = 2 #in seconds
 	timeLimit = time.time() + waitTime
 	while True:
-		print("message: " + message)
-		print("time: " + str(time.time()))
 		newButton = getchar()
 		newButton = str(newButton)
 		if newButton.strip() == "/":
-			print("/ typed")
-			print(message)
+			print("sending: " + message)
 			print("newButton.strip() == ")
 			break
 		else:
-			print("else " + newButton)
 			if tempChar != "" and time.time() >= timeLimit:
-				print("tempChar != "" and time.time() >= timeLimit")
 				message = message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
 			elif tempChar != "" and newButton != oldButton:
-				print("tempChar != "" and newButton != oldButton")
 				message = message + tempChar
 				tempChar = ""
 				timeLimit = time.time() + waitTime
 			else:
-				print ("newButton == oldButton and time < timeLimit:")
 				if newButton == "1":
 					if(tempChar == ""):
 						tempChar = "1"
