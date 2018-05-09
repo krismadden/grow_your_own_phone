@@ -171,9 +171,9 @@ def enterMessage():
 						tempChar = "0"
 					elif(tempChar == "0"):
 						tempChar = " "
-letter = ""
-message = ""
-numberstring = ""
+	return message
+
+
 response = ""
 pin = ""
 
@@ -227,150 +227,8 @@ while True:
 
 #message = raw_input("Enter Message::\n")
 speak("Enter your message")
-print "Enter message.\n- Press 2-9 for letters.\n- Enter 0 for spaces and punctuation.\n- Press enter after each character.\n- Enter 01 as the last character to send."
-while True:
-    letter = raw_input("Message = " + message + "\n")
-
-    if letter == "2":
-	speak("a")
-        message = message + "a"
-    elif letter == "22":
-        speak("b")
-	message = message + "b"
-    elif letter == "222":
-        speak("c")
-	message = message + "c"
-    elif letter == "2222":
-        speak("2")
-	message = message + "2"
-
-    elif letter == "3":
-        speak("d")
-	message = message + "d"
-    elif letter == "33":
-        speak("e")
-	message = message + "e"
-    elif letter == "333":
-        speak("f")
-	message = message + "f"
-    elif letter == "3333":
-        speak("3")
-	message = message + "3"
-
-    elif letter == "4":
-        speak("g")
-	message = message + "g"
-    elif letter == "44":
-        speak("h")
-	message = message + "h"
-    elif letter == "444":
-        speak("i")
-	message = message + "i"
-    elif letter == "4444":
-        speak("4")
-	message = message + "4"
-
-    elif letter == "5":
-        speak("j")
-	message = message + "j"
-    elif letter == "55":
-        speak("k")
-	message = message + "k"
-    elif letter == "555":
-        speak("l")
-	message = message + "l"
-    elif letter == "5555":
-        speak("5")
-	message = message + "5"
-
-    elif letter == "6":
-        speak("m")
-	message = message + "m"
-    elif letter == "66":
-        speak("n")
-	message = message + "n"
-    elif letter == "666":
-        speak("o")
-	message = message + "o"
-    elif letter == "6666":
-        speak("6")
-	message = message + "6"
-
-    elif letter == "7":
-        speak("p")
-	message = message + "p"
-    elif letter == "77":
-        speak("q")
-	message = message + "q"
-    elif letter == "777":
-        speak("r")
-	message = message + "r"
-    elif letter == "7777":
-        speak("s")
-	message = message + "s"
-    elif letter == "77777":
-        speak("7")
-	message = message + "7"
-
-    elif letter == "8":
-        speak("t")
-	message = message + "t"
-    elif letter == "88":
-        speak("u")
-	message = message + "u"
-    elif letter == "888":
-        speak("v")
-	message = message + "v"
-    elif letter == "8888":
-        speak("8")
-	message = message + "8"
-
-    elif letter == "9":
-        speak("w")
-	message = message + "w"
-    elif letter == "99":
-        speak("x")
-	message = message + "x"
-    elif letter == "999":
-        speak("y")
-	message = message + "y"
-    elif letter == "9999":
-        speak("z")
-	message = message + "z"
-    elif letter == "99999":
-        speak("9")
-	message = message + "9"
-
-    elif letter == "0":
-        speak("space")
-	message = message + " "
-    elif letter == "00":
-        speak("period")
-	message = message + "."
-    elif letter == "000":
-        speak("question mark")
-	message = message + "?"
-    elif letter == "0000":
-        speak("exclamation mark")
-	message = message + "!"
-    elif letter == "00000":
-        speak("0")
-	message = message + "0"
-
-    elif letter == "1":
-        message = message + "1"
-        #break
-
-    elif letter == "01":
-	speak(message)
-        print "Sending: " + message
-        break
-
-    else:
-	speak("\"" + letter + "\" is not recognized. Try again.")
-        print "\"" + letter + "\" is not recognized. Try again."
-
-    continue
+print "Enter message."
+message = enterMessage()
 
 
 #SEND SMS
