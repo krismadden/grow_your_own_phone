@@ -239,7 +239,7 @@ while True:
 	response = m590.ser.readlines(None)
 	print (response)
 
-	if response[2] == "b'+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+	if response[2].decode() == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print ("pin okay. let's go.")
 # 		speak("pin okay. let's go.")
 		break
