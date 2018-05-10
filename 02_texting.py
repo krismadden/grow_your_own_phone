@@ -294,7 +294,7 @@ def main():
 		modem.send_sms(phoneNumber, message)
 
 		response = m590.ser.readlines(None)
-		if response[0] == "\n":
+		if response[0].decode() == "\n":
 			speak("Sent!")
 			print ("Sent!")
 		else:
