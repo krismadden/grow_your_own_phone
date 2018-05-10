@@ -243,8 +243,8 @@ while True:
 		print ("pin okay. let's go.")
 # 		speak("pin okay. let's go.")
 		break
-	elif response[2] == "b'+CPIN: SIM PIN\r\n":
-		pin = raw_input("Enter your SIM's PIN code::\n")
+	elif response[2].decode() == "b'+CPIN: SIM PIN\r\n":
+		pin = "1234"
 		m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
 		time.sleep(0.5)
 		continue
