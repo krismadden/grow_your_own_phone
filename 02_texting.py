@@ -35,7 +35,7 @@ def setUpPin():
 	# speak("Initialising")
 	print ("Initialising Modem & Checking PIN..")
 
-	modem = m590()
+# 	modem = m590()
 	modem.init()
 
 	while True:
@@ -262,7 +262,8 @@ def enterMessage():
 
 
 def main():
-
+	modem = m590()
+	
 	setUpPin()
 
 	while True:
