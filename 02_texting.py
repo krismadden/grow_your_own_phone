@@ -263,11 +263,11 @@ def enterMessage():
 
 def main():
 	modem = m590()
+	modem.init()
 	
 	setUpPin()
 
 	while True:
-		modem.init()
 		# while True:
 		#  	speak("Enter a Phone number")
 		# 	phoneNumber = enterPhoneNumber()
@@ -305,7 +305,7 @@ def main():
 		#modem.read_sms(4)
 		#print modem.SMS
 
-		modem.deinit()
+	modem.deinit()
 
 if __name__ == "__main__":
     main()
