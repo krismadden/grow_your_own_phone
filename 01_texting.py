@@ -1,6 +1,14 @@
 from m590_setup import m590
 import time
 import os
+import RPi.GPIO as GPIO
+
+#setup LEDs#
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT)
+GPIO.output(18,GPIO.LOW)
+#end setup for LEDs#
 
 #start setup for text to speach
 import sys
@@ -98,6 +106,7 @@ def enterMessage():
 					tempChar = "1"
 				print(message + tempChar)
 			elif newButton == "2":
+				GPIO.output(18,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "a"
 				elif(tempChar == "a"):
@@ -110,6 +119,7 @@ def enterMessage():
 					tempChar = "a"
 				print(message + tempChar)
 			elif newButton == "3":
+				GPIO.output(18,GPIO.LOW)
 				if(tempChar == ""):
 					tempChar = "d"
 				elif(tempChar == "d"):
