@@ -236,7 +236,7 @@ modem.init()
 
 while True:
 	m590.ser.write("at+cpin?\r".encode())
-	response = m590.ser.readlines(None).decode()
+	response = m590.ser.readlines(None)
 	print (response)
 
 	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
@@ -261,7 +261,7 @@ while True:
 		m590.ser.write("at+cpin=" + pin)
 		continue
 	else:
-		print (response[2] + "\n")
+		print (response[2].decode() + "\n")
 		print ("check your SIM card. If all looks good, get Kris.")
 
 # while True:
