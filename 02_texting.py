@@ -62,11 +62,6 @@ def setUpPin():
 			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 
 def checkIfModuleFrozen():
-	m590.ser.write("at+cfun=16\r".encode())
-	response = m590.ser.readlines(None)
-	time.sleep(5.0)
-	time.sleep(5.0)
-	time.sleep(5.0)
 	m590.ser.write("at\r".encode())
 	time.sleep(1.0)
 	response = m590.ser.readlines(None)
@@ -80,6 +75,7 @@ def checkIfModuleFrozen():
 	else:
 		print ("response is okay")
 		print (response)
+		os.system('sudo shutdown -r now') ## remove this after testing!!!
 
 def enterPhoneNumber():
 	phoneNumber = ""
