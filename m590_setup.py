@@ -29,9 +29,8 @@ class m590:
 		return self.wait_result()
 
 	# Send SMS
-	def send_sms(self, number, text):
-		encodeThis = 'AT+CMGS=\"'+number+'\"\r'.encode()
-		self.ser.write(encodeThis)
+	def send_sms(self, number.encode(), text.encode()):
+		self.ser.write('AT+CMGS=\"'+number+'\"\r')
 		#while True:
 		#	ch = self.ser.read()
 		#	if ch == '>':
