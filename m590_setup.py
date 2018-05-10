@@ -26,7 +26,7 @@ class m590:
 	# Send Command to Modem and wait a Result
 	def send_command(self, command):
 		self.ser.write(command.encode())
-		return self.wait_result().decode()
+		return self.wait_result()
 
 	# Send SMS
 	def send_sms(self, number, text):
