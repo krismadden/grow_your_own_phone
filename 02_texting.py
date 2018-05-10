@@ -240,8 +240,12 @@ while True:
 	m590.ser.write("at+cpin?\r".encode())
 	response = m590.ser.readlines(None)
 	print (response)
-
-	if response[2].decode() == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+	
+	if response[2].decode() == "OK\r\n" or response[1] == "OK\r\n":
+		print ("pin okay. let's go.")
+# 		speak("pin okay. let's go.")
+		break
+	elif response[2].decode() != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print ("pin okay. let's go.")
 # 		speak("pin okay. let's go.")
 		break
