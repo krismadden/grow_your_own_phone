@@ -226,43 +226,42 @@ def enterMessage():
 
 
 def main():
-	
+
+
+
+	response = ""
+	pin = ""
+
+	# speak("Initialising")
+	print ("Initialising Modem & Checking PIN..")
+
+	modem = m590()
+	modem.init()
+
 	while True:
+		pin = "1234"
+		m590.ser.write("at+cpin=\"1234\"\r".encode())
+		m590.ser.write("at+cpin?\r".encode())
+		response = m590.ser.readlines(None)
+		print (response)
 
-
-		response = ""
-		pin = ""
-
-		# speak("Initialising")
-		print ("Initialising Modem & Checking PIN..")
-
-		modem = m590()
-		modem.init()
-
-		while True:
+		if response[2].decode() == "OK\r\n" or response[1] == "OK\r\n":
+			print ("pin okay. let's go.")
+	# 		speak("pin okay. let's go.")
+			break
+		elif response[2].decode() != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+			print ("pin okay. let's go.")
+	# 		speak("pin okay. let's go.")
+			break
+		elif response[2].decode() == "+CPIN: SIM PIN\r\n":
 			pin = "1234"
-			m590.ser.write("at+cpin=\"1234\"\r".encode())
-			m590.ser.write("at+cpin?\r".encode())
-			response = m590.ser.readlines(None)
-			print (response)
-
-			if response[2].decode() == "OK\r\n" or response[1] == "OK\r\n":
-				print ("pin okay. let's go.")
-		# 		speak("pin okay. let's go.")
-				break
-			elif response[2].decode() != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
-				print ("pin okay. let's go.")
-		# 		speak("pin okay. let's go.")
-				break
-			elif response[2].decode() == "+CPIN: SIM PIN\r\n":
-				pin = "1234"
-				m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
-				time.sleep(0.5)
-				continue
-			else:
-				print (response[2].decode() + "\n")
-				print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
-
+			m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
+			time.sleep(0.5)
+			continue
+		else:
+			print (response[2].decode() + "\n")
+			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
+	while True:
 		# while True:
 		#  	speak("Enter a Phone number")
 		# 	phoneNumber = enterPhoneNumber()
