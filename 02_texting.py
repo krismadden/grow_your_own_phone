@@ -268,7 +268,7 @@ def main():
 
 	while True:
 		
-		m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
+		m590.ser.write("at".encode())
 		time.sleep(0.5)
 		response = m590.ser.readlines(None)
 		print(response.decode())
