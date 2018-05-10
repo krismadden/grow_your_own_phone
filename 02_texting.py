@@ -271,7 +271,7 @@ def main():
 		m590.ser.write("at".encode())
 		time.sleep(0.5)
 		response = m590.ser.readlines(None)
-		print(response.decode())
+		print(response)
 		if response[0].decode != "OK":
 			print ("response not okay")
 			print (response[0].decode)
