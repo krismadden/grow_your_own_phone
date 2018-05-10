@@ -238,7 +238,7 @@ response = ""
 pin = ""
 
 # speak("Initialising")
-print "Initialising Modem & Checking PIN.."
+print ("Initialising Modem & Checking PIN..")
 
 modem = m590()
 modem.init()
@@ -246,10 +246,10 @@ modem.init()
 while True:
 	m590.ser.write("at+cpin?\r")
 	response = m590.ser.readlines(None)
-	print response
+	print (response)
 
 	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
-		print "pin okay. let's go."
+		print ("pin okay. let's go.")
 # 		speak("pin okay. let's go.")
 		break
 	elif response[2] == "+CPIN: SIM PIN\r\n":
@@ -270,8 +270,8 @@ while True:
 		m590.ser.write("at+cpin=" + pin)
 		continue
 	else:
-		print response[2] + "\n"
-		print "check your SIM card. If all looks good, get Kris."
+		print (response[2] + "\n")
+		print ("check your SIM card. If all looks good, get Kris.")
 
 # while True:
 #  	speak("Enter a Phone number")
@@ -289,22 +289,22 @@ phoneNumber = "0637165118"
 
 #message = raw_input("Enter Message::\n")
 speak("Enter your message")
-print "Enter message.\n"
+print ("Enter message.\n")
 message = enterMessage()
 
 
 #SEND SMS
-print "Sending text.."
+print ("Sending text..")
 speak("Sending text")
 modem.send_sms(phoneNumber, message)
 
 response = m590.ser.readlines(None)
 if response[0] == "\n":
 	speak("Sent!")
-	print "Sent!"
+	print ("Sent!")
 else:
 	speak("error")
-	print response
+	print (response)
 
 #READ ALL SMS
 #modem.read_sms(4)
