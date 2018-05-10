@@ -63,6 +63,7 @@ def setUpPin():
 
 def checkIfModuleFrozen():
 	m590.ser.write("at+cfun=16\r".encode())
+	response = m590.ser.readlines(None)
 	time.sleep(5.0)
 	time.sleep(5.0)
 	time.sleep(5.0)
