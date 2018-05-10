@@ -239,11 +239,11 @@ while True:
 	response = m590.ser.readlines(None)
 	print (response)
 
-	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+	if response[2] == "b'+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
 		print ("pin okay. let's go.")
 # 		speak("pin okay. let's go.")
 		break
-	elif response[2] == "+CPIN: SIM PIN\r\n":
+	elif response[2] == "b'+CPIN: SIM PIN\r\n":
 		pin = raw_input("Enter your SIM's PIN code::\n")
 		m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
 		time.sleep(0.5)
