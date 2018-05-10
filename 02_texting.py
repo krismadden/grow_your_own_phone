@@ -278,6 +278,7 @@ def main():
 	modem = m590()
 	modem.init()
 	
+	checkIfModuleFrozen()
 	setUpPin()
 
 	while True:
