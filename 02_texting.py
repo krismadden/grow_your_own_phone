@@ -45,7 +45,7 @@ def setUpPin():
 		response = m590.ser.readlines(None)
 		print (response)
 
-		if response[2].decode() == "OK\r\n" or response[1] == "OK\r\n":
+		if response[2].decode() == "OK\r\n" or response[1].decode() == "OK\r\n":
 			print ("pin okay. let's go.")
 	# 		speak("pin okay. let's go.")
 			break
