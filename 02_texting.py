@@ -273,13 +273,10 @@ def main():
 		response = m590.ser.readlines(None)
 		print(response)
 		response = response[1].decode()
-		response = response[:-1]
-		response = response[:-1]
-		print(response)
 		if response == "":
 			print ("response not okay")
 			print (response)
-			#os.system('sudo shutdown -r now')
+			os.system('sudo shutdown -r now')
 		else:
 			print ("response is okay")
 			print (response)
