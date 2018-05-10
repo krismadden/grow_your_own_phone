@@ -30,7 +30,8 @@ class m590:
 
 	# Send SMS
 	def send_sms(self, number, text):
-		self.ser.write('AT+CMGS=\"'+number+'\"\r')
+		encodeThis = 'AT+CMGS=\"'+number+'\"\r'.encode()
+		self.ser.write(encodeThis)
 		#while True:
 		#	ch = self.ser.read()
 		#	if ch == '>':
