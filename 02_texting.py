@@ -265,45 +265,45 @@ def main():
 
 	setUpPin()
 
-		while True:
-		# while True:
-		#  	speak("Enter a Phone number")
-		# 	phoneNumber = enterPhoneNumber()
+	while True:
+	# while True:
+	#  	speak("Enter a Phone number")
+	# 	phoneNumber = enterPhoneNumber()
 
-		# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-		# 		print len(phoneNumber)
-		# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
-		# 		continue
-		# 	else:
-		# 		speak("Sending to " + phoneNumber)
-		# 		break
+	# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+	# 		print len(phoneNumber)
+	# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+	# 		continue
+	# 	else:
+	# 		speak("Sending to " + phoneNumber)
+	# 		break
 
-		phoneNumber = "0637165118"
+	phoneNumber = "0637165118"
 
-		#message = raw_input("Enter Message::\n")
-		speak("Enter your message")
-		print ("Enter message.\n")
-		message = enterMessage()
+	#message = raw_input("Enter Message::\n")
+	speak("Enter your message")
+	print ("Enter message.\n")
+	message = enterMessage()
 
 
-		#SEND SMS
-		print ("Sending text..")
-		speak("Sending text")
-		modem.send_sms(phoneNumber, message)
+	#SEND SMS
+	print ("Sending text..")
+	speak("Sending text")
+	modem.send_sms(phoneNumber, message)
 
-		response = m590.ser.readlines(None)
-		if response[0] == "\n":
-			speak("Sent!")
-			print ("Sent!")
-		else:
-			speak("error")
-			print (response)
+	response = m590.ser.readlines(None)
+	if response[0] == "\n":
+		speak("Sent!")
+		print ("Sent!")
+	else:
+		speak("error")
+		print (response)
 
-		#READ ALL SMS
-		#modem.read_sms(4)
-		#print modem.SMS
+	#READ ALL SMS
+	#modem.read_sms(4)
+	#print modem.SMS
 
-		modem.deinit()
+	modem.deinit()
 
 if __name__ == "__main__":
     main()
