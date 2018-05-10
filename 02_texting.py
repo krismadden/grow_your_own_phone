@@ -235,7 +235,8 @@ modem = m590()
 modem.init()
 
 while True:
-	m590.ser.write("at+cpin="1234"\r".encode())
+	pin = "1234"
+	m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
 	m590.ser.write("at+cpin?\r".encode())
 	response = m590.ser.readlines(None)
 	print (response)
