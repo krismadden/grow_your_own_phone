@@ -274,7 +274,7 @@ def main():
 		print(response)
 		response = response[1].decode()
 		print(response)
-		if response != "OK" or response != "+PBREADY" or response != "ERROR":
+		if response != "OK\r\n" or response != "+PBREADY\r\n" or response != "ERROR\r\n":
 			print ("response not okay")
 			print (response)
 			#os.system('sudo shutdown -r now')
