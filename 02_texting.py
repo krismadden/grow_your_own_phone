@@ -272,7 +272,7 @@ def main():
 		time.sleep(1.0)
 		response = m590.ser.readlines(None)
 		print(response)
-		if response[1].decode != "OK\r\n" or response[1].decode != "+PBREADY\r\n":
+		if response[1].decode() != "OK\r\n" or response[1].decode() != "+PBREADY\r\n" or response[1].decode() != "ERROR\r\n":
 			print ("response not okay")
 			print (response[0].decode)
 			#os.system('sudo shutdown -r now')
