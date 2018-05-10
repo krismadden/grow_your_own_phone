@@ -61,7 +61,21 @@ def setUpPin():
 			print (response[1].decode() + "\n")
 			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 
-	
+def checkIfModuleFrozen():
+	m590.ser.write("at+cfun=16".encode())
+	m590.ser.write("at\r".encode())
+	time.sleep(1.0)
+	response = m590.ser.readlines(None)
+	print(response)
+	response = response[1].decode()
+	if response == "":
+		print ("response not okay")
+		print (response)
+		os.system('sudo shutdown -r now')
+		print ("the raspberry pi should have just restarted.")
+	else:
+		print ("response is okay")
+		print (response)
 
 def enterPhoneNumber():
 	phoneNumber = ""
@@ -267,20 +281,7 @@ def main():
 	setUpPin()
 
 	while True:
-		m590.ser.write("at+cfun=16".encode())
-		m590.ser.write("at\r".encode())
-		time.sleep(1.0)
-		response = m590.ser.readlines(None)
-		print(response)
-		response = response[1].decode()
-		if response == "":
-			print ("response not okay")
-			print (response)
-			os.system('sudo shutdown -r now')
-			print ("the raspberry pi should have just restarted.")
-		else:
-			print ("response is okay")
-			print (response)
+		checkIfModuleFrozen()
 		# while True:
 		#  	speak("Enter a Phone number")
 		# 	phoneNumber = enterPhoneNumber()
