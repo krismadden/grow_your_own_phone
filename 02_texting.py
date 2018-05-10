@@ -260,11 +260,11 @@ def enterMessage():
 
 def main():
 	modem = m590()
-	modem.init()
 	
 	setUpPin()
 
 	while True:
+		modem.init()
 		# while True:
 		#  	speak("Enter a Phone number")
 		# 	phoneNumber = enterPhoneNumber()
