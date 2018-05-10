@@ -51,8 +51,7 @@ def setUpPin():
 	# 		speak("pin okay. let's go.")
 			break
 		elif response[2].decode() == "+CPIN: SIM PIN\r\n":
-			pin = "1234"
-			m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
+			m590.ser.write("at+cpin=\"1234\"\r".encode())
 			time.sleep(0.5)
 			continue
 		elif response[1].decode() == "ERROR/r/n" or response[2].decode() == "ERROR/r/n":
