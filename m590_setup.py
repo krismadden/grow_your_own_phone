@@ -16,7 +16,7 @@ class m590:
 			ch = self.ser.read()
 			if ch == '':
 				return 2
-			lines = lines + ch
+			lines = lines + ch.decode()
 			if lines[-3:]=="OK\r":
 				return 0
 			if lines[-6:]=="ERROR\r":
@@ -26,7 +26,7 @@ class m590:
 	# Send Command to Modem and wait a Result
 	def send_command(self, command):
 		self.ser.write(command.encode())
-		return self.wait_result()
+		return self.wait_result().decode()
 
 	# Send SMS
 	def send_sms(self, number, text):
