@@ -31,6 +31,7 @@ class m590:
 	# Send SMS
 	def send_sms(self, number, text):
 		encodeThis = 'AT+CMGS=\"'+number+'\"\r'
+		encodeThisToo = text
 		self.ser.write(encodeThis.encode())
 		#while True:
 		#	ch = self.ser.read()
@@ -39,7 +40,7 @@ class m590:
 		#	if ch == '':
 		#		return 2
 		time.sleep(0.5)
-		self.ser.write(text)
+		self.ser.write(text.encode())
 		self.ser.write('\x1A')
 		return self.wait_result()
 
