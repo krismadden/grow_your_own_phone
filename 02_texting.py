@@ -276,11 +276,12 @@ def main():
 		response = response[:-1]
 		response = response[:-1]
 		print(response)
-		if response != "OK" or response != "+PBREADY" or response != "ERROR":
+		if response == "":
 			print ("response not okay")
 			print (response)
 			#os.system('sudo shutdown -r now')
 		else:
+			print ("response is okay")
 			print (response)
 		# while True:
 		#  	speak("Enter a Phone number")
