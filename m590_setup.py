@@ -25,12 +25,12 @@ class m590:
 
 	# Send Command to Modem and wait a Result
 	def send_command(self, command):
-		self.ser.write(command)
+		self.ser.write(command.encode())
 		return self.wait_result()
 
 	# Send SMS
 	def send_sms(self, number, text):
-		self.ser.write('AT+CMGS=\"'+number+'\"\r')
+		self.ser.write('AT+CMGS=\"'+number+'\"\r'.encode())
 		#while True:
 		#	ch = self.ser.read()
 		#	if ch == '>':
