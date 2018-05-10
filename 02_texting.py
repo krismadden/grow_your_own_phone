@@ -55,8 +55,11 @@ def setUpPin():
 			m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
 			time.sleep(0.5)
 			continue
+		elif response[1].decode() == "ERROR/r/n" or response[2].decode() == "ERROR/r/n"
+			print (response[].decode() + "\n")
+			print ("Error. Restart the Module")
 		else:
-			print (response[2].decode() + "\n")
+			print (response[].decode() + "\n")
 			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 
 	
