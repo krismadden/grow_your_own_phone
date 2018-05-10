@@ -268,6 +268,17 @@ def main():
 	setUpPin()
 
 	while True:
+		
+		m590.ser.write("at+cpin=\"" + pin + "\"\r".encode())
+		time.sleep(0.5)
+		response = m590.ser.readlines(None)
+		print(response.decode())
+		if response[0].decode != "OK":
+			print ("response not okay")
+			print (response[0].decode)
+			#os.system('sudo shutdown -r now')
+		else:
+			print (response[0].decode)
 		# while True:
 		#  	speak("Enter a Phone number")
 		# 	phoneNumber = enterPhoneNumber()
