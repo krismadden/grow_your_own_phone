@@ -267,7 +267,7 @@ def main():
 	setUpPin()
 
 	while True:
-		
+		m590.ser.write("at+cfun=16".encode())
 		m590.ser.write("at\r".encode())
 		time.sleep(1.0)
 		response = m590.ser.readlines(None)
