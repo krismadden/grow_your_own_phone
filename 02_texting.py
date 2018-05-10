@@ -10,19 +10,10 @@ GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
-#start setup for text to speach
-import sys
-import pyttsx
-voiceEngine = pyttsx.init()
-voiceEngine.setProperty('rate', 150)
-#end setup for text to speach
 
 #define speak function for text to speach
 def speak(str):
-	if len(sys.argv) > 1:
-		str = sys.argv[1]
-	voiceEngine.say(str)
-	voiceEngine.runAndWait()
+	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
 def getchar():
