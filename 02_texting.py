@@ -268,8 +268,8 @@ def main():
 
 	while True:
 		
-		m590.ser.write("at".encode())
-		time.sleep(0.5)
+		m590.ser.write("at\r".encode())
+		time.sleep(1.0)
 		response = m590.ser.readlines(None)
 		print(response)
 		if response[1].decode != "OK\r\n" or response[1].decode != "+PBREADY\r\n":
