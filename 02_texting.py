@@ -70,12 +70,11 @@ def checkIfModuleFrozen():
 	if response == "":
 		print ("response not okay")
 		print (response)
-		os.system('sudo shutdown -r now')
+		os.system('sudo shutdown -r now') #does not work. just freezes the program.
 		print ("the raspberry pi should have just restarted.")
 	else:
 		print ("response is okay")
 		print (response)
-		os.system('sudo shutdown -r now') ## remove this after testing!!!
 
 def enterPhoneNumber():
 	phoneNumber = ""
