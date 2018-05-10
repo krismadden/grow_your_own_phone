@@ -277,6 +277,7 @@ def main():
 			print ("response not okay")
 			print (response)
 			os.system('sudo shutdown -r now')
+			print ("the raspberry pi should have just restarted.")
 		else:
 			print ("response is okay")
 			print (response)
