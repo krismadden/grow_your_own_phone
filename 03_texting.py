@@ -114,10 +114,10 @@ def enterMessage():
 	message = ""
 	letsgo = True
 	waitTime = 2 #in seconds
-	timeUp = False
+	quit_flag = False
 	pygame.init()
 	screen = pygame.display.set_mode((500, 500), pygame.FULLSCREEN)
-	while letsgo:
+	while not quit_flag:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.quit()
