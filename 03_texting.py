@@ -112,52 +112,177 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
-	letsgo = True
 	waitTime = 2 #in seconds
-	quit_flag = False
-	pygame.init()
-	screen = pygame.display.set_mode((500, 500), pygame.FULLSCREEN)
-	while not quit_flag:
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				quit()
-			if event.type == pygame.KEYDOWN:
-				print(self.input)
-				if event.key == pygame.K_ESCAPE:
-					quit()
-				if event.key == K_1:
-					speak("1")
-				elif event.key == K_2:
-					speak("2")
-				elif event.key == K_3:
-					speak("3")
-				elif event.key == K_4:
-					speak("4")
-				elif event.key == K_5:
-					speak("5")
-				elif event.key == K_6:
-					speak("6")
-				elif event.key == K_7:
-					speak("7")
-				elif event.key == K_8:
-					speak("8")
-				elif event.key == K_9:
-					speak("9")
-				elif event.key == K_0:
-					speak("0")
-				elif event.key == K_LEFTBRACKET:
-					speak("Send / Enter")
-				elif event.key == K_RIGHTBRACKET:
-					speak("Backspace")
-				elif event.key == K_EQUALS:
-					speak("play back")
-				else:
-					speak("Something else")
-		letsgo = True
+	timeUp = False
+	while True:
+		
+		newButton = getchar()
+		newButton = str(newButton)
+		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
+				message = message + tempChar
+				os.system("espeak '" + message + "' 2>/dev/null")
+				tempChar = ""
+				print("time set " + message + tempChar)
+				timeUp = True
+				
+		if newButton.strip() == "/":
+			message = message + tempChar
+			os.system("espeak sending: '" + message + "' 2>/dev/null")
+			print("sending: " + message)
+			break
+		elif newButton.strip() == "*":
+			message = message + tempChar
+			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
+			tempChar = ""
+			message = message[:-1]
+			print("new message " + message)
+		elif newButton.strip() == "=":
+			message = message + tempChar
+			os.system("espeak '" +  message + "' 2>/dev/null")
+			tempChar = ""
+		else:
+			#everytime a button is pressed it restarts the wait time for setting the character
+			timeLimit = time.time() + waitTime
 			
+			if newButton != oldButton and oldButton != "":
+				if (timeUp == False) or (newButton.strip() != "*") or (newButton.strip() != "="):
+					message = message + tempChar
+					os.system("espeak 'new button " + message + "' 2>/dev/null")
+					tempChar = ""
+					print("new button set " + message + tempChar)
+			if newButton == "1":
+				if(tempChar == ""):
+					tempChar = "1"
+				elif(tempChar == "1"):
+					tempChar = "1"
+				print(message + tempChar)
+			elif newButton == "2":
+				GPIO.output(18,GPIO.HIGH)
+				if(tempChar == ""):
+					tempChar = "a"
+				elif(tempChar == "a"):
+					tempChar = "b"
+				elif(tempChar == "b"):
+					tempChar = "c"
+				elif(tempChar == "c"):
+					tempChar = "2"
+				elif(tempChar == "2"):
+					tempChar = "a"
+				print(message + tempChar)
+			elif newButton == "3":
+				GPIO.output(18,GPIO.LOW)
+				if(tempChar == ""):
+					tempChar = "d"
+				elif(tempChar == "d"):
+					tempChar = "e"
+				elif(tempChar == "e"):
+					tempChar = "f"
+				elif(tempChar == "f"):
+					tempChar = "3"
+				elif(tempChar == "3"):
+					tempChar = "d"
+				print(message + tempChar)
+			elif newButton == "4":
+				if(tempChar == ""):
+					tempChar = "g"
+				elif(tempChar == "g"):
+					tempChar = "h"
+				elif(tempChar == "h"):
+					tempChar = "i"
+				elif(tempChar == "i"):
+					tempChar = "4"
+				elif(tempChar == "4"):
+					tempChar = "g"
+				print(message + tempChar)
+			elif newButton == "5":
+				if(tempChar == ""):
+					tempChar = "j"
+				elif(tempChar == "j"):
+					tempChar = "k"
+				elif(tempChar == "k"):
+					tempChar = "l"
+				elif(tempChar == "l"):
+					tempChar = "5"
+				elif(tempChar == "5"):
+					tempChar = "j"
+				print(message + tempChar)
+			elif newButton == "6":
+				if(tempChar == ""):
+					tempChar = "m"
+				elif(tempChar == "m"):
+					tempChar = "n"
+				elif(tempChar == "n"):
+					tempChar = "o"
+				elif(tempChar == "o"):
+					tempChar = "6"
+				elif(tempChar == "6"):
+					tempChar = "m"
+				print(message + tempChar)
+			elif newButton == "7":
+				if(tempChar == ""):
+					tempChar = "p"
+				elif(tempChar == "p"):
+					tempChar = "q"
+				elif(tempChar == "q"):
+					tempChar = "r"
+				elif(tempChar == "r"):
+					tempChar = "s"
+				elif(tempChar == "s"):
+					tempChar = "7"
+				elif(tempChar == "7"):
+					tempChar = "p"
+				print(message + tempChar)
+			elif newButton == "8":
+				if(tempChar == ""):
+					tempChar = "t"
+				elif(tempChar == "t"):
+					tempChar = "u"
+				elif(tempChar == "u"):
+					tempChar = "v"
+				elif(tempChar == "v"):
+					tempChar = "8"
+				elif(tempChar == "8"):
+					tempChar = "t"
+				print(message + tempChar)
+			elif newButton == "9":
+				if(tempChar == ""):
+					tempChar = "w"
+				elif(tempChar == "w"):
+					tempChar = "x"
+				elif(tempChar == "x"):
+					tempChar = "y"
+				elif(tempChar == "y"):
+					tempChar = "z"
+				elif(tempChar == "z"):
+					tempChar = "9"
+				elif(tempChar == "9"):
+					tempChar = "w"
+				print(message + tempChar)
+			elif newButton == "0":
+				if(tempChar == ""):
+					tempChar = " "
+				elif(tempChar == " "):
+					tempChar = "."
+				elif(tempChar == "."):
+					tempChar = "?"
+				elif(tempChar == "?"):
+					tempChar = "!"
+				elif(tempChar == "!"):
+					tempChar = ","
+				elif(tempChar == ","):
+					tempChar = "0"
+				elif(tempChar == "0"):
+					tempChar = " "
+				print(message + tempChar)
+			oldButton = newButton
+			
+# 		if tempChar != "" and time.time() >= timeLimit:
+# 			message = message + tempChar
+# 			tempChar = ""
+# 			print("time set " + message + tempChar)
+		timeUp = False
 			
 	return message
-
 
 def main():
 	modem = m590()
