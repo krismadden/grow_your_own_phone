@@ -112,11 +112,12 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
+	letsgo = True
 	waitTime = 2 #in seconds
 	timeUp = False
-	while True:
-		pygame.init()
-		screen = pygame.display.set_mode((500, 500), pygame.FULLSCREEN)
+	pygame.init()
+	screen = pygame.display.set_mode((500, 500), pygame.FULLSCREEN)
+	while letsgo:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.quit()
