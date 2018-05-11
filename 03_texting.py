@@ -107,6 +107,7 @@ def enterMessage():
 	timeUp = False
 	while True:
 		pygame.init()
+		screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.quit()
