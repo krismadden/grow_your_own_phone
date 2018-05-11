@@ -311,6 +311,7 @@ def main():
 		modem.send_sms(phoneNumber, message)
 
 		response = m590.ser.readlines(None)
+		print (response)
 		if response == "":
 			speak("Error!")
 			print (response)
