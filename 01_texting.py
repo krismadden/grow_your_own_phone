@@ -56,6 +56,22 @@ def doSomething(message, tempChar):
 	time.sleep(0.5) 
 	print("test2")
 	message = message + tempChar
+
+def checkIfModuleFrozen():
+	m590.ser.write("at\r")
+	time.sleep(1.0)
+	response = m590.ser.readlines(None)
+	print(response)
+	response = response[1]
+	if response == "":
+		print ("response not okay")
+		print (response)
+		#os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		restart()
+		print ("the raspberry pi should have just restarted.")
+	else:
+		print ("response is okay")
+		print (response)
 	
 def enterMessage():
 	tempChar = ""
@@ -242,8 +258,10 @@ print ("Initialising Modem & Checking PIN..")
 
 modem = m590()
 modem.init()
+checkIfModuleFrozen()
 
 while True:
+	checkIfModuleFrozen()
 	m590.ser.write("at+cpin?\r")
 	response = m590.ser.readlines(None)
 	print (response)
