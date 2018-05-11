@@ -146,7 +146,7 @@ def enterMessage():
 			if newButton != oldButton and oldButton != "":
 				if (timeUp == False) or (newButton.strip() != "*") or (newButton.strip() != "="):
 					message = message + tempChar
-					os.system("espeak 'new button " + message + "' 2>/dev/null")
+					#os.system("espeak 'new button " + message + "' 2>/dev/null")
 					tempChar = ""
 					print("new button set " + message + tempChar)
 			if newButton == "1":
