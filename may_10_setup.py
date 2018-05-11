@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @krismadden
-Sign out
-1
-0 0 krismadden/grow_your_own_phone
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-grow_your_own_phone/m590_setup.py
-37eb861  a day ago
-@krismadden krismadden Update m590_setup.py
-      
-91 lines (80 sloc)  1.94 KB
 #!/usr/bin/python
 
 import serial
