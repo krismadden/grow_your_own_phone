@@ -314,7 +314,7 @@ def main():
 		if response == "":
 			speak("Error!")
 			print (response)
-		if response[0] == "\n":
+		elif response[0] == "\n":
 			speak("Sent!")
 			print ("Sent!")
 		else:
