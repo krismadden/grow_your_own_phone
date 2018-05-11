@@ -41,6 +41,7 @@ def setUpPin():
 	while True:
 		pin = "1234"
 		m590.ser.write("at+cpin=\"1234\"\r")
+		time.sleep(0.3)
 		m590.ser.write("at+cpin?\r")
 		response = m590.ser.readlines(None)
 		print (response)
