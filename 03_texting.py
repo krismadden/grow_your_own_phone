@@ -120,39 +120,39 @@ def enterMessage():
 	while not quit_flag:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
-				self.quit()
+				quit()
 			if event.type == pygame.KEYDOWN:
 				print(self.input)
-			if event.key == pygame.K_ESCAPE:
-				self.quit()
-			if event.key == K_1:
-				speak("1")
-			elif event.key == K_2:
-				speak("2")
-			elif event.key == K_3:
-				speak("3")
-			elif event.key == K_4:
-				speak("4")
-			elif event.key == K_5:
-				speak("5")
-			elif event.key == K_6:
-				speak("6")
-			elif event.key == K_7:
-				speak("7")
-			elif event.key == K_8:
-				speak("8")
-			elif event.key == K_9:
-				speak("9")
-			elif event.key == K_0:
-				speak("0")
-			elif event.key == K_LEFTBRACKET:
-				speak("Send / Enter")
-			elif event.key == K_RIGHTBRACKET:
-				speak("Backspace")
-			elif event.key == K_EQUALS:
-				speak("play back")
-			else:
-				speak("Something else")
+				if event.key == pygame.K_ESCAPE:
+					quit()
+				if event.key == K_1:
+					speak("1")
+				elif event.key == K_2:
+					speak("2")
+				elif event.key == K_3:
+					speak("3")
+				elif event.key == K_4:
+					speak("4")
+				elif event.key == K_5:
+					speak("5")
+				elif event.key == K_6:
+					speak("6")
+				elif event.key == K_7:
+					speak("7")
+				elif event.key == K_8:
+					speak("8")
+				elif event.key == K_9:
+					speak("9")
+				elif event.key == K_0:
+					speak("0")
+				elif event.key == K_LEFTBRACKET:
+					speak("Send / Enter")
+				elif event.key == K_RIGHTBRACKET:
+					speak("Backspace")
+				elif event.key == K_EQUALS:
+					speak("play back")
+				else:
+					speak("Something else")
 		letsgo = True
 			
 			
