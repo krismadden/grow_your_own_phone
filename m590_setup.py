@@ -43,8 +43,10 @@ class m590:
 		#	if ch == '':
 		#		return 2
 		time.sleep(0.5)
-		self.ser.write(text.encode())
-		self.ser.write('\x1A'.encode())
+		#self.ser.write(text.encode())
+		#self.ser.write('\x1A'.encode())
+		self.ser.write(text)
+		self.ser.write('\x1A')
 		return self.wait_result()
 
 	# Init Modem
