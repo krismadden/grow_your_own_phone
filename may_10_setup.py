@@ -41,7 +41,7 @@ class m590:
 		#		return 2
 		time.sleep(0.5)
 		self.ser.write(text.encode())
-		self.ser.write('\x1A')
+		self.ser.write('\x1A'.encode())
 		return self.wait_result()
 
 	# Init Modem
