@@ -1,7 +1,10 @@
 from m590_setup import m590
-import time
-import os
+import os, pygame, sys, time, math
 import RPi.GPIO as GPIO
+from pygame.locals import *
+
+#not sure if i need this... if so add the file to github
+#from pygame_functions import *
 
 #setup LEDs#
 GPIO.setmode(GPIO.BCM)
