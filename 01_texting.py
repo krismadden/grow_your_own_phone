@@ -64,16 +64,24 @@ def setUpPin():
 			print (response[1] + "\n")
 			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 
+def restart():
+	command = "/usr/bin/sudo /sbin/shutdown -r now"
+	import subprocess
+	process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+	output = process.communicate()[0]
+	print (output)
+	
 def checkIfModuleFrozen():
 	m590.ser.write("at\r")
 	time.sleep(1.0)
 	response = m590.ser.readlines(None)
 	print(response)
-# 	response = response[1]
-	if response == "":
+ 	#response = response[1]
+	if response == "[]" or response == "":
 		print ("response not okay")
 		print (response)
-		os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		#os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		restart()
 		print ("the raspberry pi should have just restarted.")
 	else:
 		print ("response is okay")
