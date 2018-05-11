@@ -3,6 +3,9 @@ import time
 import os
 import RPi.GPIO as GPIO
 
+#not sure if i need this... if so add the file to github
+#from pygame_functions import *
+
 #setup LEDs#
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -10,19 +13,10 @@ GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
-#start setup for text to speach
-import sys
-import pyttsx
-voiceEngine = pyttsx.init()
-voiceEngine.setProperty('rate', 150)
-#end setup for text to speach
 
 #define speak function for text to speach
 def speak(str):
-	if len(sys.argv) > 1:
-		str = sys.argv[1]
-	voiceEngine.say(str)
-	voiceEngine.runAndWait()
+	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
 def getchar():
@@ -37,20 +31,6 @@ def getchar():
 		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 	return ch
 
-def enterPhoneNumber():
-	phoneNumber = ""
-	while True:
-		ch = getchar()
-		if ch.strip() == '/':
-			print(phoneNumber)
-			break
-		else:
-			phoneNumber = phoneNumber + ch
-			print ("numbers typed " , len(phoneNumber))
-			print ('You pressed', ch)
-			speak(ch)
-	return phoneNumber
-
 def setUpPin():
 	response = ""
 	pin = ""
@@ -60,12 +40,12 @@ def setUpPin():
 
 	while True:
 		pin = "1234"
-		m590.ser.write("at+cpin=\"1234\"\r".encode())
+		m590.ser.write("at+cpin=\"1234\"\r")
 		m590.ser.write("at+cpin?\r")
 		response = m590.ser.readlines(None)
 		print (response)
 
-		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
+		if response[0] == "OK\r\n" or response[1]) == "OK\r\n" or response[2] == "OK\r\n":
 			print ("pin okay. let's go.")
 	# 		speak("pin okay. let's go.")
 			break
@@ -84,27 +64,40 @@ def setUpPin():
 			print (response[1] + "\n")
 			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 
+def checkIfModuleFrozen():
+	m590.ser.write("at\r")
+	time.sleep(1.0)
+	response = m590.ser.readlines(None)
+	print(response)
+	response = response[1]
+	if response == "":
+		print ("response not okay")
+		print (response)
+		os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		print ("the raspberry pi should have just restarted.")
+	else:
+		print ("response is okay")
+		print (response)
+
+def enterPhoneNumber():
+	phoneNumber = ""
+	while True:
+		ch = getchar()
+		if ch.strip() == '/':
+			print(phoneNumber)
+			break
+		else:
+			phoneNumber = phoneNumber + ch
+			print ("numbers typed " , len(phoneNumber))
+			print ('You pressed', ch)
+			speak(ch)
+	return phoneNumber
 
 def doSomething(message, tempChar):
 	speak(speakChar)
 	time.sleep(0.5) 
 	print("test2")
 	message = message + tempChar
-
-def checkIfModuleFrozen():
-	m590.ser.write("at\r")
-	time.sleep(1.0)
-	response = m590.ser.readlines(None)
-	print(response)
-	if response == "":
-		print ("response not okay")
-		print (response)
-		#os.system('sudo shutdown -r now') #does not work. just freezes the program.
-		restart()
-		print ("the raspberry pi should have just restarted.")
-	else:
-		print ("response is okay")
-		print (response)
 	
 def enterMessage():
 	tempChar = ""
@@ -130,7 +123,7 @@ def enterMessage():
 			break
 		elif newButton.strip() == "*":
 			message = message + tempChar
-			os.system("espeak 'deleting " +  tempChar + "' 2>/dev/null")
+			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
@@ -318,7 +311,7 @@ def main():
 		modem.send_sms(phoneNumber, message)
 
 		response = m590.ser.readlines(None)
-		if response[0].decode() == "\n":
+		if response[0] == "\n":
 			speak("Sent!")
 			print ("Sent!")
 		else:
