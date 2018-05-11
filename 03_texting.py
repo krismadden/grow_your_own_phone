@@ -153,6 +153,7 @@ def enterMessage():
 				speak("play back")
 			else:
 				speak("Something else")
+		letsgo = True
 			
 			
 	return message
