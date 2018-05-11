@@ -31,6 +31,14 @@ def getchar():
 		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 	return ch
 
+def restart():
+	command = "/usr/bin/sudo /sbin/shutdown -r now"
+	import subprocess
+	process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+	output = process.communicate()[0]
+	print (output)
+
+
 def setUpPin():
 	response = ""
 	pin = ""
@@ -73,7 +81,8 @@ def checkIfModuleFrozen():
 	if response == "":
 		print ("response not okay")
 		print (response)
-		os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		#os.system('sudo shutdown -r now') #does not work. just freezes the program.
+		restart()
 		print ("the raspberry pi should have just restarted.")
 	else:
 		print ("response is okay")
