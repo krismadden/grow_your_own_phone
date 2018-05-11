@@ -51,6 +51,40 @@ def enterPhoneNumber():
 			speak(ch)
 	return phoneNumber
 
+def setUpPin():
+	response = ""
+	pin = ""
+
+	# speak("Initialising")
+	print ("Initialising Modem & Checking PIN..")
+
+	while True:
+		pin = "1234"
+		m590.ser.write("at+cpin=\"1234\"\r".encode())
+		m590.ser.write("at+cpin?\r")
+		response = m590.ser.readlines(None)
+		print (response)
+
+		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
+			print ("pin okay. let's go.")
+	# 		speak("pin okay. let's go.")
+			break
+		elif response[2] != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+			print ("pin okay. let's go.")
+	# 		speak("pin okay. let's go.")
+			break
+		elif response[2] == "+CPIN: SIM PIN\r\n":
+			m590.ser.write("at+cpin=\"1234\"\r")
+			time.sleep(0.5)
+			continue
+		elif response[1] == "ERROR/r/n" or response[2] == "ERROR/r/n":
+			print (response[1] + "\n")
+			print ("Error. Restart the Module")
+		else:
+			print (response[1] + "\n")
+			print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
+
+
 def doSomething(message, tempChar):
 	speak(speakChar)
 	time.sleep(0.5) 
@@ -250,82 +284,53 @@ def enterMessage():
 	return message
 
 
-response = ""
-pin = ""
-
-# speak("Initialising")
-print ("Initialising Modem & Checking PIN..")
-
-modem = m590()
-modem.init()
-checkIfModuleFrozen()
-
-while True:
+def main():
+	modem = m590()
+	modem.init()
+	
 	checkIfModuleFrozen()
-	m590.ser.write("at+cpin?\r")
-	response = m590.ser.readlines(None)
-	print (response)
+	setUpPin()
 
-	if response[2] == "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
-		print ("pin okay. let's go.")
-# 		speak("pin okay. let's go.")
-		break
-	elif response[2] == "+CPIN: SIM PIN\r\n":
-		pin = raw_input("Enter your SIM's PIN code::\n")
-		m590.ser.write("at+cpin=\"" + pin + "\"\r")
-		time.sleep(0.5)
-		continue
-	elif response[2] == "+CPIN: SIM PUK\r\n":
-		pin = raw_input("Enter your PUK code::\n")
-		m590.ser.write("at+cpin=" + pin)
-		continue
-	elif response[2] == "+CPIN: SIM PIN2\r\n":
-		pin = raw_input("Enter your PIN2 code::\n")
-		m590.ser.write("at+cpin=" + pin)
-		continue
-	elif response[2] == "+CPIN: SIM PUK2\r\n":
-		pin = raw_input("Enter your PUK2 code::\n")
-		m590.ser.write("at+cpin=" + pin)
-		continue
-	else:
-		print (response[2] + "\n")
-		print ("check your SIM card. If all looks good, get Kris.")
+	while True:
+		checkIfModuleFrozen()
+		# while True:
+		#  	speak("Enter a Phone number")
+		# 	phoneNumber = enterPhoneNumber()
 
-# while True:
-#  	speak("Enter a Phone number")
-# 	phoneNumber = enterPhoneNumber()
+		# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+		# 		print len(phoneNumber)
+		# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+		# 		continue
+		# 	else:
+		# 		speak("Sending to " + phoneNumber)
+		# 		break
 
-# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-# 		print len(phoneNumber)
-# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
-# 		continue
-# 	else:
-# 		speak("Sending to " + phoneNumber)
-# 		break
+		phoneNumber = "0637165118"
 
-phoneNumber = "0637165118"
-
-#message = raw_input("Enter Message::\n")
-speak("Enter your message")
-print ("Enter message.\n")
-message = enterMessage()
+		#message = raw_input("Enter Message::\n")
+		speak("Enter your message")
+		print ("Enter message.\n")
+		message = enterMessage()
 
 
-#SEND SMS
-print ("Sending text..")
-speak("Sending text")
-modem.send_sms(phoneNumber, message)
+		#SEND SMS
+		print ("Sending text..")
+		speak("Sending text")
+		modem.send_sms(phoneNumber, message)
 
-response = m590.ser.readlines(None)
-if response[0] == "\n":
-	speak("Sent!")
-	print ("Sent!")
-else:
-	speak("error")
-	print (response)
+		response = m590.ser.readlines(None)
+		if response[0].decode() == "\n":
+			speak("Sent!")
+			print ("Sent!")
+		else:
+			speak("error")
+			print (response)
 
-#READ ALL SMS
-#modem.read_sms(4)
-#print modem.SMS
+		#READ ALL SMS
+		#modem.read_sms(4)
+		#print modem.SMS
 
-modem.deinit()
+	modem.deinit()
+
+if __name__ == "__main__":
+    main()
