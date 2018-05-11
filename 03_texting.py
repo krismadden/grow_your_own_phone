@@ -1,4 +1,4 @@
-from m590_setup import m590
+from m590_setup_python3 import m590
 import os, pygame, sys, time, math
 import RPi.GPIO as GPIO
 from pygame.locals import *
