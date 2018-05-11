@@ -106,6 +106,7 @@ def enterMessage():
 	waitTime = 2 #in seconds
 	timeUp = False
 	while True:
+		pygame.init()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.quit()
