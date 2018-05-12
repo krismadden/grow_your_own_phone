@@ -98,7 +98,7 @@ def placeCall():
 	print (response)
 	count = 0
 	while True:
-		ch = getchar()
+		ch = sys.stdin.read(1)
 		
 		response = m590.ser.readlines(None)
 		print (response)
