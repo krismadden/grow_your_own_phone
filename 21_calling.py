@@ -116,6 +116,7 @@ def placeCall():
 		else:
 			print(response)
 			continue
+		ch = ""
 		
 def main():
 	modem = m590()
