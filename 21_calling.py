@@ -157,7 +157,7 @@ def main():
 				print ("2 - ")
 				response = m590.ser.readlines(None)
 				print (response)
-				if response != "":
+				if response not "" or "[]":
 					if response[0] == "NO CARRIER":
 						print ("3 - ")
 						m590.ser.write("ath\r")
