@@ -108,18 +108,25 @@ def main():
 		response = m590.ser.readlines(None)
 		print (response)
 		if len(response) > 0:
-			if response[1] == "RING\r\n":
-				m590.ser.write("ata\r")
-				response = m590.ser.readlines(None)
-				print(response)
-				print ("picking up call")
-				incomingCall = True
+			while response[1] == "RING\r\n":
+				ch = getChar()
+				if ch.strip() == "1":
+					m590.ser.write("ata\r")
+					response = m590.ser.readlines(None)
+					print(response)
+					print ("picking up call")
+					incomingCall = True
+				elif ch.strip() == "0":
+					m590.ser.write("ath\r")
+					response = m590.ser.readlines(None)
+					print(response)
+					print ("Rejecting Call - THIS END")
+					outgoingCall = False
+					incomingCall = False
 		ch = getChar()
 		if ch == "/":
 			runProgram = False
 		if ch.strip() == "1":
-			print (ch)
-			print (ch.strip())
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines(None)
