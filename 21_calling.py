@@ -102,7 +102,7 @@ def placeCall():
 	while True:
 		ch = getChar
 		print ("2 - ")
-		m590.ser.write("AT+CLCC?\r")
+		m590.ser.write("AT+CLCC\r")
 		response = m590.ser.readlines(None)
 		print (response)
 		if response[0] == "NO CARRIER":
