@@ -92,44 +92,7 @@ def checkIfModuleFrozen():
 		print ("response is okay")
 		print (response)
 		
-def placeCall():
-	print ("placing call")
-	m590.ser.write("atd" + phoneNumber +";\r")
-	response = m590.ser.readlines(None)
-	print (response)
-	count = 0
-	print ("1 - " + str(count))
-	while True:
-		ch = getChar
-		print ("2 - ")
-		m590.ser.write("AT+CLCC\r")
-		response = m590.ser.readlines(None)
-		print (response)
-		if response[0] == "NO CARRIER":
-			print ("3 - ")
-			m590.ser.write("ath\r")
-			response = m590.ser.readlines(None)
-			print(response)
-			print ("hanging up - OTHER END")
-			break
-		elif ch == "0":
-			print ("4 - ")
-			m590.ser.write("ath\r")
-			response = m590.ser.readlines(None)
-			print(response)
-			print ("hanging up - THIS END")
-			break
-		elif ch == "/":
-			print ("5 - ")
-			break
-		else:
-			print ("6 - ")
-			print(response)
-			continue
-		print ("7 - ")
-		count = count + 1
-		print (count)
-		
+
 def main():
 	modem = m590()
 	modem.init()
@@ -156,10 +119,10 @@ def main():
 			while True:
 				ch = getChar
 				print ("2 - ")
-				m590.ser.write("AT+CLCC\r")
+# 				m590.ser.write("AT+CLCC\r")
 				response = m590.ser.readlines(None)
 				print (response)
-				if response is not "[]":
+				if len(response) > 0:
 					if response[0] == "NO CARRIER":
 						print ("3 - ")
 						m590.ser.write("ath\r")
@@ -167,20 +130,20 @@ def main():
 						print(response)
 						print ("hanging up - OTHER END")
 						break
-					elif ch == "0":
-						print ("4 - ")
-						m590.ser.write("ath\r")
-						response = m590.ser.readlines(None)
-						print(response)
-						print ("hanging up - THIS END")
-						break
-					elif ch == "/":
-						print ("5 - ")
-						break
-					else:
-						print ("6 - ")
-						print(response)
-						continue
+				if ch == "0":
+					print ("4 - ")
+					m590.ser.write("ath\r")
+					response = m590.ser.readlines(None)
+					print(response)
+					print ("hanging up - THIS END")
+					break
+				elif ch == "/":
+					print ("5 - ")
+					break
+				else:
+					print ("6 - ")
+					print(response)
+					continue
 					print ("7 - ")
 					count = count + 1
 					print (count)
