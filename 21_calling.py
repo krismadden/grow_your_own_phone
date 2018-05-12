@@ -120,7 +120,6 @@ def main():
 			while True:
 				ch = getChar
 				print (ch)
-				print (ch.strip())
 				if ch == "0":
 					print ("4 - ")
 					m590.ser.write("ath\r")
