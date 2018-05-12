@@ -136,15 +136,51 @@ def main():
 	checkIfModuleFrozen()
 	setUpPin()
 
-	while True:
-
-		
+# 	while True:
 # 		m590.ser.write("at+cpin?\r")
 # 		response = m590.ser.readlines(None)
 # 		print (response)
-		ch = getchar()
-		if ch == "1":
-			placeCall()
+# 		ch = getchar()
+# 		if ch == "1":
+# 			placeCall()
+	ch = sys.stdin.read(1)
+	if ch == "1":
+		ch = ""
+		print ("placing call")
+		m590.ser.write("atd" + phoneNumber +";\r")
+		response = m590.ser.readlines(None)
+		print (response)
+		count = 0
+		print ("1 - " + str(count))
+		while True:
+			ch = sys.stdin.read(1)
+			print ("2 - ")
+			response = m590.ser.readlines(None)
+			print (response)
+			if response[0] == "NO CARRIER":
+				print ("3 - ")
+				m590.ser.write("ath\r")
+				response = m590.ser.readlines(None)
+				print(response)
+				print ("hanging up - OTHER END")
+				break
+			elif ch == "0":
+				print ("4 - ")
+				m590.ser.write("ath\r")
+				response = m590.ser.readlines(None)
+				print(response)
+				print ("hanging up - THIS END")
+				break
+			elif ch == "/":
+				print ("5 - ")
+				break
+			else:
+				print ("6 - ")
+				print(response)
+				continue
+			print ("7 - ")
+			count = count + 1
+			print (count)
 
 	modem.deinit()
 
