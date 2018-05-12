@@ -98,29 +98,34 @@ def placeCall():
 	response = m590.ser.readlines(None)
 	print (response)
 	count = 0
+	print ("1 - " + count)
 	while True:
 		ch = sys.stdin.read(1)
-		
+		print ("2 - ")
 		response = m590.ser.readlines(None)
 		print (response)
 		if response[0] == "NO CARRIER":
+			print ("3 - ")
 			m590.ser.write("ath\r")
 			response = m590.ser.readlines(None)
 			print(response)
 			print ("hanging up - OTHER END")
 			break
 		elif ch == "0":
+			print ("4 - ")
 			m590.ser.write("ath\r")
 			response = m590.ser.readlines(None)
 			print(response)
 			print ("hanging up - THIS END")
 			break
 		elif ch == "/":
+			print ("5 - ")
 			break
 		else:
+			print ("6 - ")
 			print(response)
 			continue
-		ch = ""
+		print ("7 - ")
 		count = count + 1
 		print (count)
 		
