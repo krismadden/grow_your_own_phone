@@ -118,18 +118,6 @@ def main():
 			print ("1 - " + str(count))
 			while True:
 				ch = getChar
-				print ("2 - ")
-# 				m590.ser.write("AT+CLCC\r")
-				response = m590.ser.readlines(None)
-				print (response)
-				if len(response) > 0:
-					if response[0] == "NO CARRIER":
-						print ("3 - ")
-						m590.ser.write("ath\r")
-						response = m590.ser.readlines(None)
-						print(response)
-						print ("hanging up - OTHER END")
-						break
 				if ch == "0":
 					print ("4 - ")
 					m590.ser.write("ath\r")
@@ -140,13 +128,18 @@ def main():
 				elif ch == "/":
 					print ("5 - ")
 					break
-				else:
-					print ("6 - ")
-					print(response)
-					continue
-					print ("7 - ")
-					count = count + 1
-					print (count)
+				print ("2 - ")
+# 				m590.ser.write("AT+CLCC\r")
+				response = m590.ser.readlines(None)
+				print (response)
+				if len(response) > 0:
+					if response[1] == "NO CARRIER\r\n":
+						print ("3 - ")
+						m590.ser.write("ath\r")
+						response = m590.ser.readlines(None)
+						print(response)
+						print ("hanging up - OTHER END")
+						break
 
 	modem.deinit()
 
