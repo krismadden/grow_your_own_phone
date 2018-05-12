@@ -99,14 +99,12 @@ def main():
 	
 	checkIfModuleFrozen()
 	setUpPin()
-
-	while True:
-# 		m590.ser.write("at+cpin?\r")
-# 		response = m590.ser.readlines(None)
-# 		print (response)
-# 		ch = getchar()
-# 		if ch == "1":
-# 			placeCall()
+	
+	outgoingCall = False
+	incomingCall = False
+	runProgram = True
+	
+	while runProgram:
 		ch = getChar()
 		if ch.strip() == "1":
 			print (ch)
@@ -117,31 +115,32 @@ def main():
 			print (response)
 			count = 0
 			print ("1 - " + str(count))
-			while True:
-				ch = getChar
-				print (ch)
-				if ch == "0":
-					print ("4 - ")
+			outgoingCall = True
+		while outgoingCall:
+			ch = getChar
+			print (ch)
+			if ch == "0":
+				print ("4 - ")
+				m590.ser.write("ath\r")
+				response = m590.ser.readlines(None)
+				print(response)
+				print ("hanging up - THIS END")
+				outgoingCall = False
+			elif ch == "/":
+				print ("5 - ")
+				runProgram = False
+			print ("2 - ")
+# 				m590.ser.write("AT+CLCC\r")
+			response = m590.ser.readlines(None)
+			print (response)
+			if len(response) > 0:
+				if response[1] == "NO CARRIER\r\n":
+					print ("3 - ")
 					m590.ser.write("ath\r")
 					response = m590.ser.readlines(None)
 					print(response)
-					print ("hanging up - THIS END")
-					break
-				elif ch == "/":
-					print ("5 - ")
-					break
-				print ("2 - ")
-# 				m590.ser.write("AT+CLCC\r")
-				response = m590.ser.readlines(None)
-				print (response)
-				if len(response) > 0:
-					if response[1] == "NO CARRIER\r\n":
-						print ("3 - ")
-						m590.ser.write("ath\r")
-						response = m590.ser.readlines(None)
-						print(response)
-						print ("hanging up - OTHER END")
-						break
+					print ("hanging up - OTHER END")
+					outgoingCall = False
 
 	modem.deinit()
 
