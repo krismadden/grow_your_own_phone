@@ -105,7 +105,7 @@ def placeCall():
 			response = m590.ser.readlines(None)
 			print(response)
 			print ("hanging up - OTHER END")
-		elif ch == "0"
+		elif ch == "0":
 			m590.ser.write("ath\r")
 			response = m590.ser.readlines(None)
 			print(response)
