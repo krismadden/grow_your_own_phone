@@ -92,7 +92,8 @@ def checkIfModuleFrozen():
 		print (response)
 		
 def placeCall():
-	m590.ser.write("atd" + phoneNumber +"\r")
+	print ("placing call")
+	m590.ser.write("atd" + phoneNumber +";\r")
 	response = m590.ser.readlines(None)
 	print (response)
 	while True:
