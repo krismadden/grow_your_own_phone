@@ -123,9 +123,12 @@ def main():
 	while True:
 
 		
-		m590.ser.write("at+cpin?\r")
-		response = m590.ser.readlines(None)
-		print (response)
+# 		m590.ser.write("at+cpin?\r")
+# 		response = m590.ser.readlines(None)
+# 		print (response)
+		ch = getchar()
+		if ch == "1":
+			placeCall()
 
 	modem.deinit()
 
