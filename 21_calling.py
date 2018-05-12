@@ -105,7 +105,9 @@ def main():
 	runProgram = True
 	
 	while runProgram:
-		response = m590.ser.readlines(None)
+		elif ch == "/":
+			runProgram = False
+			response = m590.ser.readlines(None)
 		print (response)
 		if len(response) > 0:
 			if response[1] == "RING\r\n":
