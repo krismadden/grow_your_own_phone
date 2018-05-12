@@ -3,6 +3,7 @@ import sys
 import time
 import os
 import RPi.GPIO as GPIO
+import keyboard
 
 #not sure if i need this... if so add the file to github
 #from pygame_functions import *
@@ -107,7 +108,7 @@ def main():
 	while runProgram:
 		print ("runProgram = true")
 		ch = getChar()
-		if ch == "/":
+		if keyboard.is_pressed('space'):
 			runProgram = False
 		m590.ser.write("at\r")
 		response = m590.ser.readlines(None)
