@@ -136,6 +136,7 @@ def main():
 				print(response)
 				print ("hanging up - THIS END")
 				outgoingCall = False
+				incomingCall = False
 			elif ch == "/":
 				runProgram = False
 			response = m590.ser.readlines(None)
@@ -147,6 +148,7 @@ def main():
 					print(response)
 					print ("hanging up - OTHER END")
 					outgoingCall = False
+					incomingCall = False
 
 	modem.deinit()
 
