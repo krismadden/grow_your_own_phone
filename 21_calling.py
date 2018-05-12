@@ -117,7 +117,7 @@ def main():
 			print ("1 - " + str(count))
 			outgoingCall = True
 		while outgoingCall:
-			ch = getChar
+			ch = getChar()
 			print (ch)
 			if ch == "0":
 				print ("4 - ")
