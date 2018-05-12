@@ -28,7 +28,7 @@ def speak(str):
 	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
-def getchar():
+def getChar():
    #Returns a single character from standard input
 	import tty, termios, sys
 	fd = sys.stdin.fileno()
