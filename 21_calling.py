@@ -105,7 +105,6 @@ def main():
 	runProgram = True
 	
 	while runProgram:
-		print (response)
 		if len(response) > 0:
 			if response[1] == "RING\r\n":
 				m590.ser.write("ata\r")
@@ -117,6 +116,7 @@ def main():
 		if ch == "/":
 			runProgram = False
 			response = m590.ser.readlines(None)
+			print (response)
 		if ch.strip() == "1":
 			print (ch)
 			print (ch.strip())
