@@ -105,6 +105,7 @@ def main():
 	runProgram = True
 	
 	while runProgram:
+		print ("runProgram = true")
 		ch = getChar()
 		if ch == "/":
 			runProgram = False
