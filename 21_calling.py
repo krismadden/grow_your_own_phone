@@ -105,6 +105,15 @@ def main():
 	runProgram = True
 	
 	while runProgram:
+		response = m590.ser.readlines(None)
+		print (response)
+		if len(response) > 0:
+			if response[1] == "RING\r\n":
+				m590.ser.write("ata\r")
+				response = m590.ser.readlines(None)
+				print(response)
+				print ("picking up call")
+				incomingCall = True
 		ch = getChar()
 		if ch.strip() == "1":
 			print (ch)
@@ -116,26 +125,21 @@ def main():
 			count = 0
 			print ("1 - " + str(count))
 			outgoingCall = True
-		while outgoingCall:
+		while outgoingCall == True or incomingCall == True:
 			ch = getChar()
 			print (ch)
 			if ch == "0":
-				print ("4 - ")
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines(None)
 				print(response)
 				print ("hanging up - THIS END")
 				outgoingCall = False
 			elif ch == "/":
-				print ("5 - ")
 				runProgram = False
-			print ("2 - ")
-# 				m590.ser.write("AT+CLCC\r")
 			response = m590.ser.readlines(None)
 			print (response)
 			if len(response) > 0:
 				if response[1] == "NO CARRIER\r\n":
-					print ("3 - ")
 					m590.ser.write("ath\r")
 					response = m590.ser.readlines(None)
 					print(response)
