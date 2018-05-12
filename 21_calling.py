@@ -100,7 +100,7 @@ def placeCall():
 	count = 0
 	print ("1 - " + str(count))
 	while True:
-		ch = sys.stdin.read(1)
+		ch = getChar
 		print ("2 - ")
 		response = m590.ser.readlines(None)
 		print (response)
@@ -143,7 +143,7 @@ def main():
 # 		ch = getchar()
 # 		if ch == "1":
 # 			placeCall()
-		ch = sys.stdin.read(1)
+		ch = getChar()
 		if ch == "1":
 			ch = ""
 			print ("placing call")
@@ -153,7 +153,7 @@ def main():
 			count = 0
 			print ("1 - " + str(count))
 			while True:
-				ch = sys.stdin.read(1)
+				ch = getChar
 				print ("2 - ")
 				response = m590.ser.readlines(None)
 				print (response)
