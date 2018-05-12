@@ -105,9 +105,6 @@ def main():
 	runProgram = True
 	
 	while runProgram:
-		elif ch == "/":
-			runProgram = False
-			response = m590.ser.readlines(None)
 		print (response)
 		if len(response) > 0:
 			if response[1] == "RING\r\n":
@@ -117,6 +114,9 @@ def main():
 				print ("picking up call")
 				incomingCall = True
 		ch = getChar()
+		if ch == "/":
+			runProgram = False
+			response = m590.ser.readlines(None)
 		if ch.strip() == "1":
 			print (ch)
 			print (ch.strip())
