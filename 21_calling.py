@@ -114,6 +114,8 @@ def placeCall():
 			print(response)
 			print ("hanging up - THIS END")
 			break
+		elif ch == "/":
+			break
 		else:
 			print(response)
 			continue
