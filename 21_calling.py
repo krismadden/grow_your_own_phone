@@ -106,13 +106,16 @@ def placeCall():
 			response = m590.ser.readlines(None)
 			print(response)
 			print ("hanging up - OTHER END")
+			break
 		elif ch == "0":
 			m590.ser.write("ath\r")
 			response = m590.ser.readlines(None)
 			print(response)
 			print ("hanging up - THIS END")
+			break
 		else:
 			print(response)
+			continue
 		
 def main():
 	modem = m590()
