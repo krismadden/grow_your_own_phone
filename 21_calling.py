@@ -96,6 +96,7 @@ def placeCall():
 	m590.ser.write("atd" + phoneNumber +";\r")
 	response = m590.ser.readlines(None)
 	print (response)
+	count = 0
 	while True:
 		ch = getchar()
 		
@@ -117,6 +118,8 @@ def placeCall():
 			print(response)
 			continue
 		ch = ""
+		count = count + 1
+		print (count)
 		
 def main():
 	modem = m590()
