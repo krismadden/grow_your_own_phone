@@ -108,7 +108,9 @@ def main():
 # 		if ch == "1":
 # 			placeCall()
 		ch = getChar()
-		if ch == "1":
+		if ch.strip() == "1":
+			print (ch)
+			print (ch.strip())
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines(None)
@@ -118,6 +120,7 @@ def main():
 			while True:
 				ch = getChar
 				print (ch)
+				print (ch.strip())
 				if ch == "0":
 					print ("4 - ")
 					m590.ser.write("ath\r")
