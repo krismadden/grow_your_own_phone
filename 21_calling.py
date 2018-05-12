@@ -105,6 +105,10 @@ def main():
 	runProgram = True
 	
 	while runProgram:
+		ch = getChar()
+		if ch == "/":
+			runProgram = False
+		m590.ser.write("at\r")
 		response = m590.ser.readlines(None)
 		print (response)
 		if len(response) > 0:
@@ -123,9 +127,6 @@ def main():
 					print ("Rejecting Call - THIS END")
 					outgoingCall = False
 					incomingCall = False
-		ch = getChar()
-		if ch == "/":
-			runProgram = False
 		if ch.strip() == "1":
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
