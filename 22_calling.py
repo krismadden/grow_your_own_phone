@@ -71,7 +71,9 @@ def checkIfModuleFrozen():
 	m590.ser.write("at\r")
 	time.sleep(1.0)
 	response = m590.ser.readlines(None)
+	time.sleep(1.0)
 	print(response)
+	time.sleep(1.0)
 	if response == "[]" or response == "":
 		print ("response not okay")
 		print (response)
