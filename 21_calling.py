@@ -29,17 +29,6 @@ def speak(str):
 	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
-def getChar():
-   #Returns a single character from standard input
-	import tty, termios, sys
-	fd = sys.stdin.fileno()
-	old_settings = termios.tcgetattr(fd)
-	try:
-		tty.setraw(sys.stdin.fileno())
-		ch = sys.stdin.read(1)
-	finally:
-		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-	return ch
 
 def setUpPin():
 	response = ""
@@ -107,7 +96,6 @@ def main():
 	
 	while runProgram:
 		print ("runProgram = true")
-		ch = getChar()
 		if keyboard.is_pressed('space'):
 			runProgram = False
 		m590.ser.write("at\r")
@@ -115,21 +103,20 @@ def main():
 		print (response)
 		if len(response) > 0:
 			while response[1] == "RING\r\n":
-				ch = getChar()
-				if ch.strip() == "1":
+				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines(None)
 					print(response)
 					print ("picking up call")
 					incomingCall = True
-				elif ch.strip() == "0":
+				elif keyboard.is_pressed('0'):
 					m590.ser.write("ath\r")
 					response = m590.ser.readlines(None)
 					print(response)
 					print ("Rejecting Call - THIS END")
 					outgoingCall = False
 					incomingCall = False
-		if ch.strip() == "1":
+		if keyboard.is_pressed('1'):
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines(None)
@@ -138,16 +125,14 @@ def main():
 			print ("1 - " + str(count))
 			outgoingCall = True
 		while outgoingCall == True or incomingCall == True:
-			ch = getChar()
-			print (ch)
-			if ch == "0":
+			if keyboard.is_pressed('0'):
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines(None)
 				print(response)
 				print ("hanging up - THIS END")
 				outgoingCall = False
 				incomingCall = False
-			elif ch == "/":
+			elif keyboard.is_pressed('space'):
 				runProgram = False
 			response = m590.ser.readlines(None)
 			print (response)
