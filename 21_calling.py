@@ -103,7 +103,7 @@ def main():
 # 		response = m590.ser.read(None)
 # 		time.sleep(0.2) 
 		bytesToRead = ser.inWaiting()
-		ser.read(bytesToRead)	
+		m590.ser.read(bytesToRead)	
 		print(bytesToRead)
 	
 		if len(response) > 3:
