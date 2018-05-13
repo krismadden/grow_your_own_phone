@@ -103,36 +103,16 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-# 		m590.ser.write("at/r")
-		time.sleep(0.3)
-		response = m590.ser.readline(2) # = 
-		response2 = m590.ser.readline(3) # = /r/n
-		response3 = m590.ser.readline(4) # = RING
-		response4 = m590.ser.readline(5) # = /r/n
-		print("b " + str(response) + "." + str(response2) + "." + str(response3) + "." + str(response4) + " e")
+# 		response = m590.ser.readline(2) # = 
+# 		response2 = m590.ser.readline(3) # = /r/n
+# 		response3 = m590.ser.readline(4) # = RING
+# 		response4 = m590.ser.readline(5) # = /r/n
+# 		print("b " + str(response) + "." + str(response2) + "." + str(response3) + "." + str(response4) + " e")
 		response = m590.ser.readlines(2)
 		print (response)
 		
-		if m590.ser.readline(4):
-			while m590.ser.readline(4) == "RING":
-				print ("Incoming Call")
-				if keyboard.is_pressed('1'):
-					m590.ser.write("ata\r")
-					response = m590.ser.read(None)
-					print(response)
-					print ("picking up call")
-					incomingCall = True
-					break
-				elif keyboard.is_pressed('0'):
-					m590.ser.write("ath\r")
-					response = m590.ser.read(None)
-					print(response)
-					print ("Rejecting Call - THIS END")
-					outgoingCall = False
-					incomingCall = False
-					break
-		if len(response) > 1:
-			while response[1] == "RING\r\n":
+		if len(response) > 0:
+			while response[0] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.read(None)
