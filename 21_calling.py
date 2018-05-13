@@ -95,7 +95,7 @@ def main():
 	incomingCall = False
 	runProgram = True
 	
-	file = open('responses.py', 'w')
+	file = open('responses.py', 'w+')
 	
 	
 	while runProgram:
