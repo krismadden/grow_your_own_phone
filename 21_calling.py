@@ -102,9 +102,9 @@ def main():
 			runProgram = False
 # 		response = m590.ser.read(None)
 # 		time.sleep(0.2) 
-		bytesToRead = m590.ser.inWaiting()
-		m590.ser.read(bytesToRead)	
-		print(bytesToRead)
+		response = m590.ser.inWaiting()
+		m590.ser.read(response)	
+		print(response)
 	
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
