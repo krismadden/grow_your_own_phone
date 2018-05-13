@@ -5,6 +5,8 @@ import os
 import RPi.GPIO as GPIO
 import keyboard
 
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
+
 #not sure if i need this... if so add the file to github
 #from pygame_functions import *
 
@@ -98,7 +100,7 @@ def main():
 		print ("runProgram = true " + str(time.time()))
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590.ser.readlines(None)
+		response = ser.readlines(None)
 		print (response)
 		print ("response at " + str(time.time()))
 		
