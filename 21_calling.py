@@ -137,14 +137,22 @@ def main():
 			m590.ser.write("atd" + phoneNumber +";\r")
 			outgoingCall = True
 			
-			while True:
-				if m590.ser.inWaiting() > 0:
-					break;
-				if keyboard.KEY_DOWN == "down":
-					break;
-				time.sleep(0.5)
-			response = m590.ser.read(30)
-			print("2" + response + "2")
+			callConnected = True
+			
+			while outgoingCall:
+				while True:
+					if m590.ser.inWaiting() > 0:
+						break;
+					if keyboard.is_pressed('0'):
+						outgoingCall = False
+						break;
+					time.sleep(0.5)
+				response = m590.ser.read(30)
+				print("2" + response + "2")
+				if response[2:12] == "NO CARRIER":
+					print("fuck yes3")
+					outgoingCall = False
+				
 			
 # 		while outgoingCall == True or incomingCall == True:
 # 			if keyboard.is_pressed('0'):
