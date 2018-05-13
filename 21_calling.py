@@ -125,7 +125,7 @@ def main():
 					outgoingCall = False
 					incomingCall = False
 					break
-		if len(response) > 0:
+		if len(response) > 1:
 			while response[1] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
