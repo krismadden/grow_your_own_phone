@@ -95,7 +95,7 @@ def main():
 	runProgram = True
 	
 	while runProgram:
-		print ("runProgram = true")
+		print ("runProgram = true " + str(time.time()))
 		if keyboard.is_pressed('space'):
 			runProgram = False
 		response = m590.ser.readlines(None)
