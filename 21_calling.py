@@ -69,11 +69,11 @@ def restart():
 	
 def checkIfModuleFrozen():
 	m590.ser.write("at\r")
-	time.sleep(2.0)
+	time.sleep(1.0)
 	response = m590.ser.readlines(None)
-	time.sleep(2.0)
+	time.sleep(1.0)
 	print(response)
-	time.sleep(2.0)
+	time.sleep(1.0)
  	#response = response[1]
 	if response == "[]" or response == "":
 		print ("response not okay")
@@ -100,7 +100,7 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590ser.read(None)
+		response = m590.ser.read(None)
 		print (response)
 		
 		if len(response) > 3:
