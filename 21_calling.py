@@ -40,7 +40,7 @@ def setUpPin():
 		m590.ser.write("at+cpin=\"1234\"\r")
 		time.sleep(0.3)
 		m590.ser.write("at+cpin?\r")
-		response = m590.ser.readlines(None)
+		response = m590.ser.read(None)
 		print (response)
 
 		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
@@ -71,9 +71,7 @@ def checkIfModuleFrozen():
 	m590.ser.write("at\r")
 	time.sleep(1.0)
 	response = m590.ser.readlines(None)
-	time.sleep(1.0)
 	print(response)
-	time.sleep(1.0)
  	#response = response[1]
 	if response == "[]" or response == "":
 		print ("response not okay")
@@ -100,76 +98,48 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-			
-		response = m590.ser.read(None)
+		response = m590ser.read(None)
+		print (response)
 		
-		time.sleep(0.5)
-		
-		print(response)
-		
+		if len(response) > 3:
+			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
+				if keyboard.is_pressed('1'):
+					m590.ser.write("ata\r")
+					response = m590.ser.read(None)
+					print(response)
+					print ("picking up call")
+					incomingCall = True
+					break
+				elif keyboard.is_pressed('0'):
+					m590.ser.write("ath\r")
+					response = m590.ser.read(None)
+					print(response)
+					print ("Rejecting Call - THIS END")
+					outgoingCall = False
+					incomingCall = False
+					break
 		if len(response) > 0:
-			print ("print 01")
-			
-			if len(response) > 0:
-				print ("print 02")
-				while response[0] == "RING\r\n":
-					print("Ringing")
-					if keyboard.is_pressed('1'):
-						m590.ser.write("ata\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("picking up call")
-						incomingCall = True
-					elif keyboard.is_pressed('0'):
-						m590.ser.write("ath\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("Rejecting Call - THIS END")
-						outgoingCall = False
-						incomingCall = False
-			if len(response) > 1:
-				print ("print 03")
-				while response[1] == "RING\r\n":
-					print("Ringing")
-					if keyboard.is_pressed('1'):
-						m590.ser.write("ata\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("picking up call")
-						incomingCall = True
-					elif keyboard.is_pressed('0'):
-						m590.ser.write("ath\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("Rejecting Call - THIS END")
-						outgoingCall = False
-						incomingCall = False
-			if len(response) > 3:
-				print ("print 04")
-				while response[3] == "RING\r\n":
-					print ("here1")
-					print (response)
-					if keyboard.is_pressed('1'):
-						m590.ser.write("ata\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("picking up call")
-						incomingCall = True
-						break
-					elif keyboard.is_pressed('0'):
-						m590.ser.write("ath\r")
-						response = m590.ser.read(None)
-						print(response)
-						print ("Rejecting Call - THIS END")
-						outgoingCall = False
-						incomingCall = False
-						break
-		if keyboard.is_pressed('1') and incomingCall == False:
+			while response[1] == "RING\r\n":
+				if keyboard.is_pressed('1'):
+					m590.ser.write("ata\r")
+					response = m590.ser.read(None)
+					print(response)
+					print ("picking up call")
+					incomingCall = True
+				elif keyboard.is_pressed('0'):
+					m590.ser.write("ath\r")
+					response = m590.ser.read(None)
+					print(response)
+					print ("Rejecting Call - THIS END")
+					outgoingCall = False
+					incomingCall = False
+		if keyboard.is_pressed('1'):
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.read(None)
 			print (response)
-			print ("placing call")
+			count = 0
+			print ("1 - " + str(count))
 			outgoingCall = True
 		while outgoingCall == True or incomingCall == True:
 			if keyboard.is_pressed('0'):
@@ -184,6 +154,13 @@ def main():
 			response = m590.ser.read(None)
 			if len(response) > 0:
 				if response[1] == "NO CARRIER\r\n":
+					m590.ser.write("ath\r")
+					response = m590.ser.read(None)
+					print(response)
+					print ("hanging up - OTHER END")
+					outgoingCall = False
+					incomingCall = False
+				elif response[0] == "NO CARRIER\r\n":
 					m590.ser.write("ath\r")
 					response = m590.ser.read(None)
 					print(response)
