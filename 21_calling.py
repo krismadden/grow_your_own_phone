@@ -98,6 +98,7 @@ def main():
 	runProgram = True
 	
 	while runProgram:
+		time.sleep(0.1)
 		if keyboard.is_pressed('space'):
 			runProgram = False
 		response = m590.ser.read(None)
