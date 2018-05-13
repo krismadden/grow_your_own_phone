@@ -117,8 +117,12 @@ def main():
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
-		if response == "/r/nRING/r/n":
+		if response[1:5] == "RING":
 			print("fuck yes")
+		if response[2:6] == "RING":
+			print("fuck yes2")
+		if response[3:7] == "RING":
+			print("fuck yes3")
 	
 # 		if len(response) > 3:
 # 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
