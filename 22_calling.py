@@ -118,6 +118,7 @@ def main():
 					print(response)
 					print ("picking up call")
 					incomingCall = True
+					break
 				elif keyboard.is_pressed('0'):
 					m590.ser.write("ath\r")
 					response = m590.ser.read(None)
@@ -125,6 +126,7 @@ def main():
 					print ("Rejecting Call - THIS END")
 					outgoingCall = False
 					incomingCall = False
+					break
 		if keyboard.is_pressed('1'):
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
