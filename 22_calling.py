@@ -97,7 +97,7 @@ def main():
 	incomingCall = False
 	runProgram = True
 	
-	m590ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
+	m590.ser = m590.serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 	
 	
 	while runProgram:
