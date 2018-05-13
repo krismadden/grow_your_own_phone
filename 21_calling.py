@@ -15,7 +15,7 @@ GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
-
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
 
 
 phoneNumber = "0637165118"
@@ -85,7 +85,6 @@ def checkIfModuleFrozen():
 		
 
 def main():
-	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
 
 	ser.write("AT+CMGF=1\r")
 	ser.write("AT+CSMS=1\r")
