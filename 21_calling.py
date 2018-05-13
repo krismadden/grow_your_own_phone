@@ -100,11 +100,10 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590.ser.readlines(None) #here
-		print(response)
+		response = m590.ser.read(None)
 		
 		if len(response) > 3:
-			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
+			while response[0] == "RING\r\n" or response[1] == "RING\r\n" or response[2] == "RING\r\n" or response[3] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.read(None)
