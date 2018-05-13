@@ -101,8 +101,23 @@ def main():
 		m590.ser.write("at\r")
 		response = m590.ser.readlines(None)
 		print (response)
-		if len(response) > 0:
+		if len(response) > 2:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
+				if keyboard.is_pressed('1'):
+					m590.ser.write("ata\r")
+					response = m590.ser.readlines(None)
+					print(response)
+					print ("picking up call")
+					incomingCall = True
+				elif keyboard.is_pressed('0'):
+					m590.ser.write("ath\r")
+					response = m590.ser.readlines(None)
+					print(response)
+					print ("Rejecting Call - THIS END")
+					outgoingCall = False
+					incomingCall = False
+		if len(response) > 0:
+			while response[1] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines(None)
