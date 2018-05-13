@@ -121,7 +121,7 @@ def main():
 					outgoingCall = False
 					incomingCall = False
 					break
-		if len(response) > 0:
+		if len(response) > 1:
 			print ("here2")
 			print (response)
 			while response[1] == "RING\r\n":
