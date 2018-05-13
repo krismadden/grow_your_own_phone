@@ -117,12 +117,24 @@ def main():
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
-		if response[1:5] == "RING":
-			print("fuck yes")
 		if response[2:6] == "RING":
 			print("fuck yes2")
-		if response[3:7] == "RING":
-			print("fuck yes3")
+			
+			if keyboard.is_pressed('1'):
+				m590.ser.write("ata\r")
+				response = m590.ser.read(None)
+				print(response)
+				print ("picking up call")
+				incomingCall = True
+				break
+			elif keyboard.is_pressed('0'):
+				m590.ser.write("ath\r")
+				response = m590.ser.read(None)
+				print(response)
+				print ("Rejecting Call - THIS END")
+				outgoingCall = False
+				incomingCall = False
+				break
 	
 # 		if len(response) > 3:
 # 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
