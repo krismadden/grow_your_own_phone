@@ -111,7 +111,7 @@ def main():
 		while True:
 			if m590.ser.inWaiting() > 0:
 				break;
-			if keyboard.KEY_DOWN == "down":
+			if keyboard.is_pressed('1'):
 				break;
 			time.sleep(0.05)
 		response = m590.ser.read(30)
