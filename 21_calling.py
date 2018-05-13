@@ -102,8 +102,10 @@ def main():
 		if keyboard.is_pressed('space'):
 			runProgram = False
 		response = m590.ser.read(None)
-		print (response)
-		file.write(response)
+		while len(response) == 0:
+			print(sleep)
+			response = m590.ser.read(None)
+			time.sleep(0.1)
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
