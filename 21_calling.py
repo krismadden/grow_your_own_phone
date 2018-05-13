@@ -139,6 +139,7 @@ def main():
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.read(None)
 			print (response)
+			print("dialing")
 			count = 0
 			print ("1 - " + str(count))
 			outgoingCall = True
@@ -154,6 +155,7 @@ def main():
 				runProgram = False
 			response = m590.ser.read(None)
 			print (response)
+			print("call in progress")
 			if len(response) > 0:
 				if response[1] == "NO CARRIER\r\n":
 					m590.ser.write("ath\r")
