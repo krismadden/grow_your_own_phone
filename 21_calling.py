@@ -122,15 +122,11 @@ def main():
 			
 			if keyboard.is_pressed('1'):
 				m590.ser.write("ata\r")
-				response = m590.ser.read(None)
-				print(response)
 				print ("picking up call")
 				incomingCall = True
 				break
 			elif keyboard.is_pressed('0'):
 				m590.ser.write("ath\r")
-				response = m590.ser.read(None)
-				print(response)
 				print ("Rejecting Call - THIS END")
 				outgoingCall = False
 				incomingCall = False
