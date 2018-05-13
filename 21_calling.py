@@ -105,8 +105,6 @@ def main():
 # 		response = m590.ser.read(30)
 # 		time.sleep(0.5) 
 		
-		response = readSerial()
-		print (response)
 	
 		while True:
 			if m590.ser.inWaiting() > 0:
