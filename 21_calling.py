@@ -85,7 +85,9 @@ def checkIfModuleFrozen():
 def readSerial():
 	while True:
 		if m590.ser.inWaiting() > 0:
-		    break;
+			break
+		if keyboard.is_pressed():
+			break
 		time.sleep(0.5)
 	response = m590.ser.read(30)
 	print(response)
@@ -109,8 +111,10 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590.ser.read(30)
-		time.sleep(0.5) 
+# 		response = m590.ser.read(30)
+# 		time.sleep(0.5) 
+		
+		readSerial()
 		
 # 		while True:
 # 			if m590.ser.inWaiting() > 0:
