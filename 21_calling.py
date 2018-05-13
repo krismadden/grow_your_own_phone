@@ -104,7 +104,7 @@ def main():
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
-				print ("here")
+				print ("here1")
 				print (response)
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
@@ -122,6 +122,8 @@ def main():
 					incomingCall = False
 					break
 		if len(response) > 0:
+			print ("here2")
+			print (response)
 			while response[1] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
@@ -154,7 +156,6 @@ def main():
 			elif keyboard.is_pressed('space'):
 				runProgram = False
 			response = m590.ser.read(None)
-			print (response)
 			if len(response) > 0:
 				if response[1] == "NO CARRIER\r\n":
 					m590.ser.write("ath\r")
