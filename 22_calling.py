@@ -104,7 +104,7 @@ def main():
 		if keyboard.is_pressed('space'):
 			runProgram = False
 		m590.ser.write("at/r")
-		response = m590.ser.readline(0)
+		response = m590.ser.readline(2)
 		print(response)
 		
 		if len(response) > 3:
