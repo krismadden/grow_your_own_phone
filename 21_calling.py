@@ -40,7 +40,7 @@ def setUpPin():
 		m590.ser.write("at+cpin=\"1234\"\r")
 		time.sleep(0.3)
 		m590.ser.write("at+cpin?\r")
-		response = m590.ser.read(None)
+		response = m590.ser.readlines(None)
 		print (response)
 
 		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
@@ -69,9 +69,11 @@ def restart():
 	
 def checkIfModuleFrozen():
 	m590.ser.write("at\r")
-	time.sleep(5.0)
+	time.sleep(2.0)
 	response = m590.ser.readlines(None)
+	time.sleep(2.0)
 	print(response)
+	time.sleep(2.0)
  	#response = response[1]
 	if response == "[]" or response == "":
 		print ("response not okay")
