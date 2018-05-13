@@ -117,7 +117,7 @@ def main():
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
-		if response[0:4] == "RING":
+		if response == "/r/nRING/r/n":
 			print("fuck yes")
 	
 # 		if len(response) > 3:
