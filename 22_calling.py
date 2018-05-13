@@ -97,7 +97,7 @@ def main():
 	incomingCall = False
 	runProgram = True
 	
-	file = open('responses.txt', 'a')
+	m590ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 	
 	
 	while runProgram:
@@ -111,8 +111,8 @@ def main():
 		response = m590.ser.readlines(2)
 		print (response)
 		
-		if len(response) > 0:
-			while response[0] == "RING\r\n":
+		if len(response) > 1:
+			while response[1] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.read(None)
