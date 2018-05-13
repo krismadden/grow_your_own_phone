@@ -103,7 +103,7 @@ def main():
 			runProgram = False
 		response = m590.ser.read(None)
 		while len(response) == 0:
-			print(sleep)
+			print("sleep")
 			response = m590.ser.read(None)
 			time.sleep(0.1)
 		
