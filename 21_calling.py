@@ -72,7 +72,6 @@ def checkIfModuleFrozen():
 	time.sleep(1.0)
 	response = m590.ser.readlines(None)
 	print(response)
- 	#response = response[1]
 	if response == "[]" or response == "":
 		print ("response not okay")
 		print (response)
@@ -101,13 +100,8 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		time.sleep(0.1) 
+		time.sleep(0.2) 
 		response = m590.ser.readline(1)
-		while len(response) == 0:
-			print("sleep")
-			response = m590.ser.readline(1)
-			time.sleep(0.1)
-		print("Awake!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
