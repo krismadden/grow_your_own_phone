@@ -70,7 +70,7 @@ def restart():
 def checkIfModuleFrozen():
 	m590.ser.write("at\r")
 	time.sleep(1.0)
-	response = m590.ser.read(None)
+	response = m590.ser.readlines(None)
 	print(response)
  	#response = response[1]
 	if response == "[]" or response == "":
