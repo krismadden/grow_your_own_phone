@@ -146,7 +146,7 @@ def main():
 					if keyboard.is_pressed('0'):
 						outgoingCall = False
 						break;
-					time.sleep(0.5)
+					time.sleep(0.05)
 				response = m590.ser.read(30)
 				print("2" + response + "2")
 				if response[2:12] == "NO CARRIER":
