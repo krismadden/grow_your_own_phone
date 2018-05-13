@@ -86,7 +86,7 @@ def readSerial():
 	while True:
 		if m590.ser.inWaiting() > 0:
 			break
-		if keyboard.is_pressed():
+		if keyboard.KEY_DOWN == "down":
 			break
 		time.sleep(0.5)
 	response = m590.ser.read(30)
