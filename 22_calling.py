@@ -110,6 +110,8 @@ def main():
 		response3 = m590.ser.readline(4) # = RING
 		response4 = m590.ser.readline(5) # = /r/n
 		print("b " + str(response) + "." + str(response2) + "." + str(response3) + "." + str(response4) + " e")
+		response = m590.ser.readlines(10)
+		print (response)
 		
 		if m590.ser.readline(4):
 			while m590.ser.readline(4) == "RING":
