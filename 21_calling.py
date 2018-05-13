@@ -117,7 +117,7 @@ def main():
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
-		if response[2:6] == "RING":
+		while response[2:6] == "RING":
 			print("fuck yes2")
 			
 			if keyboard.is_pressed('1'):
