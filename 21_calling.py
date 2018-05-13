@@ -106,6 +106,7 @@ def main():
 			print("sleep")
 			response = m590.ser.read(None)
 			time.sleep(0.1)
+		print("Awake!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
