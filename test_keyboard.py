@@ -15,6 +15,3 @@ while True:
   if keyboard.is_pressed('a'):
     print("pressed 'a'")
     break
-  if keyboard.is_pressed(a):
-    print("pressed a")
-    break
