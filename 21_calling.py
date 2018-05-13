@@ -82,15 +82,7 @@ def checkIfModuleFrozen():
 		print ("response is okay")
 		print (response)
 		
-def readSerial():
-	while True:
-		if m590.ser.inWaiting() > 0:
-			break
-		if keyboard.KEY_DOWN == "down":
-			break
-		time.sleep(0.5)
-	return m590.ser.read(30)
-		
+	
 
 def main():
 	modem = m590()
@@ -115,15 +107,18 @@ def main():
 		
 		response = readSerial()
 		print (response)
+	
+		while True:
+			if m590.ser.inWaiting() > 0:
+				break;
+			if keyboard.KEY_DOWN == "down":
+				break;
+			time.sleep(0.5)
+		response = m590.ser.read(30)
+		print(response)
 		
 		if response == "RING/r/n":
 			print("fuck yes")
-# 		while True:
-# 			if m590.ser.inWaiting() > 0:
-# 			    break;
-# 			time.sleep(0.5)
-# 		response = m590.ser.read(30)
-# 		print(response)
 	
 # 		if len(response) > 3:
 # 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
