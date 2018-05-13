@@ -102,8 +102,16 @@ def main():
 			runProgram = False
 # 		response = m590.ser.read(None)
 # 		time.sleep(0.2) 
-		response = m590.ser.inWaiting()
-		m590.ser.read(response)	
+
+# 		response = m590.ser.inWaiting()
+# 		m590.ser.read(response)	
+# 		print(response)
+		
+		while True:
+			if m590.ser.inWaiting() > 0:
+			    break;
+			time.sleep(0.5)
+		response = m590.ser.read(30)
 		print(response)
 	
 # 		if len(response) > 3:
