@@ -100,9 +100,12 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590.ser.read(None)
-		time.sleep(0.2) 
-		
+# 		response = m590.ser.read(None)
+# 		time.sleep(0.2) 
+		bytesToRead = ser.inWaiting()
+		ser.read(bytesToRead)	
+		print(bytesToRead)
+	
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
 				if keyboard.is_pressed('1'):
