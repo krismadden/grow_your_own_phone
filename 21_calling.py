@@ -4,6 +4,7 @@ import time
 import os
 import RPi.GPIO as GPIO
 import keyboard
+import serial
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
 
