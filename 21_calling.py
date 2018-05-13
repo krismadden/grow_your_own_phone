@@ -1,9 +1,9 @@
-from m590_setup import m590
 import sys
 import time
 import os
 import RPi.GPIO as GPIO
 import keyboard
+import serial
 
 #not sure if i need this... if so add the file to github
 #from pygame_functions import *
@@ -30,16 +30,17 @@ def speak(str):
 #end of definintion od speak function for text to speach
 
 
+
 def setUpPin():
 	response = ""
 	
 	print ("Initialising Modem & Checking PIN..")
 
 	while True:
-		m590.ser.write("at+cpin=\"1234\"\r")
+		ser.write("at+cpin=\"1234\"\r")
 		time.sleep(0.3)
-		m590.ser.write("at+cpin?\r")
-		response = m590.ser.readlines(None)
+		ser.write("at+cpin?\r")
+		response = ser.readlines(None)
 		print (response)
 
 		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
@@ -49,7 +50,7 @@ def setUpPin():
 			print ("pin okay. let's go.")
 			break
 		elif response[2] == "+CPIN: SIM PIN\r\n":
-			m590.ser.write("at+cpin=\"1234\"\r")
+			ser.write("at+cpin=\"1234\"\r")
 			time.sleep(0.5)
 			continue
 		elif response[1] == "ERROR/r/n" or response[2] == "ERROR/r/n":
@@ -67,9 +68,9 @@ def restart():
 	print (output)
 	
 def checkIfModuleFrozen():
-	m590.ser.write("at\r")
+	ser.write("at\r")
 	time.sleep(1.0)
-	response = m590.ser.readlines(None)
+	response = ser.readlines(None)
 	print(response)
  	#response = response[1]
 	if response == "[]" or response == "":
@@ -84,8 +85,11 @@ def checkIfModuleFrozen():
 		
 
 def main():
-	modem = m590()
-	modem.init()
+	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
+
+	ser.write("AT+CMGF=1\r")
+	ser.write("AT+CSMS=1\r")
+	ser.write('AT+CSCS=\"GSM\"\r')
 	
 	checkIfModuleFrozen()
 	setUpPin()
@@ -98,21 +102,21 @@ def main():
 		print ("runProgram = true")
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		m590.ser.write("at\r")
-		response = m590.ser.readlines(None)
+		ser.write("at\r")
+		response = ser.readlines(None)
 		print (response)
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
 				if keyboard.is_pressed('1'):
-					m590.ser.write("ata\r")
-					response = m590.ser.readlines(None)
+					ser.write("ata\r")
+					response = ser.readlines(None)
 					print(response)
 					print ("picking up call")
 					incomingCall = True
 					break
 				elif keyboard.is_pressed('0'):
-					m590.ser.write("ath\r")
-					response = m590.ser.readlines(None)
+					ser.write("ath\r")
+					response = ser.readlines(None)
 					print(response)
 					print ("Rejecting Call - THIS END")
 					outgoingCall = False
@@ -121,42 +125,42 @@ def main():
 		if len(response) > 0:
 			while response[1] == "RING\r\n":
 				if keyboard.is_pressed('1'):
-					m590.ser.write("ata\r")
-					response = m590.ser.readlines(None)
+					ser.write("ata\r")
+					response = ser.readlines(None)
 					print(response)
 					print ("picking up call")
 					incomingCall = True
 				elif keyboard.is_pressed('0'):
-					m590.ser.write("ath\r")
-					response = m590.ser.readlines(None)
+					ser.write("ath\r")
+					response = ser.readlines(None)
 					print(response)
 					print ("Rejecting Call - THIS END")
 					outgoingCall = False
 					incomingCall = False
 		if keyboard.is_pressed('1'):
 			print ("placing call")
-			m590.ser.write("atd" + phoneNumber +";\r")
-			response = m590.ser.readlines(None)
+			ser.write("atd" + phoneNumber +";\r")
+			response = ser.readlines(None)
 			print (response)
 			count = 0
 			print ("1 - " + str(count))
 			outgoingCall = True
 		while outgoingCall == True or incomingCall == True:
 			if keyboard.is_pressed('0'):
-				m590.ser.write("ath\r")
-				response = m590.ser.readlines(None)
+				ser.write("ath\r")
+				response = ser.readlines(None)
 				print(response)
 				print ("hanging up - THIS END")
 				outgoingCall = False
 				incomingCall = False
 			elif keyboard.is_pressed('space'):
 				runProgram = False
-			response = m590.ser.readlines(None)
+			response = ser.readlines(None)
 			print (response)
 			if len(response) > 0:
 				if response[1] == "NO CARRIER\r\n":
-					m590.ser.write("ath\r")
-					response = m590.ser.readlines(None)
+					write("ath\r")
+					response = ser.readlines(None)
 					print(response)
 					print ("hanging up - OTHER END")
 					outgoingCall = False
