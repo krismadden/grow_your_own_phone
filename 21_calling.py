@@ -104,6 +104,7 @@ def main():
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
+				print ("here")
 				print (response)
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
@@ -140,8 +141,7 @@ def main():
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.read(None)
 			print (response)
-			count = 0
-			print ("1 - " + str(count))
+			print ("placing call")
 			outgoingCall = True
 		while outgoingCall == True or incomingCall == True:
 			if keyboard.is_pressed('0'):
