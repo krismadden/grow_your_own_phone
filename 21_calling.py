@@ -89,7 +89,7 @@ def readSerial():
 		if keyboard.KEY_DOWN == "down":
 			break
 		time.sleep(0.5)
-	return = m590.ser.read(30)
+	return m590.ser.read(30)
 		
 
 def main():
