@@ -101,7 +101,7 @@ def main():
 		print ("runProgram = true " + str(time.time()))
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = ser.readlines(None)
+		response = ser.read(None)
 		print (response)
 		print ("response at " + str(time.time()))
 		
