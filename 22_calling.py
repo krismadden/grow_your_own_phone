@@ -105,14 +105,15 @@ def main():
 			runProgram = False
 # 		m590.ser.write("at/r")
 		time.sleep(0.5)
-		response = m590.ser.readline(2)
-		response2 = m590.ser.readline(3)
-		response3 = m590.ser.readline(4)
-		response4 = m590.ser.readline(5)
+		response = m590.ser.readline(2) # = 
+		response2 = m590.ser.readline(3) # = /r/n
+		response3 = m590.ser.readline(4) # = RING
+		response4 = m590.ser.readline(5) # = /r/n
 		print("b " + str(response) + "." + str(response2) + "." + str(response3) + "." + str(response4) + " e")
 		
-		if len(response) > 3:
-			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
+		if m590.ser.readline(4):
+			while m590.ser.readline(4) == "RING":
+				print ("Incoming Call")
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.read(None)
