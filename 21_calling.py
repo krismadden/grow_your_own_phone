@@ -102,7 +102,7 @@ def main():
 		response = m590.ser.readlines(None)
 		print (response)
 		if len(response) > 0:
-			while response[1] == "RING\r\n":
+			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
 				if keyboard.is_pressed('1'):
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines(None)
