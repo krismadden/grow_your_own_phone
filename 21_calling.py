@@ -102,7 +102,7 @@ def main():
 			runProgram = False
 # 		response = m590.ser.read(None)
 # 		time.sleep(0.2) 
-		bytesToRead = ser.inWaiting()
+		bytesToRead = m590.ser.inWaiting()
 		m590.ser.read(bytesToRead)	
 		print(bytesToRead)
 	
