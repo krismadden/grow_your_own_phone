@@ -116,6 +116,8 @@ def main():
 		response = readSerial()
 		print (response)
 		
+		if response == "RING/r/n":
+			print("fuck yes")
 # 		while True:
 # 			if m590.ser.inWaiting() > 0:
 # 			    break;
