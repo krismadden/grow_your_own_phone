@@ -115,7 +115,7 @@ def main():
 				break;
 			time.sleep(0.5)
 		response = m590.ser.read(30)
-		print(response)
+		print("1" + response + "1")
 		
 		if response[0:4] == "RING":
 			print("fuck yes")
