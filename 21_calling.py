@@ -113,7 +113,7 @@ def main():
 				break;
 			if keyboard.KEY_DOWN == "down":
 				break;
-			time.sleep(0.5)
+			time.sleep(0.2)
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
