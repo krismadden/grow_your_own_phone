@@ -101,10 +101,11 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
+		time.sleep(0.1) 
 		response = m590.ser.readline(1)
 		while len(response) == 0:
 			print("sleep")
-			response = m590.ser.read(None)
+			response = m590.ser.readline(1)
 			time.sleep(0.1)
 		print("Awake!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		
