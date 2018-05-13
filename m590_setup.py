@@ -4,8 +4,9 @@ import serial
 import time
 
 class m590:
+	timeOutTime = 5
 # 	ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=5)
-	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
+	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=timeOutTime)
 	SMS = {}
 	PHONE = {}
 
