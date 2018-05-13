@@ -102,6 +102,8 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
+			
+			
 # 		response = m590.ser.read(30)
 # 		time.sleep(0.5) 
 		
@@ -115,7 +117,7 @@ def main():
 		response = m590.ser.read(30)
 		print(response)
 		
-		if response == "RING/r/n":
+		if response[0:4] == "RING":
 			print("fuck yes")
 	
 # 		if len(response) > 3:
