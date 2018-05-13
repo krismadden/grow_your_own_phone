@@ -102,7 +102,7 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		response = m590.ser.read(None)
+		response = m590.ser.readlines(None)
 		time.sleep(0.2) 
 		
 		if len(response) > 3:
