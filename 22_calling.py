@@ -106,7 +106,10 @@ def main():
 		m590.ser.write("at/r")
 		time.sleep(0.5)
 		response = m590.ser.readline(2)
-		print(response)
+		response2 = m590.ser.readline(3)
+		response3 = m590.ser.readline(4)
+		response4 = m590.ser.readline(5)
+		print(str(response) + " " + str(response2) + " " + str(response3) + " " + str(response4))
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
