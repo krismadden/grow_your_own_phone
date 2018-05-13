@@ -100,9 +100,7 @@ def main():
 	while runProgram:
 		if keyboard.is_pressed('space'):
 			runProgram = False
-		time.sleep(1.0)
-		response = m590.ser.read(None)
-		print(response)
+		response = m590.ser.readline(None)
 		
 		if len(response) > 3:
 			while response[1] == "RING\r\n" or response[3] == "RING\r\n":
