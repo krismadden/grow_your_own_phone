@@ -113,7 +113,7 @@ def main():
 				break;
 			if keyboard.KEY_DOWN == "down":
 				break;
-			time.sleep(0.2)
+			time.sleep(0.05)
 		response = m590.ser.read(30)
 		print("1" + response + "1")
 		
@@ -132,7 +132,7 @@ def main():
 				incomingCall = False
 				break
 				
-		if keyboard.is_pressed('1'):
+		if keyboard.is_pressed('1') and (outgoingCall == False and incomingCall == False) :
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			outgoingCall = True
