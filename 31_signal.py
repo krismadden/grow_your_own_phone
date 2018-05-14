@@ -19,8 +19,8 @@ strip.begin()
 
 
 for i in range(strip.numPixels()):
-		strip.neopixel.setPixelColor(i, Color(0, 0, 255))
-		strip.neopixel.show()
+		strip.setPixelColor(i, Color(0, 0, 255))
+		strip.show()
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
