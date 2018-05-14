@@ -18,7 +18,7 @@ strip.begin()
 
 
 
-for i in range(strip.numPixels()):
+for i in range(LED_COUNT):
 		strip.setPixelColor(i, neopixel.Color(0, 0, 255))
 		strip.show()
 
