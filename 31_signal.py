@@ -19,7 +19,7 @@ def setUpPin():
 		ser.write("at+cpin=\"1234\"\r")
 		time.sleep(0.3)
 		ser.write("at+cpin?\r")
-		response = m590.ser.readlines(None)
+		response = ser.readlines(None)
 		print (response)
 
 		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
