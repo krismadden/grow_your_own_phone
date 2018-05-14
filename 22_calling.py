@@ -106,6 +106,10 @@ def main():
 		ringing = False #added monday morning
 		
 		if len(response) > 1:
+			response[1] == "NO CARRIER\r\n":
+				outgoingCall = False
+				incomingCall = False
+				ringing = False
 			while response[1] == "RING\r\n":
 				ringing = True #changed monday morning
 				if keyboard.is_pressed('1'):
@@ -117,7 +121,7 @@ def main():
 					break
 				elif keyboard.is_pressed('0'):
 					m590.ser.write("ata\r")
-					time.sleep(0.2)
+					time.sleep(0.5)
 					m590.ser.write("ath\r")
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
