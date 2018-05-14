@@ -95,8 +95,8 @@ def main():
 	print("checking signal strength")
 	
 	while checkSignalStrength:
-		random = random + 40
 		ser.write("at+CSQ\r")
+		rainbowCycle(strip)
 		response = ser.readlines(None)
 		print(response)
         
