@@ -69,8 +69,8 @@ ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
 	
-	checkIfModuleFrozen()
-	setUpPin()
+# 	checkIfModuleFrozen()
+# 	setUpPin()
 	
 	checkSignalStrength = True
 	
@@ -79,6 +79,7 @@ def main():
 	while checkSignalStrength:
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
+		print(response)
 		time.sleep(20.0)
 
 
