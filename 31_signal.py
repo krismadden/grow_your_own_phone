@@ -71,13 +71,16 @@ def main():
 	
 	checkIfModuleFrozen()
 	setUpPin()
-
-	while True:
+	
+	checkSignalStrength = True
+	
+	print("checking signal strength")
+	
+	while checkSignalStrength:
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
 		time.sleep(20.0)
-	
-	modem.deinit()
+
 
 if __name__ == "__main__":
     main()
