@@ -8,9 +8,10 @@
 import time
 from neopixel import *
 import argparse
+import serial
 
 # LED strip configuration:
-LED_COUNT      = 16      # Number of LED pixels.
+LED_COUNT      = 9      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -78,7 +79,30 @@ def theaterChaseRainbow(strip, wait_ms=50):
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i+q, 0)
 
-# Main program logic follows:
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
+
+def main():
+	colorWipe(strip, Color(255, 0, 0))  # Red wipe
+    time.sleep(2)
+    colorWipe(strip, Color(0, 0, 255))  # Green wipe
+	checkSignalStrength = True
+	
+	print("checking signal strength")
+	
+	while checkSignalStrength:
+		random = random + 40
+		ser.write("at+CSQ\r")
+		response = ser.readlines(None)
+		print(response)
+        
+
+
+if __name__ == "__main__":
+    main()
+    
+    
+    
+    # Main program logic follows:
 if __name__ == '__main__':
     # Process arguments
     parser = argparse.ArgumentParser()
