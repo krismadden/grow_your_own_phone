@@ -82,6 +82,11 @@ def theaterChaseRainbow(strip, wait_ms=50):
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
+	# Create NeoPixel object with appropriate configuration.
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+    # Intialize the library (must be called once before other functions).
+	strip.begin()
+
 	colorWipe(strip, Color(255, 0, 0))  # Red wipe
 	time.sleep(2)
 	colorWipe(strip, Color(0, 0, 255))  # Green wipe
