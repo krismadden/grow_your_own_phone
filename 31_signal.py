@@ -16,7 +16,7 @@ strip = neopixel.Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED
 # Intialize the library (must be called once before other functions).
 strip.begin()
 
-color = 
+
 
 for i in range(strip.numPixels()):
 		strip.neopixel.setPixelColor(i, Color(0, 0, 255))
