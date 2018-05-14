@@ -65,10 +65,9 @@ def checkIfModuleFrozen():
 		print (response)
 	
 
-
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5.0)
 
 def main():
-	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5.0)
 	
 	checkIfModuleFrozen()
 	setUpPin()
