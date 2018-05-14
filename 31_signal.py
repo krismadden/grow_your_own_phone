@@ -16,7 +16,9 @@ strip = neopixel.Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED
 # Intialize the library (must be called once before other functions).
 strip.begin()
 
-neopixel.colorWipe(strip, Color(0, 255, 0))  # Blue wipe
+for(int i=0; i<LED_COUNT; i++){
+	strip.setPixelColor(i, strip.Color(0,0,255) );
+}
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
