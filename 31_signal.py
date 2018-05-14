@@ -75,7 +75,7 @@ def main():
 	while True:
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
-		sleep(20.0)
+		time.sleep(20.0)
 	
 	modem.deinit()
 
