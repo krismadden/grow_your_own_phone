@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
 import serial
 
-from neopixel import *
+import neopixel
 
 LED_COUNT   = 14      # Number of LED pixels.
 LED_PIN     = 18      # GPIO pin connected to the pixels (must support PWM!).
@@ -16,7 +16,7 @@ strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT)
 # Intialize the library (must be called once before other functions).
 strip.begin()
 
-colorWipe(strip, Color(0, 255, 0))  # Blue wipe
+neopixel.colorWipe(strip, Color(0, 255, 0))  # Blue wipe
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
