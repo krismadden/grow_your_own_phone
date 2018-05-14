@@ -16,8 +16,11 @@ strip = neopixel.Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED
 # Intialize the library (must be called once before other functions).
 strip.begin()
 
-for x in range(0, LED_COUNT):
-	strip.neopixel.setPixelColor(x, strip.Color(0,0,255) )
+color = 
+
+for i in range(strip.numPixels()):
+		strip.neopixel.setPixelColor(i, Color(0, 0, 255))
+		strip.neopixel.show()
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
