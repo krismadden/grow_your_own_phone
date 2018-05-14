@@ -83,8 +83,8 @@ ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
 	colorWipe(strip, Color(255, 0, 0))  # Red wipe
-    time.sleep(2)
-    colorWipe(strip, Color(0, 0, 255))  # Green wipe
+	time.sleep(2)
+	colorWipe(strip, Color(0, 0, 255))  # Green wipe
 	checkSignalStrength = True
 	
 	print("checking signal strength")
