@@ -18,24 +18,25 @@ strip.begin()
 
 
 
-for i in range(LED_COUNT):
-		strip.setPixelColor(i, neopixel.Color(0, 0, 255))
-		strip.show()
+
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
-	
-	
+	random = 0
 	
 	checkSignalStrength = True
 	
 	print("checking signal strength")
 	
 	while checkSignalStrength:
+		random = random + 40
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
 		print(response)
+		for i in range(LED_COUNT):
+			strip.setPixelColor(i, neopixel.Color(random, 0, 255))
+			strip.show()
 		time.sleep(20.0)
 
 
