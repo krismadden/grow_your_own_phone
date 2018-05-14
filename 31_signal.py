@@ -17,7 +17,7 @@ strip = neopixel.Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED
 strip.begin()
 
 for(int i=0; i<LED_COUNT; i++){
-	strip.setPixelColor(i, strip.Color(0,0,255) );
+	strip.neopixel.setPixelColor(i, strip.Color(0,0,255) );
 }
 
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
