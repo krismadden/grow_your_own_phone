@@ -106,7 +106,7 @@ def main():
 		ringing = False #added monday morning
 		
 		if len(response) > 1:
-			response[1] == "NO CARRIER\r\n":
+			if response[1] == "NO CARRIER\r\n":
 				outgoingCall = False
 				incomingCall = False
 				ringing = False
