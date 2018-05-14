@@ -6,7 +6,7 @@ import serial
 
 import neopixel
 
-LED_COUNT   = 60      # Number of LED pixels.
+LED_COUNT   = 9      # Number of LED pixels.
 LED_PIN     = 18      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA     = 5       # DMA channel to use for generating signal (try 5)
@@ -34,7 +34,7 @@ def main():
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
 		print(response)
-		for i in range(LED_COUNT):
+		for i in range(0,8):
 			strip.setPixelColor(i, neopixel.Color(random, 0, 255))
 			strip.show()
 		time.sleep(20.0)
