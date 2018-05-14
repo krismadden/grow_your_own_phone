@@ -65,7 +65,7 @@ def checkIfModuleFrozen():
 		print (response)
 	
 
-ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=5.0)
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
 	
@@ -75,6 +75,7 @@ def main():
 	while True:
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
+		sleep(20.0)
 	
 	modem.deinit()
 
