@@ -7,7 +7,7 @@ import serial
 import neopixel
 
 LED_COUNT   = 9      # Number of LED pixels.
-LED_PIN     = 26      # GPIO pin connected to the pixels (must support PWM!).
+LED_PIN     = 23      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA     = 5       # DMA channel to use for generating signal (try 5)
 LED_INVERT  = False   # True to invert the signal (when using NPN transistor level shift)
