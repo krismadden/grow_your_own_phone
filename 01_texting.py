@@ -403,7 +403,7 @@ def enterMessage():
 			
 		if keyboard.is_pressed("*"):
 			print("pressed")
-			GPIO.setup(starBTN,GPIO.HIGH
+			GPIO.setup(starBTN,GPIO.HIGH)
 			if lastBTN != "*":
 				message = message + tempChar
 				tempChar = ""
@@ -425,7 +425,7 @@ def enterMessage():
 			
 		if keyboard.is_pressed("0"):
 			print("pressed 'a'")
-			GPIO.setup(zeroBTN,GPIO.HIGH
+			GPIO.setup(zeroBTN,GPIO.HIGH)
 			if lastBTN != "*":
 				message = message + tempChar
 				tempChar = ""
