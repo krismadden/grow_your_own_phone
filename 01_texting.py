@@ -9,8 +9,53 @@ import RPi.GPIO as GPIO
 #setup LEDs#
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(23,GPIO.OUT)
-GPIO.output(23,GPIO.LOW)
+sendBTN = 18
+playBTN = 23
+deleteBTN = 24
+oneBTN = 25
+twoBTN = 8
+threeBTN = 7
+fourBTN = 12
+fiveBTN = 16
+sixBTN = 20
+sevenBTN = 2
+eightBTN = 3
+nineBTN = 4
+starBTN = 17
+zeroBTN = 27
+hashBTN = 22
+
+GPIO.setup(sendBTN,GPIO.OUT)
+GPIO.setup(playBTN,GPIO.OUT)
+GPIO.setup(deleteBTN,GPIO.OUT)
+GPIO.setup(oneBTN,GPIO.OUT)
+GPIO.setup(twoBTN,GPIO.OUT)
+GPIO.setup(threeBTN,GPIO.OUT)
+GPIO.setup(fourBTN,GPIO.OUT)
+GPIO.setup(fiveBTN,GPIO.OUT)
+GPIO.setup(sixBTN,GPIO.OUT)
+GPIO.setup(sevenBTN,GPIO.OUT)
+GPIO.setup(eightBTN,GPIO.OUT)
+GPIO.setup(nineBTN,GPIO.OUT)
+GPIO.setup(starBTN,GPIO.OUT)
+GPIO.setup(zeroBTN,GPIO.OUT)
+GPIO.setup(hashBTN,GPIO.OUT)
+
+GPIO.setup(sendBTN,GPIO.LOW)
+GPIO.setup(playBTN,GPIO.LOW)
+GPIO.setup(deleteBTN,GPIO.LOW)
+GPIO.setup(oneBTN,GPIO.LOW)
+GPIO.setup(twoBTN,GPIO.LOW)
+GPIO.setup(threeBTN,GPIO.LOW)
+GPIO.setup(fourBTN,GPIO.LOW)
+GPIO.setup(fiveBTN,GPIO.LOW)
+GPIO.setup(sixBTN,GPIO.LOW)
+GPIO.setup(sevenBTN,GPIO.LOW)
+GPIO.setup(eightBTN,GPIO.LOW)
+GPIO.setup(nineBTN,GPIO.LOW)
+GPIO.setup(starBTN,GPIO.LOW)
+GPIO.setup(zeroBTN,GPIO.LOW)
+GPIO.setup(hashBTN,GPIO.LOW)
 #end setup for LEDs#
 
 
@@ -112,10 +157,146 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
-	waitTime = 2 #in seconds
+	waitTime = 1 #in seconds
 	timeUp = False
 	while True:
+		lastBTN = ""
 		
+		if keyboard.is_pressed("["):
+			print("pressed")
+			GPIO.setup(sendBTN,GPIO.HIGH)
+			lastBTN = "["
+			speak("sending " + message)
+			print("sending: " + message)
+			break
+		else:
+			GPIO.setup(sendBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("="):
+			print("pressed")
+			GPIO.setup(playBTN,GPIO.HIGH)
+			speak(message)
+			lastBTN = "="
+		else:
+			GPIO.setup(playBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("]"):
+			print("pressed")
+			GPIO.setup(deleteBTN,GPIO.HIGH)
+			lastBTN = "]"
+			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
+			message = message[:-1]
+		else:
+			GPIO.setup(deleteBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("1"):
+			GPIO.setup(oneBTN,GPIO.HIGH)
+			lastBTN = "1"
+			if(tempChar == ""):
+				tempChar = "1"
+				timeLimit = time.time() + waitTime #one second till the character is set. 
+			elif(tempChar == "1"):
+				tempChar = "1"
+			print(message + tempChar)
+		else:
+			GPIO.setup(oneBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("2"):
+			print("pressed")
+			GPIO.setup(twoBTN,GPIO.HIGH)
+			lastBTN = "2"
+			if(tempChar == ""):
+				tempChar = "a"
+				timeLimit = time.time() + waitTime #one second till the character is set. 
+			elif(tempChar == "a"):
+				tempChar = "b"
+			elif(tempChar == "b"):
+				tempChar = "c"
+			elif(tempChar == "c"):
+				tempChar = "2"
+			elif(tempChar == "2"):
+				tempChar = "a"
+			print(message + tempChar)
+		else:
+			GPIO.setup(twoBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("3"):
+			print("pressed")
+			GPIO.setup(threeBTN,GPIO.HIGH)
+			lastBTN = "3"
+		else:
+			GPIO.setup(threeBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("4"):
+			print("pressed")
+			GPIO.setup(fourBTN,GPIO.HIGH)
+			lastBTN = "4"
+		else:
+			GPIO.setup(fourBTN,GPIO.LOW)
+		if keyboard.is_pressed("5"):
+			print("pressed 'a'")
+			GPIO.setup(fiveBTN,GPIO.HIGH)
+			lastBTN = "5"
+		else:
+			GPIO.setup(fiveBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("6"):
+			print("pressed 'a'")
+			GPIO.setup(sixBTN,GPIO.HIGH)
+			lastBTN = "6"
+		else:
+			GPIO.setup(sixBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("7"):
+			print("pressed 'a'")
+			GPIO.setup(sevenBTN,GPIO.HIGH
+			lastBTN = "7"
+		else:
+			GPIO.setup(sevenBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("8"):
+			print("pressed")
+			GPIO.setup(eightBTN,GPIO.HIGH
+			lastBTN = "8"
+		else:
+			GPIO.setup(eightBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("9"):
+			print("pressed")
+			GPIO.setup(nineBTN,GPIO.HIGH
+			lastBTN = "9"
+		else:
+			GPIO.setup(nineBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("*"):
+			print("pressed")
+			GPIO.setup(starBTN,GPIO.HIGH
+			lastBTN = "*"
+		else:
+			GPIO.setup(starBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("0"):
+			print("pressed 'a'")
+			GPIO.setup(zeroBTN,GPIO.HIGH
+			lastBTN = "0"
+		else:
+			GPIO.setup(zeroBTN,GPIO.LOW)
+			
+		if keyboard.is_pressed("#"):
+			print("pressed 'a'")
+			GPIO.setup(hashBTN,GPIO.HIGH
+			lastBTN = "#"
+		else:
+			GPIO.setup(hashBTN,GPIO.LOW)
+			
+		if time.time() > timeLimit:
+			timeLimit = 0
+			message = message + tempChar
+			tempChar = ""
+		
+				   
+				   
+			#original	   
 		newButton = getchar()
 		newButton = str(newButton)
 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
