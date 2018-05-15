@@ -514,8 +514,9 @@ def enterMessage():
 				   	   
 		newButton = getchar()
 		newButton = str(newButton)
-		if (time.time() + waitTime) > timeLimit:
-				print(time.time())
+		timeCheck = time.time() + waitTime
+		if timeCheck > timeLimit:
+				print("timeCheck was" + str(timeCheck))
 				print("timelimit was:" + str(timeLimit))
 				timeLimit = 0
 				message = message + tempChar
