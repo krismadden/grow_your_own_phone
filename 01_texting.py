@@ -175,7 +175,6 @@ def enterPhoneNumber():
 			break
 		if ch.strip() == "[":
 			GPIO.setup(sendBTN,GPIO.HIGH)
-			os.system("espeak 'sending: " + phoneNumber + "' 2>/dev/null")
 			print("sending to: " + phoneNumber)
 			allOff()
 			break
