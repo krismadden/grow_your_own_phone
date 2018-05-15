@@ -498,9 +498,19 @@ def main():
 		 	speak("Enter a french mobile phone number")
 			phoneNumber = enterPhoneNumber()
 
-			if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+			if len(phoneNumber) < 10:
 				print len(phoneNumber)
-				print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+				speak("Phone number too short. Try again.")
+				print ("Error. Too Short")
+				continue
+			elif phoneNumber[:2] != "06" or phoneNumber[:2] != "07" or phoneNumber[:5] != "00336" or phoneNumber[:5] != "00337":
+				speak("French mobile numbers begin with either 06 or 07. Try again.")
+				print ("Error. Not French.")
+				continue
+			elif len(phoneNumber) > 13:
+				print len(phoneNumber)
+				speak("Phone number too long. Try again.")
+				print ("Error. Too Short")
 				continue
 			else:
 				speak("Sending to " + phoneNumber)
