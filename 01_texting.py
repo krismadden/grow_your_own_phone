@@ -39,21 +39,21 @@ GPIO.setup(starBTN,GPIO.OUT)
 GPIO.setup(zeroBTN,GPIO.OUT)
 GPIO.setup(hashBTN,GPIO.OUT)
 
-GPIO.setup(sendBTN,GPIO.LOW)
-GPIO.setup(playBTN,GPIO.LOW)
-GPIO.setup(deleteBTN,GPIO.LOW)
-GPIO.setup(oneBTN,GPIO.LOW)
-GPIO.setup(twoBTN,GPIO.LOW)
-GPIO.setup(threeBTN,GPIO.LOW)
-GPIO.setup(fourBTN,GPIO.LOW)
-GPIO.setup(fiveBTN,GPIO.LOW)
-GPIO.setup(sixBTN,GPIO.LOW)
-GPIO.setup(sevenBTN,GPIO.LOW)
-GPIO.setup(eightBTN,GPIO.LOW)
-GPIO.setup(nineBTN,GPIO.LOW)
-GPIO.setup(starBTN,GPIO.LOW)
-GPIO.setup(zeroBTN,GPIO.LOW)
-GPIO.setup(hashBTN,GPIO.LOW)
+GPIO.output(sendBTN,GPIO.LOW)
+GPIO.output(playBTN,GPIO.LOW)
+GPIO.output(deleteBTN,GPIO.LOW)
+GPIO.output(oneBTN,GPIO.LOW)
+GPIO.output(twoBTN,GPIO.LOW)
+GPIO.output(threeBTN,GPIO.LOW)
+GPIO.output(fourBTN,GPIO.LOW)
+GPIO.output(fiveBTN,GPIO.LOW)
+GPIO.output(sixBTN,GPIO.LOW)
+GPIO.output(sevenBTN,GPIO.LOW)
+GPIO.output(eightBTN,GPIO.LOW)
+GPIO.output(nineBTN,GPIO.LOW)
+GPIO.output(starBTN,GPIO.LOW)
+GPIO.output(zeroBTN,GPIO.LOW)
+GPIO.output(hashBTN,GPIO.LOW)
 #end setup for LEDs#
 
 
@@ -132,38 +132,38 @@ def checkIfModuleFrozen():
 		print (response)
 
 def allOn():
-	GPIO.setup(sendBTN,GPIO.HIGH)
-	GPIO.setup(playBTN,GPIO.HIGH)
-	GPIO.setup(deleteBTN,GPIO.HIGH)
-	GPIO.setup(oneBTN,GPIO.HIGH)
-	GPIO.setup(twoBTN,GPIO.HIGH)
-	GPIO.setup(threeBTN,GPIO.HIGH)
-	GPIO.setup(fourBTN,GPIO.HIGH)
-	GPIO.setup(fiveBTN,GPIO.HIGH)
-	GPIO.setup(sixBTN,GPIO.HIGH)
-	GPIO.setup(sevenBTN,GPIO.HIGH)
-	GPIO.setup(eightBTN,GPIO.HIGH)
-	GPIO.setup(nineBTN,GPIO.HIGH)
-	GPIO.setup(starBTN,GPIO.HIGH)
-	GPIO.setup(zeroBTN,GPIO.HIGH)
-	GPIO.setup(hashBTN,GPIO.HIGH)
+	GPIO.output(sendBTN,GPIO.HIGH)
+	GPIO.output(playBTN,GPIO.HIGH)
+	GPIO.output(deleteBTN,GPIO.HIGH)
+	GPIO.output(oneBTN,GPIO.HIGH)
+	GPIO.output(twoBTN,GPIO.HIGH)
+	GPIO.output(threeBTN,GPIO.HIGH)
+	GPIO.output(fourBTN,GPIO.HIGH)
+	GPIO.output(fiveBTN,GPIO.HIGH)
+	GPIO.output(sixBTN,GPIO.HIGH)
+	GPIO.output(sevenBTN,GPIO.HIGH)
+	GPIO.output(eightBTN,GPIO.HIGH)
+	GPIO.output(nineBTN,GPIO.HIGH)
+	GPIO.output(starBTN,GPIO.HIGH)
+	GPIO.output(zeroBTN,GPIO.HIGH)
+	GPIO.output(hashBTN,GPIO.HIGH)
 
 def allOff():
-	GPIO.setup(sendBTN,GPIO.LOW)
-	GPIO.setup(playBTN,GPIO.LOW)
-	GPIO.setup(deleteBTN,GPIO.LOW)
-	GPIO.setup(oneBTN,GPIO.LOW)
-	GPIO.setup(twoBTN,GPIO.LOW)
-	GPIO.setup(threeBTN,GPIO.LOW)
-	GPIO.setup(fourBTN,GPIO.LOW)
-	GPIO.setup(fiveBTN,GPIO.LOW)
-	GPIO.setup(sixBTN,GPIO.LOW)
-	GPIO.setup(sevenBTN,GPIO.LOW)
-	GPIO.setup(eightBTN,GPIO.LOW)
-	GPIO.setup(nineBTN,GPIO.LOW)
-	GPIO.setup(starBTN,GPIO.LOW)
-	GPIO.setup(zeroBTN,GPIO.LOW)
-	GPIO.setup(hashBTN,GPIO.LOW)
+	GPIO.output(sendBTN,GPIO.LOW)
+	GPIO.output(playBTN,GPIO.LOW)
+	GPIO.output(deleteBTN,GPIO.LOW)
+	GPIO.output(oneBTN,GPIO.LOW)
+	GPIO.output(twoBTN,GPIO.LOW)
+	GPIO.output(threeBTN,GPIO.LOW)
+	GPIO.output(fourBTN,GPIO.LOW)
+	GPIO.output(fiveBTN,GPIO.LOW)
+	GPIO.output(sixBTN,GPIO.LOW)
+	GPIO.output(sevenBTN,GPIO.LOW)
+	GPIO.output(eightBTN,GPIO.LOW)
+	GPIO.output(nineBTN,GPIO.LOW)
+	GPIO.output(starBTN,GPIO.LOW)
+	GPIO.output(zeroBTN,GPIO.LOW)
+	GPIO.output(hashBTN,GPIO.LOW)
 
 def enterPhoneNumber():
 	phoneNumber = ""
@@ -174,18 +174,18 @@ def enterPhoneNumber():
 		if ch.strip() == "/":
 			break
 		if ch.strip() == "[":
-			GPIO.setup(sendBTN,GPIO.HIGH)
+			GPIO.output(sendBTN,GPIO.HIGH)
 			print("sending to: " + phoneNumber)
 			allOff()
 			break
 		elif ch.strip() == "]":
-			GPIO.setup(deleteBTN,GPIO.HIGH)
+			GPIO.output(deleteBTN,GPIO.HIGH)
 			os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
 			tempChar = ""
 			phoneNumber = phoneNumber[:-1]
 			print(phoneNumber)
 		elif ch.strip() == "=":
-			GPIO.setup(playBTN,GPIO.HIGH)
+			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
 			if ch != "*" or "#" or "*": 
@@ -195,40 +195,40 @@ def enterPhoneNumber():
 				phoneNumber = phoneNumber + 00
 				print (phoneNumber)
 			if ch == "1":
-				GPIO.setup(oneBTN,GPIO.HIGH)
+				GPIO.output(oneBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "2":
-				GPIO.setup(twoBTN,GPIO.HIGH)
+				GPIO.output(twoBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "3":
-				GPIO.setup(threeBTN,GPIO.HIGH)
+				GPIO.output(threeBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "4":
-				GPIO.setup(fourBTN,GPIO.HIGH)
+				GPIO.output(fourBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "5":
-				GPIO.setup(fiveBTN,GPIO.HIGH)
+				GPIO.output(fiveBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "6":
-				GPIO.setup(sixBTN,GPIO.HIGH)
+				GPIO.output(sixBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "7":
-				GPIO.setup(sevenBTN,GPIO.HIGH)
+				GPIO.output(sevenBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "8":
-				GPIO.setup(eightBTN,GPIO.HIGH)
+				GPIO.output(eightBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "9":
-				GPIO.setup(nineBTN,GPIO.HIGH)
+				GPIO.output(nineBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "*":
-				GPIO.setup(starBTN,GPIO.HIGH)
+				GPIO.output(starBTN,GPIO.HIGH)
 				speak("You're a star.")
 			elif ch == "0":
-				GPIO.setup(zeroBTN,GPIO.HIGH)
+				GPIO.output(zeroBTN,GPIO.HIGH)
 				speak(ch)
 			elif ch == "#":
-				GPIO.setup(hashBTN,GPIO.HIGH)
+				GPIO.output(hashBTN,GPIO.HIGH)
 				speak("Hashtag Grow Your Own Phone!")
 	return phoneNumber
 
@@ -247,21 +247,7 @@ def enterMessage():
 	timeLimit = 0
 	while True:
 	   
-		GPIO.setup(sendBTN,GPIO.LOW)
-		GPIO.setup(playBTN,GPIO.LOW)
-		GPIO.setup(deleteBTN,GPIO.LOW)
-		GPIO.setup(oneBTN,GPIO.LOW)
-		GPIO.setup(twoBTN,GPIO.LOW)
-		GPIO.setup(threeBTN,GPIO.LOW)
-		GPIO.setup(fourBTN,GPIO.LOW)
-		GPIO.setup(fiveBTN,GPIO.LOW)
-		GPIO.setup(sixBTN,GPIO.LOW)
-		GPIO.setup(sevenBTN,GPIO.LOW)
-		GPIO.setup(eightBTN,GPIO.LOW)
-		GPIO.setup(nineBTN,GPIO.LOW)
-		GPIO.setup(starBTN,GPIO.LOW)
-		GPIO.setup(zeroBTN,GPIO.LOW)
-		GPIO.setup(hashBTN,GPIO.LOW)
+		allOff()
 
 		newButton = getchar()
 		newButton = str(newButton)
@@ -274,21 +260,21 @@ def enterMessage():
 				timeUp = True
 				
 		if newButton.strip() == "[":
-			GPIO.setup(sendBTN,GPIO.HIGH)
+			GPIO.output(sendBTN,GPIO.HIGH)
 			message = message + tempChar
 			os.system("espeak 'sending: " + message + "' 2>/dev/null")
 			print("sending: " + message)
 			allOff()
 			break
 		elif newButton.strip() == "]":
-			GPIO.setup(deleteBTN,GPIO.HIGH)
+			GPIO.output(deleteBTN,GPIO.HIGH)
 			message = message + tempChar
 			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 			tempChar = ""
 			message = message[:-1]
 			print("new message " + message)
 		elif newButton.strip() == "=":
-			GPIO.setup(playBTN,GPIO.HIGH)
+			GPIO.output(playBTN,GPIO.HIGH)
 			message = message + tempChar
 			os.system("espeak '" +  message + "' 2>/dev/null")
 			tempChar = ""
@@ -303,7 +289,7 @@ def enterMessage():
 					tempChar = ""
 					print("new button set " + message + tempChar)
 			if newButton == "1":
-				GPIO.setup(oneBTN,GPIO.HIGH)
+				GPIO.output(oneBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "1"
 				elif(tempChar == "1"):
@@ -311,7 +297,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "2":
-				GPIO.setup(twoBTN,GPIO.HIGH)
+				GPIO.output(twoBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "a"
 				elif(tempChar == "a"):
@@ -326,7 +312,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "3":
-				GPIO.setup(threeBTN,GPIO.HIGH)
+				GPIO.output(threeBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "d"
 				elif(tempChar == "d"):
@@ -341,7 +327,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "4":
-				GPIO.setup(fourBTN,GPIO.HIGH)
+				GPIO.output(fourBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "g"
 				elif(tempChar == "g"):
@@ -356,7 +342,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "5":
-				GPIO.setup(fiveBTN,GPIO.HIGH)
+				GPIO.output(fiveBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "j"
 				elif(tempChar == "j"):
@@ -371,7 +357,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "6":
-				GPIO.setup(sixBTN,GPIO.HIGH)
+				GPIO.output(sixBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "m"
 				elif(tempChar == "m"):
@@ -386,7 +372,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "7":
-				GPIO.setup(sevenBTN,GPIO.HIGH)
+				GPIO.output(sevenBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "p"
 				elif(tempChar == "p"):
@@ -403,7 +389,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "8":
-				GPIO.setup(eightBTN,GPIO.HIGH)
+				GPIO.output(eightBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "t"
 				elif(tempChar == "t"):
@@ -418,7 +404,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "9":
-				GPIO.setup(nineBTN,GPIO.HIGH)
+				GPIO.output(nineBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "w"
 				elif(tempChar == "w"):
@@ -435,7 +421,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "*":
-				GPIO.setup(starBTN,GPIO.HIGH)
+				GPIO.output(starBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "/r"
 				elif(tempChar == "/r"):
@@ -446,7 +432,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "0":
-				GPIO.setup(zeroBTN,GPIO.HIGH)
+				GPIO.output(zeroBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = " "
 				elif(tempChar == " "):
@@ -457,7 +443,7 @@ def enterMessage():
 				print(message + tempChar)
 # 				timeLimit = time.time()
 			elif newButton == "#":
-				GPIO.setup(hashBTN,GPIO.HIGH)
+				GPIO.output(hashBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "."
 				elif(tempChar == "."):
