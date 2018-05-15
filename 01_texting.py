@@ -9,8 +9,8 @@ import RPi.GPIO as GPIO
 #setup LEDs#
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(18,GPIO.OUT)
-GPIO.output(18,GPIO.LOW)
+GPIO.setup(23,GPIO.OUT)
+GPIO.output(23,GPIO.LOW)
 #end setup for LEDs#
 
 
