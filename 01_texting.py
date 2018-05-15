@@ -166,6 +166,9 @@ def enterMessage():
 			print("pressed")
 			GPIO.setup(sendBTN,GPIO.HIGH)
 			lastBTN = "["
+			if lastBTN != "[":
+				message = message + tempChar
+				tempChar = ""
 			speak("sending " + message)
 			print("sending: " + message)
 			break
@@ -176,6 +179,9 @@ def enterMessage():
 			print("pressed")
 			GPIO.setup(playBTN,GPIO.HIGH)
 			speak(message)
+			if lastBTN != "=":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "="
 		else:
 			GPIO.setup(playBTN,GPIO.LOW)
@@ -183,6 +189,9 @@ def enterMessage():
 		if keyboard.is_pressed("]"):
 			print("pressed")
 			GPIO.setup(deleteBTN,GPIO.HIGH)
+			if lastBTN != "]":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "]"
 			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 			message = message[:-1]
@@ -191,23 +200,29 @@ def enterMessage():
 			
 		if keyboard.is_pressed("1"):
 			GPIO.setup(oneBTN,GPIO.HIGH)
+			if lastBTN != "1":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "1"
 			if(tempChar == ""):
 				tempChar = "1"
-				timeLimit = time.time() + waitTime #one second till the character is set. 
 			elif(tempChar == "1"):
 				tempChar = "1"
 			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(oneBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("2"):
 			print("pressed")
 			GPIO.setup(twoBTN,GPIO.HIGH)
+			if lastBTN != "2":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "2"
 			if(tempChar == ""):
 				tempChar = "a"
-				timeLimit = time.time() + waitTime #one second till the character is set. 
 			elif(tempChar == "a"):
 				tempChar = "b"
 			elif(tempChar == "b"):
@@ -217,251 +232,419 @@ def enterMessage():
 			elif(tempChar == "2"):
 				tempChar = "a"
 			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(twoBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("3"):
 			print("pressed")
 			GPIO.setup(threeBTN,GPIO.HIGH)
+			if lastBTN != "3":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "3"
+			if(tempChar == ""):
+				tempChar = "d"
+			elif(tempChar == "d"):
+				tempChar = "e"
+			elif(tempChar == "e"):
+				tempChar = "f"
+			elif(tempChar == "f"):
+				tempChar = "3"
+			elif(tempChar == "3"):
+				tempChar = "d"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(threeBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("4"):
 			print("pressed")
 			GPIO.setup(fourBTN,GPIO.HIGH)
+			if lastBTN != "4":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "4"
+			if(tempChar == ""):
+				tempChar = "g"
+			elif(tempChar == "g"):
+				tempChar = "h"
+			elif(tempChar == "h"):
+				tempChar = "i"
+			elif(tempChar == "i"):
+				tempChar = "4"
+			elif(tempChar == "4"):
+				tempChar = "g"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(fourBTN,GPIO.LOW)
 		if keyboard.is_pressed("5"):
 			print("pressed 'a'")
 			GPIO.setup(fiveBTN,GPIO.HIGH)
+			if lastBTN != "5":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "5"
+			if(tempChar == ""):
+				tempChar = "j"
+			elif(tempChar == "j"):
+				tempChar = "k"
+			elif(tempChar == "k"):
+				tempChar = "l"
+			elif(tempChar == "l"):
+				tempChar = "5"
+			elif(tempChar == "5"):
+				tempChar = "j"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(fiveBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("6"):
 			print("pressed 'a'")
 			GPIO.setup(sixBTN,GPIO.HIGH)
+			if lastBTN != "6":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "6"
+			if(tempChar == ""):
+				tempChar = "m"
+			elif(tempChar == "m"):
+				tempChar = "n"
+			elif(tempChar == "n"):
+				tempChar = "o"
+			elif(tempChar == "o"):
+				tempChar = "6"
+			elif(tempChar == "6"):
+				tempChar = "m"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(sixBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("7"):
 			print("pressed 'a'")
-			GPIO.setup(sevenBTN,GPIO.HIGH
+			GPIO.setup(sevenBTN,GPIO.HIGH)
+			if lastBTN != "7":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "7"
+			if(tempChar == ""):
+				tempChar = "p"
+			elif(tempChar == "p"):
+				tempChar = "q"
+			elif(tempChar == "q"):
+				tempChar = "r"
+			elif(tempChar == "r"):
+				tempChar = "s"
+			elif(tempChar == "s"):
+				tempChar = "7"
+			elif(tempChar == "7"):
+				tempChar = "p"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(sevenBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("8"):
 			print("pressed")
-			GPIO.setup(eightBTN,GPIO.HIGH
+			GPIO.setup(eightBTN,GPIO.HIGH)
+			if lastBTN != "8":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "8"
+			if(tempChar == ""):
+				tempChar = "t"
+			elif(tempChar == "t"):
+				tempChar = "u"
+			elif(tempChar == "u"):
+				tempChar = "v"
+			elif(tempChar == "v"):
+				tempChar = "8"
+			elif(tempChar == "8"):
+				tempChar = "t"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(eightBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("9"):
 			print("pressed")
-			GPIO.setup(nineBTN,GPIO.HIGH
+			GPIO.setup(nineBTN,GPIO.HIGH)
+			if lastBTN != "9":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "9"
+			if(tempChar == ""):
+				tempChar = "w"
+			elif(tempChar == "w"):
+				tempChar = "x"
+			elif(tempChar == "x"):
+				tempChar = "y"
+			elif(tempChar == "y"):
+				tempChar = "z"
+			elif(tempChar == "z"):
+				tempChar = "9"
+			elif(tempChar == "9"):
+				tempChar = "w"
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak(tempChar)
 		else:
 			GPIO.setup(nineBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("*"):
 			print("pressed")
 			GPIO.setup(starBTN,GPIO.HIGH
+			if lastBTN != "*":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "*"
+			if(tempChar == ""):
+				tempChar = "/r"
+				speak("return")
+			elif(tempChar == "/r"):
+				tempChar = "*"
+				speak("asterix")
+			elif(tempChar == "*"):
+				tempChar = "/r"
+				speak("return")
+			print(message + tempChar)
+			timeLimit = time.time()
+		   	speak(tempChar)
 		else:
 			GPIO.setup(starBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("0"):
 			print("pressed 'a'")
 			GPIO.setup(zeroBTN,GPIO.HIGH
+			if lastBTN != "*":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "0"
+			if(tempChar == ""):
+				tempChar = " "
+				speak("space")
+			elif(tempChar == " "):
+				tempChar = "0"
+				speak("zero")
+			elif(tempChar == "0"):
+				tempChar = " "
+				speak("space")
+			print(message + tempChar)
+			timeLimit = time.time()
 		else:
 			GPIO.setup(zeroBTN,GPIO.LOW)
 			
 		if keyboard.is_pressed("#"):
 			print("pressed 'a'")
 			GPIO.setup(hashBTN,GPIO.HIGH
+			if lastBTN != "*":
+				message = message + tempChar
+				tempChar = ""
 			lastBTN = "#"
+			if(tempChar == ""):
+				tempChar = "."
+			elif(tempChar == "."):
+				tempChar = "?"
+			elif(tempChar == "?"):
+				tempChar = "!"
+			elif(tempChar == "!"):
+				tempChar = ","
+			elif(tempChar == ","):
+				tempChar = "-"
+			elif(tempChar == "-"
+				tempChar = "0"
+			elif(tempChar == "0"):
+				tempChar = "."
+			print(message + tempChar)
+			timeLimit = time.time()
+			speak("tempChar")
 		else:
 			GPIO.setup(hashBTN,GPIO.LOW)
 			
-		if time.time() > timeLimit:
+		if (time.time() + waitTime) > timeLimit:
 			timeLimit = 0
 			message = message + tempChar
 			tempChar = ""
+			speak("okay")
 		
 				   
 				   
 			#original	   
-		newButton = getchar()
-		newButton = str(newButton)
-		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
-				message = message + tempChar
-				os.system("espeak '" + message + "' 2>/dev/null")
-				tempChar = ""
-				print("time set " + message + tempChar)
-				timeUp = True
+# 		newButton = getchar()
+# 		newButton = str(newButton)
+# 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
+# 				message = message + tempChar
+# 				os.system("espeak '" + message + "' 2>/dev/null")
+# 				tempChar = ""
+# 				print("time set " + message + tempChar)
+# 				timeUp = True
 				
-		if newButton.strip() == "/":
-			message = message + tempChar
-			os.system("espeak sending: '" + message + "' 2>/dev/null")
-			print("sending: " + message)
-			break
-		elif newButton.strip() == "*":
-			message = message + tempChar
-			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
-			tempChar = ""
-			message = message[:-1]
-			print("new message " + message)
-		elif newButton.strip() == "=":
-			message = message + tempChar
-			os.system("espeak '" +  message + "' 2>/dev/null")
-			tempChar = ""
-		else:
-			#everytime a button is pressed it restarts the wait time for setting the character
-			timeLimit = time.time() + waitTime
-			
-			if newButton != oldButton and oldButton != "":
-				if (timeUp == False) or (newButton.strip() != "*") or (newButton.strip() != "="):
-					message = message + tempChar
-					#os.system("espeak 'new button " + message + "' 2>/dev/null")
-					tempChar = ""
-					print("new button set " + message + tempChar)
-			if newButton == "1":
-				if(tempChar == ""):
-					tempChar = "1"
-				elif(tempChar == "1"):
-					tempChar = "1"
-				print(message + tempChar)
-			elif newButton == "2":
-				GPIO.output(23,GPIO.HIGH)
-				if(tempChar == ""):
-					tempChar = "a"
-				elif(tempChar == "a"):
-					tempChar = "b"
-				elif(tempChar == "b"):
-					tempChar = "c"
-				elif(tempChar == "c"):
-					tempChar = "2"
-				elif(tempChar == "2"):
-					tempChar = "a"
-				print(message + tempChar)
-			elif newButton == "3":
-				GPIO.output(23,GPIO.LOW)
-				if(tempChar == ""):
-					tempChar = "d"
-				elif(tempChar == "d"):
-					tempChar = "e"
-				elif(tempChar == "e"):
-					tempChar = "f"
-				elif(tempChar == "f"):
-					tempChar = "3"
-				elif(tempChar == "3"):
-					tempChar = "d"
-				print(message + tempChar)
-			elif newButton == "4":
-				if(tempChar == ""):
-					tempChar = "g"
-				elif(tempChar == "g"):
-					tempChar = "h"
-				elif(tempChar == "h"):
-					tempChar = "i"
-				elif(tempChar == "i"):
-					tempChar = "4"
-				elif(tempChar == "4"):
-					tempChar = "g"
-				print(message + tempChar)
-			elif newButton == "5":
-				if(tempChar == ""):
-					tempChar = "j"
-				elif(tempChar == "j"):
-					tempChar = "k"
-				elif(tempChar == "k"):
-					tempChar = "l"
-				elif(tempChar == "l"):
-					tempChar = "5"
-				elif(tempChar == "5"):
-					tempChar = "j"
-				print(message + tempChar)
-			elif newButton == "6":
-				if(tempChar == ""):
-					tempChar = "m"
-				elif(tempChar == "m"):
-					tempChar = "n"
-				elif(tempChar == "n"):
-					tempChar = "o"
-				elif(tempChar == "o"):
-					tempChar = "6"
-				elif(tempChar == "6"):
-					tempChar = "m"
-				print(message + tempChar)
-			elif newButton == "7":
-				if(tempChar == ""):
-					tempChar = "p"
-				elif(tempChar == "p"):
-					tempChar = "q"
-				elif(tempChar == "q"):
-					tempChar = "r"
-				elif(tempChar == "r"):
-					tempChar = "s"
-				elif(tempChar == "s"):
-					tempChar = "7"
-				elif(tempChar == "7"):
-					tempChar = "p"
-				print(message + tempChar)
-			elif newButton == "8":
-				if(tempChar == ""):
-					tempChar = "t"
-				elif(tempChar == "t"):
-					tempChar = "u"
-				elif(tempChar == "u"):
-					tempChar = "v"
-				elif(tempChar == "v"):
-					tempChar = "8"
-				elif(tempChar == "8"):
-					tempChar = "t"
-				print(message + tempChar)
-			elif newButton == "9":
-				if(tempChar == ""):
-					tempChar = "w"
-				elif(tempChar == "w"):
-					tempChar = "x"
-				elif(tempChar == "x"):
-					tempChar = "y"
-				elif(tempChar == "y"):
-					tempChar = "z"
-				elif(tempChar == "z"):
-					tempChar = "9"
-				elif(tempChar == "9"):
-					tempChar = "w"
-				print(message + tempChar)
-			elif newButton == "0":
-				if(tempChar == ""):
-					tempChar = " "
-				elif(tempChar == " "):
-					tempChar = "."
-				elif(tempChar == "."):
-					tempChar = "?"
-				elif(tempChar == "?"):
-					tempChar = "!"
-				elif(tempChar == "!"):
-					tempChar = ","
-				elif(tempChar == ","):
-					tempChar = "0"
-				elif(tempChar == "0"):
-					tempChar = " "
-				print(message + tempChar)
-			oldButton = newButton
-			
-# 		if tempChar != "" and time.time() >= timeLimit:
+# 		if newButton.strip() == "/":
 # 			message = message + tempChar
+# 			os.system("espeak sending: '" + message + "' 2>/dev/null")
+# 			print("sending: " + message)
+# 			break
+# 		elif newButton.strip() == "*":
+# 			message = message + tempChar
+# 			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 # 			tempChar = ""
-# 			print("time set " + message + tempChar)
-		timeUp = False
+# 			message = message[:-1]
+# 			print("new message " + message)
+# 		elif newButton.strip() == "=":
+# 			message = message + tempChar
+# 			os.system("espeak '" +  message + "' 2>/dev/null")
+# 			tempChar = ""
+# 		else:
+# 			#everytime a button is pressed it restarts the wait time for setting the character
+# 			timeLimit = time.time() + waitTime
+			
+# 			if newButton != oldButton and oldButton != "":
+# 				if (timeUp == False) or (newButton.strip() != "*") or (newButton.strip() != "="):
+# 					message = message + tempChar
+# 					#os.system("espeak 'new button " + message + "' 2>/dev/null")
+# 					tempChar = ""
+# 					print("new button set " + message + tempChar)
+# 			if newButton == "1":
+# 				if(tempChar == ""):
+# 					tempChar = "1"
+# 				elif(tempChar == "1"):
+# 					tempChar = "1"
+# 				print(message + tempChar)
+# 			elif newButton == "2":
+# 				GPIO.output(23,GPIO.HIGH)
+# 				if(tempChar == ""):
+# 					tempChar = "a"
+# 				elif(tempChar == "a"):
+# 					tempChar = "b"
+# 				elif(tempChar == "b"):
+# 					tempChar = "c"
+# 				elif(tempChar == "c"):
+# 					tempChar = "2"
+# 				elif(tempChar == "2"):
+# 					tempChar = "a"
+# 				print(message + tempChar)
+# 			elif newButton == "3":
+# 				GPIO.output(23,GPIO.LOW)
+# 				if(tempChar == ""):
+# 					tempChar = "d"
+# 				elif(tempChar == "d"):
+# 					tempChar = "e"
+# 				elif(tempChar == "e"):
+# 					tempChar = "f"
+# 				elif(tempChar == "f"):
+# 					tempChar = "3"
+# 				elif(tempChar == "3"):
+# 					tempChar = "d"
+# 				print(message + tempChar)
+# 			elif newButton == "4":
+# 				if(tempChar == ""):
+# 					tempChar = "g"
+# 				elif(tempChar == "g"):
+# 					tempChar = "h"
+# 				elif(tempChar == "h"):
+# 					tempChar = "i"
+# 				elif(tempChar == "i"):
+# 					tempChar = "4"
+# 				elif(tempChar == "4"):
+# 					tempChar = "g"
+# 				print(message + tempChar)
+# 			elif newButton == "5":
+# 				if(tempChar == ""):
+# 					tempChar = "j"
+# 				elif(tempChar == "j"):
+# 					tempChar = "k"
+# 				elif(tempChar == "k"):
+# 					tempChar = "l"
+# 				elif(tempChar == "l"):
+# 					tempChar = "5"
+# 				elif(tempChar == "5"):
+# 					tempChar = "j"
+# 				print(message + tempChar)
+# 			elif newButton == "6":
+# 				if(tempChar == ""):
+# 					tempChar = "m"
+# 				elif(tempChar == "m"):
+# 					tempChar = "n"
+# 				elif(tempChar == "n"):
+# 					tempChar = "o"
+# 				elif(tempChar == "o"):
+# 					tempChar = "6"
+# 				elif(tempChar == "6"):
+# 					tempChar = "m"
+# 				print(message + tempChar)
+# 			elif newButton == "7":
+# 				if(tempChar == ""):
+# 					tempChar = "p"
+# 				elif(tempChar == "p"):
+# 					tempChar = "q"
+# 				elif(tempChar == "q"):
+# 					tempChar = "r"
+# 				elif(tempChar == "r"):
+# 					tempChar = "s"
+# 				elif(tempChar == "s"):
+# 					tempChar = "7"
+# 				elif(tempChar == "7"):
+# 					tempChar = "p"
+# 				print(message + tempChar)
+# 			elif newButton == "8":
+# 				if(tempChar == ""):
+# 					tempChar = "t"
+# 				elif(tempChar == "t"):
+# 					tempChar = "u"
+# 				elif(tempChar == "u"):
+# 					tempChar = "v"
+# 				elif(tempChar == "v"):
+# 					tempChar = "8"
+# 				elif(tempChar == "8"):
+# 					tempChar = "t"
+# 				print(message + tempChar)
+# 			elif newButton == "9":
+# 				if(tempChar == ""):
+# 					tempChar = "w"
+# 				elif(tempChar == "w"):
+# 					tempChar = "x"
+# 				elif(tempChar == "x"):
+# 					tempChar = "y"
+# 				elif(tempChar == "y"):
+# 					tempChar = "z"
+# 				elif(tempChar == "z"):
+# 					tempChar = "9"
+# 				elif(tempChar == "9"):
+# 					tempChar = "w"
+# 				print(message + tempChar)
+# 			elif newButton == "0":
+# 				if(tempChar == ""):
+# 					tempChar = " "
+# 				elif(tempChar == " "):
+# 					tempChar = "."
+# 				elif(tempChar == "."):
+# 					tempChar = "?"
+# 				elif(tempChar == "?"):
+# 					tempChar = "!"
+# 				elif(tempChar == "!"):
+# 					tempChar = ","
+# 				elif(tempChar == ","):
+# 					tempChar = "0"
+# 				elif(tempChar == "0"):
+# 					tempChar = " "
+# 				print(message + tempChar)
+# 			oldButton = newButton
+			
+# # 		if tempChar != "" and time.time() >= timeLimit:
+# # 			message = message + tempChar
+# # 			tempChar = ""
+# # 			print("time set " + message + tempChar)
+# 		timeUp = False
 			
 	return message
 
