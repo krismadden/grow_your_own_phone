@@ -433,22 +433,19 @@ def main():
 		speak("Sending text")
 		modem.send_sms(phoneNumber, message)
 		
-		time.sleep(1)
-		response = m590.ser.readlines(None)
-		print (response)
-		if response == "":
-			speak("Error!")
-			print (response)
-		elif response[0] == "\n":
-			speak("Sent!")
-			print ("Sent!")
-		else:
-			speak("error")
-			print (response)
+# 		time.sleep(1)
+# 		response = m590.ser.readlines(None)
+# 		print (response)
+# 		if response == "":
+# 			speak("Error!")
+# 			print (response)
+# 		elif response[0] == "\n":
+# 			speak("Sent!")
+# 			print ("Sent!")
+# 		else:
+# 			speak("error")
+# 			print (response)
 
-		#READ ALL SMS
-		#modem.read_sms(4)
-		#print modem.SMS
 
 	modem.deinit()
 
