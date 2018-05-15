@@ -505,11 +505,17 @@ def main():
 				speak("Phone number too short. Try again.")
 				print ("Error. Too Short")
 				continue
-			elif phoneNumber[:2] != "06" or phoneNumber[:2] != "07" or phoneNumber[:5] != "00336" or phoneNumber[:5] != "00337":
+			elif len(phoneNumber) == 10 and (phoneNumber[:2] != "06" or phoneNumber[:2] != "07")
+			elif len(phoneNumber) == 13 and (phoneNumber[:5] != "00336" or phoneNumber[:5] != "00337"):
 				speak("French mobile numbers begin with either 06 or 07. Try again.")
 				print ("Error. Not French.")
 				print(phoneNumber[:2])
 				print(phoneNumber[:5])
+				continue
+			elif len(phoneNumber) == 12:
+				print len(phoneNumber)
+				speak("Phone number too long. Phone numbers starting with 06 or 07 should only be 10 digits. Try again.")
+				print ("Error. Too Short")
 				continue
 			elif len(phoneNumber) > 13:
 				print len(phoneNumber)
