@@ -163,8 +163,26 @@ def enterMessage():
 	timeLimit = 0
 	lastBTN = ""
 	while True:
+		ch = getchar()
 		
-		if keyboard.is_pressed("["):
+		GPIO.setup(sendBTN,GPIO.LOW)
+		GPIO.setup(playBTN,GPIO.LOW)
+		GPIO.setup(deleteBTN,GPIO.LOW)
+		GPIO.setup(oneBTN,GPIO.LOW)
+		GPIO.setup(twoBTN,GPIO.LOW)
+		GPIO.setup(threeBTN,GPIO.LOW)
+		GPIO.setup(fourBTN,GPIO.LOW)
+		GPIO.setup(fiveBTN,GPIO.LOW)
+		GPIO.setup(sixBTN,GPIO.LOW)
+		GPIO.setup(sevenBTN,GPIO.LOW)
+		GPIO.setup(eightBTN,GPIO.LOW)
+		GPIO.setup(nineBTN,GPIO.LOW)
+		GPIO.setup(starBTN,GPIO.LOW)
+		GPIO.setup(zeroBTN,GPIO.LOW)
+		GPIO.setup(hashBTN,GPIO.LOW)
+		
+# 		if keyboard.is_pressed("["):
+		if ch = "[":
 			print("pressed")
 			GPIO.setup(sendBTN,GPIO.HIGH)
 			lastBTN = "["
@@ -174,10 +192,11 @@ def enterMessage():
 			speak("sending " + message)
 			print("sending: " + message)
 			break
-		else:
-			GPIO.setup(sendBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(sendBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("="):
+# 		if keyboard.is_pressed("="):
+		elif ch = "=":
 			print("pressed")
 			GPIO.setup(playBTN,GPIO.HIGH)
 			speak(message)
@@ -185,10 +204,11 @@ def enterMessage():
 				message = message + tempChar
 				tempChar = ""
 			lastBTN = "="
-		else:
-			GPIO.setup(playBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(playBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("]"):
+# 		if keyboard.is_pressed("]"):
+		elif ch = "]":
 			print("pressed")
 			GPIO.setup(deleteBTN,GPIO.HIGH)
 			if lastBTN != "]":
@@ -197,10 +217,11 @@ def enterMessage():
 			lastBTN = "]"
 			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 			message = message[:-1]
-		else:
-			GPIO.setup(deleteBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(deleteBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("1"):
+		elif ch = "1":
+# 		if keyboard.is_pressed("1"):
 			GPIO.setup(oneBTN,GPIO.HIGH)
 			if lastBTN != "1":
 				message = message + tempChar
@@ -213,10 +234,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(oneBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(oneBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("2"):
+# 		if keyboard.is_pressed("2"):
+		elif ch = "2":
 			print("pressed")
 			GPIO.setup(twoBTN,GPIO.HIGH)
 			if lastBTN != "2":
@@ -236,10 +258,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(twoBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(twoBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("3"):
+# 		if keyboard.is_pressed("3"):
+		elif ch = "3":
 			print("pressed")
 			GPIO.setup(threeBTN,GPIO.HIGH)
 			if lastBTN != "3":
@@ -259,10 +282,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(threeBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(threeBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("4"):
+# 		if keyboard.is_pressed("4"):
+		elif ch = "4":
 			print("pressed")
 			GPIO.setup(fourBTN,GPIO.HIGH)
 			if lastBTN != "4":
@@ -282,9 +306,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(fourBTN,GPIO.LOW)
-		if keyboard.is_pressed("5"):
+# 		else:
+# 			GPIO.setup(fourBTN,GPIO.LOW)
+			
+		elif ch = "5":
+# 		if keyboard.is_pressed("5"):
 			print("pressed 'a'")
 			GPIO.setup(fiveBTN,GPIO.HIGH)
 			if lastBTN != "5":
@@ -304,10 +330,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(fiveBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(fiveBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("6"):
+# 		if keyboard.is_pressed("6"):
+		elif ch = "6":
 			print("pressed 'a'")
 			GPIO.setup(sixBTN,GPIO.HIGH)
 			if lastBTN != "6":
@@ -327,10 +354,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(sixBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(sixBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("7"):
+# 		if keyboard.is_pressed("7"):
+		elif ch = "7":
 			print("pressed 'a'")
 			GPIO.setup(sevenBTN,GPIO.HIGH)
 			if lastBTN != "7":
@@ -352,10 +380,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(sevenBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(sevenBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("8"):
+# 		if keyboard.is_pressed("8"):
+		elif ch = "8":
 			print("pressed")
 			GPIO.setup(eightBTN,GPIO.HIGH)
 			if lastBTN != "8":
@@ -375,10 +404,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(eightBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(eightBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("9"):
+# 		if keyboard.is_pressed("9"):
+		elif ch = "9":
 			print("pressed")
 			GPIO.setup(nineBTN,GPIO.HIGH)
 			if lastBTN != "9":
@@ -400,10 +430,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 			speak(tempChar)
-		else:
-			GPIO.setup(nineBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(nineBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("*"):
+# 		if keyboard.is_pressed("*"):
+		elif ch = "*":
 			print("pressed")
 			GPIO.setup(starBTN,GPIO.HIGH)
 			if lastBTN != "*":
@@ -422,10 +453,11 @@ def enterMessage():
 			print(message + tempChar)
 			timeLimit = time.time()
 		   	speak(tempChar)
-		else:
-			GPIO.setup(starBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(starBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("0"):
+# 		if keyboard.is_pressed("0"):
+		elif ch = "0":
 			print("pressed 'a'")
 			GPIO.setup(zeroBTN,GPIO.HIGH)
 			if lastBTN != "*":
@@ -443,10 +475,11 @@ def enterMessage():
 				speak("space")
 			print(message + tempChar)
 			timeLimit = time.time()
-		else:
-			GPIO.setup(zeroBTN,GPIO.LOW)
+# 		else:
+# 			GPIO.setup(zeroBTN,GPIO.LOW)
 			
-		if keyboard.is_pressed("#"):
+# 		if keyboard.is_pressed("#"):
+		elif ch = "#":
 			print("pressed 'a'")
 			GPIO.setup(hashBTN,GPIO.HIGH)
 			if lastBTN != "*":
@@ -469,15 +502,16 @@ def enterMessage():
 				tempChar = "."
 			print(message + tempChar)
 			timeLimit = time.time()
-			speak("tempChar")
-		else:
-			GPIO.setup(hashBTN,GPIO.LOW)
+# 			speak("tempChar")
+# 		else:
+# 			GPIO.setup(hashBTN,GPIO.LOW)
 			
 		if (time.time() + waitTime) > timeLimit:
 			timeLimit = 0
 			message = message + tempChar
 			tempChar = ""
 			speak("okay")
+		ch = ""
 		
 				   
 				   
