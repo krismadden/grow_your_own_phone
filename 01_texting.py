@@ -515,9 +515,12 @@ def enterMessage():
 		newButton = getchar()
 		newButton = str(newButton)
 		if (time.time() + waitTime) > timeLimit:
+				print(time.time())
+				print("timelimit was:" + timeLimit)
 				timeLimit = 0
 				message = message + tempChar
 				tempChar = ""
+				print(time.time())
 				speak("okay")
 				
 # 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
