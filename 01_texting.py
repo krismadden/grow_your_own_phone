@@ -446,7 +446,7 @@ def enterMessage():
 			
 		if keyboard.is_pressed("#"):
 			print("pressed 'a'")
-			GPIO.setup(hashBTN,GPIO.HIGH
+			GPIO.setup(hashBTN,GPIO.HIGH)
 			if lastBTN != "*":
 				message = message + tempChar
 				tempChar = ""
