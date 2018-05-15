@@ -521,12 +521,12 @@ def enterMessage():
 				print("time set " + message + tempChar)
 				timeUp = True
 				
-		if newButton.strip() == "/":
+		if newButton.strip() == "[":
 			message = message + tempChar
 			os.system("espeak sending: '" + message + "' 2>/dev/null")
 			print("sending: " + message)
 			break
-		elif newButton.strip() == "*":
+		elif newButton.strip() == "]":
 			message = message + tempChar
 			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
 			tempChar = ""
@@ -564,6 +564,7 @@ def enterMessage():
 					tempChar = "2"
 				elif(tempChar == "2"):
 					tempChar = "a"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "3":
 				GPIO.output(23,GPIO.LOW)
@@ -577,6 +578,7 @@ def enterMessage():
 					tempChar = "3"
 				elif(tempChar == "3"):
 					tempChar = "d"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "4":
 				if(tempChar == ""):
@@ -589,6 +591,7 @@ def enterMessage():
 					tempChar = "4"
 				elif(tempChar == "4"):
 					tempChar = "g"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "5":
 				if(tempChar == ""):
@@ -601,6 +604,7 @@ def enterMessage():
 					tempChar = "5"
 				elif(tempChar == "5"):
 					tempChar = "j"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "6":
 				if(tempChar == ""):
@@ -613,6 +617,7 @@ def enterMessage():
 					tempChar = "6"
 				elif(tempChar == "6"):
 					tempChar = "m"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "7":
 				if(tempChar == ""):
@@ -627,6 +632,7 @@ def enterMessage():
 					tempChar = "7"
 				elif(tempChar == "7"):
 					tempChar = "p"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "8":
 				if(tempChar == ""):
@@ -639,6 +645,7 @@ def enterMessage():
 					tempChar = "8"
 				elif(tempChar == "8"):
 					tempChar = "t"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "9":
 				if(tempChar == ""):
@@ -653,6 +660,7 @@ def enterMessage():
 					tempChar = "9"
 				elif(tempChar == "9"):
 					tempChar = "w"
+				speak(tempChar)
 				print(message + tempChar)
 			elif newButton == "0":
 				if(tempChar == ""):
@@ -669,6 +677,7 @@ def enterMessage():
 					tempChar = "0"
 				elif(tempChar == "0"):
 					tempChar = " "
+				speak(tempChar)
 				print(message + tempChar)
 			oldButton = newButton
 			
