@@ -182,7 +182,7 @@ def enterMessage():
 		GPIO.setup(hashBTN,GPIO.LOW)
 		
 # 		if keyboard.is_pressed("["):
-		if ch = "[":
+		if ch == "[":
 			print("pressed")
 			GPIO.setup(sendBTN,GPIO.HIGH)
 			lastBTN = "["
@@ -196,7 +196,7 @@ def enterMessage():
 # 			GPIO.setup(sendBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("="):
-		elif ch = "=":
+		elif ch == "=":
 			print("pressed")
 			GPIO.setup(playBTN,GPIO.HIGH)
 			speak(message)
@@ -208,7 +208,7 @@ def enterMessage():
 # 			GPIO.setup(playBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("]"):
-		elif ch = "]":
+		elif ch == "]":
 			print("pressed")
 			GPIO.setup(deleteBTN,GPIO.HIGH)
 			if lastBTN != "]":
@@ -220,7 +220,7 @@ def enterMessage():
 # 		else:
 # 			GPIO.setup(deleteBTN,GPIO.LOW)
 			
-		elif ch = "1":
+		elif ch == "1":
 # 		if keyboard.is_pressed("1"):
 			GPIO.setup(oneBTN,GPIO.HIGH)
 			if lastBTN != "1":
@@ -238,7 +238,7 @@ def enterMessage():
 # 			GPIO.setup(oneBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("2"):
-		elif ch = "2":
+		elif ch == "2":
 			print("pressed")
 			GPIO.setup(twoBTN,GPIO.HIGH)
 			if lastBTN != "2":
@@ -262,7 +262,7 @@ def enterMessage():
 # 			GPIO.setup(twoBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("3"):
-		elif ch = "3":
+		elif ch == "3":
 			print("pressed")
 			GPIO.setup(threeBTN,GPIO.HIGH)
 			if lastBTN != "3":
@@ -286,7 +286,7 @@ def enterMessage():
 # 			GPIO.setup(threeBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("4"):
-		elif ch = "4":
+		elif ch == "4":
 			print("pressed")
 			GPIO.setup(fourBTN,GPIO.HIGH)
 			if lastBTN != "4":
@@ -309,7 +309,7 @@ def enterMessage():
 # 		else:
 # 			GPIO.setup(fourBTN,GPIO.LOW)
 			
-		elif ch = "5":
+		elif ch == "5":
 # 		if keyboard.is_pressed("5"):
 			print("pressed 'a'")
 			GPIO.setup(fiveBTN,GPIO.HIGH)
@@ -334,7 +334,7 @@ def enterMessage():
 # 			GPIO.setup(fiveBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("6"):
-		elif ch = "6":
+		elif ch == "6":
 			print("pressed 'a'")
 			GPIO.setup(sixBTN,GPIO.HIGH)
 			if lastBTN != "6":
@@ -358,7 +358,7 @@ def enterMessage():
 # 			GPIO.setup(sixBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("7"):
-		elif ch = "7":
+		elif ch == "7":
 			print("pressed 'a'")
 			GPIO.setup(sevenBTN,GPIO.HIGH)
 			if lastBTN != "7":
@@ -384,7 +384,7 @@ def enterMessage():
 # 			GPIO.setup(sevenBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("8"):
-		elif ch = "8":
+		elif ch == "8":
 			print("pressed")
 			GPIO.setup(eightBTN,GPIO.HIGH)
 			if lastBTN != "8":
@@ -408,7 +408,7 @@ def enterMessage():
 # 			GPIO.setup(eightBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("9"):
-		elif ch = "9":
+		elif ch == "9":
 			print("pressed")
 			GPIO.setup(nineBTN,GPIO.HIGH)
 			if lastBTN != "9":
@@ -434,7 +434,7 @@ def enterMessage():
 # 			GPIO.setup(nineBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("*"):
-		elif ch = "*":
+		elif ch == "*":
 			print("pressed")
 			GPIO.setup(starBTN,GPIO.HIGH)
 			if lastBTN != "*":
@@ -457,7 +457,7 @@ def enterMessage():
 # 			GPIO.setup(starBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("0"):
-		elif ch = "0":
+		elif ch == "0":
 			print("pressed 'a'")
 			GPIO.setup(zeroBTN,GPIO.HIGH)
 			if lastBTN != "*":
@@ -479,7 +479,7 @@ def enterMessage():
 # 			GPIO.setup(zeroBTN,GPIO.LOW)
 			
 # 		if keyboard.is_pressed("#"):
-		elif ch = "#":
+		elif ch == "#":
 			print("pressed 'a'")
 			GPIO.setup(hashBTN,GPIO.HIGH)
 			if lastBTN != "*":
