@@ -155,7 +155,7 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
-	waitTime = 5 #in seconds
+	waitTime = 2 #in seconds
 	timeUp = False
 	timeLimit = 0
 	lastBTN = ""
@@ -510,7 +510,22 @@ def enterMessage():
 # 			speak("okay")
 # 		ch = ""
 	   
-				   	   
+		GPIO.setup(sendBTN,GPIO.LOW)
+		GPIO.setup(playBTN,GPIO.LOW)
+		GPIO.setup(deleteBTN,GPIO.LOW)
+		GPIO.setup(oneBTN,GPIO.LOW)
+		GPIO.setup(twoBTN,GPIO.LOW)
+		GPIO.setup(threeBTN,GPIO.LOW)
+		GPIO.setup(fourBTN,GPIO.LOW)
+		GPIO.setup(fiveBTN,GPIO.LOW)
+		GPIO.setup(sixBTN,GPIO.LOW)
+		GPIO.setup(sevenBTN,GPIO.LOW)
+		GPIO.setup(eightBTN,GPIO.LOW)
+		GPIO.setup(nineBTN,GPIO.LOW)
+		GPIO.setup(starBTN,GPIO.LOW)
+		GPIO.setup(zeroBTN,GPIO.LOW)
+		GPIO.setup(hashBTN,GPIO.LOW)
+
 		newButton = getchar()
 		newButton = str(newButton)
 				
@@ -671,10 +686,28 @@ def enterMessage():
 				speak(tempChar)
 				print(message + tempChar)
 # 				timeLimit = time.time()
+			elif newButton == "*":
+				if(tempChar == ""):
+					tempChar = "/r"
+				elif(tempChar == "/r"):
+					tempChar = "*"
+				elif(tempChar == "*"):
+					tempChar = "/r"
+				speak(tempChar)
+				print(message + tempChar)
+# 				timeLimit = time.time()
 			elif newButton == "0":
 				if(tempChar == ""):
 					tempChar = " "
 				elif(tempChar == " "):
+					tempChar = "0"
+				elif(tempChar == "0"):
+					tempChar = " "
+				speak(tempChar)
+				print(message + tempChar)
+# 				timeLimit = time.time()
+			elif newButton == "#":
+				if(tempChar == ""):
 					tempChar = "."
 				elif(tempChar == "."):
 					tempChar = "?"
@@ -683,9 +716,11 @@ def enterMessage():
 				elif(tempChar == "!"):
 					tempChar = ","
 				elif(tempChar == ","):
-					tempChar = "0"
-				elif(tempChar == "0"):
-					tempChar = " "
+					tempChar = "-"
+				elif(tempChar == "-"):
+					tempChar = "#"
+				elif(tempChar == "#"):
+					tempChar = "."
 				speak(tempChar)
 				print(message + tempChar)
 # 				timeLimit = time.time()
