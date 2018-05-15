@@ -131,18 +131,77 @@ def checkIfModuleFrozen():
 		print ("response is okay")
 		print (response)
 
+def allOn():
+	GPIO.setup(sendBTN,GPIO.HIGH)
+	GPIO.setup(playBTN,GPIO.HIGH)
+	GPIO.setup(deleteBTN,GPIO.HIGH)
+	GPIO.setup(oneBTN,GPIO.HIGH)
+	GPIO.setup(twoBTN,GPIO.HIGH)
+	GPIO.setup(threeBTN,GPIO.HIGH)
+	GPIO.setup(fourBTN,GPIO.HIGH)
+	GPIO.setup(fiveBTN,GPIO.HIGH)
+	GPIO.setup(sixBTN,GPIO.HIGH)
+	GPIO.setup(sevenBTN,GPIO.HIGH)
+	GPIO.setup(eightBTN,GPIO.HIGH)
+	GPIO.setup(nineBTN,GPIO.HIGH)
+	GPIO.setup(starBTN,GPIO.HIGH)
+	GPIO.setup(zeroBTN,GPIO.HIGH)
+	GPIO.setup(hashBTN,GPIO.HIGH)
+
+def allOff():
+	GPIO.setup(sendBTN,GPIO.LOW)
+	GPIO.setup(playBTN,GPIO.LOW)
+	GPIO.setup(deleteBTN,GPIO.LOW)
+	GPIO.setup(oneBTN,GPIO.LOW)
+	GPIO.setup(twoBTN,GPIO.LOW)
+	GPIO.setup(threeBTN,GPIO.LOW)
+	GPIO.setup(fourBTN,GPIO.LOW)
+	GPIO.setup(fiveBTN,GPIO.LOW)
+	GPIO.setup(sixBTN,GPIO.LOW)
+	GPIO.setup(sevenBTN,GPIO.LOW)
+	GPIO.setup(eightBTN,GPIO.LOW)
+	GPIO.setup(nineBTN,GPIO.LOW)
+	GPIO.setup(starBTN,GPIO.LOW)
+	GPIO.setup(zeroBTN,GPIO.LOW)
+	GPIO.setup(hashBTN,GPIO.LOW)
+
 def enterPhoneNumber():
 	phoneNumber = ""
 	while True:
 		ch = getchar()
 		if ch.strip() == '/':
 			print(phoneNumber)
+			allOff()
 			break
 		else:
 			phoneNumber = phoneNumber + ch
 			print ("numbers typed " , len(phoneNumber))
 			print ('You pressed', ch)
 			speak(ch)
+			if ch == "1":
+				GPIO.setup(oneBTN,GPIO.HIGH)
+			elif ch == "2":
+				GPIO.setup(twoBTN,GPIO.HIGH)
+			elif ch == "3":
+				GPIO.setup(threeBTN,GPIO.HIGH)
+			elif ch == "4":
+				GPIO.setup(fourBTN,GPIO.HIGH)
+			elif ch == "5":
+				GPIO.setup(fiveBTN,GPIO.HIGH)
+			elif ch == "6":
+				GPIO.setup(sixBTN,GPIO.HIGH)
+			elif ch == "7":
+				GPIO.setup(sevenBTN,GPIO.HIGH)
+			elif ch == "8":
+				GPIO.setup(eightBTN,GPIO.HIGH)
+			elif ch == "9":
+				GPIO.setup(nineBTN,GPIO.HIGH)
+			elif ch == "*":
+				GPIO.setup(starBTN,GPIO.HIGH)
+			elif ch == "0":
+				GPIO.setup(zeroBTN,GPIO.HIGH)
+			elif ch == "#":
+				GPIO.setup(hashBTN,GPIO.HIGH)
 	return phoneNumber
 
 def doSomething(message, tempChar):
@@ -158,7 +217,6 @@ def enterMessage():
 	waitTime = 2 #in seconds
 	timeUp = False
 	timeLimit = 0
-	lastBTN = ""
 	while True:
 	   
 		GPIO.setup(sendBTN,GPIO.LOW)
@@ -192,6 +250,7 @@ def enterMessage():
 			message = message + tempChar
 			os.system("espeak sending: '" + message + "' 2>/dev/null")
 			print("sending: " + message)
+			allOff()
 			break
 		elif newButton.strip() == "]":
 			GPIO.setup(deleteBTN,GPIO.HIGH)
@@ -445,6 +504,10 @@ def main():
 # 		else:
 # 			speak("error")
 # 			print (response)
+
+		allOn()
+		time.sleep(2)
+		allOff()
 
 
 	modem.deinit()
