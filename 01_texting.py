@@ -698,14 +698,14 @@ def enterMessage():
 # 			print("time set " + message + tempChar)
 		timeUp = False
 		timeCheck = time.time() + waitTime
-			if timeCheck > timeLimit:
-					print("timeCheck was" + str(timeCheck))
-					print("timelimit was:" + str(timeLimit))
-					timeLimit = 0
-					message = message + tempChar
-					tempChar = ""
-					print(time.time())
-					speak("okay")
+		if timeCheck > timeLimit:
+				print("timeCheck was" + str(timeCheck))
+				print("timelimit was:" + str(timeLimit))
+				timeLimit = 0
+				message = message + tempChar
+				tempChar = ""
+				print(time.time())
+				speak("okay")
 			
 	return message
 
