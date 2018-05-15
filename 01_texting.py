@@ -461,7 +461,7 @@ def enterMessage():
 				tempChar = ","
 			elif(tempChar == ","):
 				tempChar = "-"
-			elif(tempChar == "-"
+			elif(tempChar == "-"):
 				tempChar = "0"
 			elif(tempChar == "0"):
 				tempChar = "."
