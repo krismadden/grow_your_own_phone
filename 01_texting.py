@@ -177,43 +177,57 @@ def enterPhoneNumber():
 			print("sending to: " + phoneNumber)
 			allOff()
 			break
-		elif newButton.strip() == "]":
+		elif ch.strip() == "]":
 			GPIO.setup(deleteBTN,GPIO.HIGH)
 			os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
 			tempChar = ""
 			phoneNumber = phoneNumber[:-1]
 			print(phoneNumber)
-		elif newButton.strip() == "=":
+		elif ch.strip() == "=":
 			GPIO.setup(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			phoneNumber = phoneNumber + ch
-			print (phoneNumber)
+			if ch != "*": 
+				phoneNumber = phoneNumber + ch
+				print (phoneNumber)
+			else: phoneNumber = phoneNumber + 00
+				print (phoneNumber)
 			if ch == "1":
 				GPIO.setup(oneBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "2":
 				GPIO.setup(twoBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "3":
 				GPIO.setup(threeBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "4":
 				GPIO.setup(fourBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "5":
 				GPIO.setup(fiveBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "6":
 				GPIO.setup(sixBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "7":
 				GPIO.setup(sevenBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "8":
 				GPIO.setup(eightBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "9":
 				GPIO.setup(nineBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "*":
 				GPIO.setup(starBTN,GPIO.HIGH)
+				speak("star")
 			elif ch == "0":
 				GPIO.setup(zeroBTN,GPIO.HIGH)
+				speak(ch)
 			elif ch == "#":
 				GPIO.setup(hashBTN,GPIO.HIGH)
-			speak(ch)
+				speak("Hashtag Grow Your Own Phone!")
 	return phoneNumber
 
 def doSomething(message, tempChar):
