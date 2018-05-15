@@ -168,16 +168,27 @@ def allOff():
 def enterPhoneNumber():
 	phoneNumber = ""
 	while True:
+		allOff()
 		ch = getchar()
-		if ch.strip() == '/':
-			print(phoneNumber)
+		
+		if ch.strip() == "[":
+			GPIO.setup(sendBTN,GPIO.HIGH)
+			os.system("espeak sending: '" + phoneNumber + "' 2>/dev/null")
+			print("sending to: " + phoneNumber)
 			allOff()
 			break
+		elif newButton.strip() == "]":
+			GPIO.setup(deleteBTN,GPIO.HIGH)
+			os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
+			tempChar = ""
+			phoneNumber = phoneNumber[:-1]
+			print(phoneNumber)
+		elif newButton.strip() == "=":
+			GPIO.setup(playBTN,GPIO.HIGH)
+			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
 			phoneNumber = phoneNumber + ch
-			print ("numbers typed " , len(phoneNumber))
-			print ('You pressed', ch)
-			speak(ch)
+			print (phoneNumber)
 			if ch == "1":
 				GPIO.setup(oneBTN,GPIO.HIGH)
 			elif ch == "2":
@@ -202,6 +213,7 @@ def enterPhoneNumber():
 				GPIO.setup(zeroBTN,GPIO.HIGH)
 			elif ch == "#":
 				GPIO.setup(hashBTN,GPIO.HIGH)
+			speak(ch)
 	return phoneNumber
 
 def doSomething(message, tempChar):
