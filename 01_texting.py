@@ -516,8 +516,8 @@ def main():
 		checkIfModuleFrozen()
 		while True:
 		 	speak("Enter a french mobile phone number")
-# 			phoneNumber = enterPhoneNumber()
-			phoneNumber = "0637165118"
+			phoneNumber = enterPhoneNumber()
+# 			phoneNumber = "0637165118"
 
 			if len(phoneNumber) < 10:
 				print len(phoneNumber)
