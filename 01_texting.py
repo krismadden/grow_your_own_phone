@@ -231,7 +231,7 @@ def enterPhoneNumber():
 			elif ch == "#":
 				GPIO.setup(hashBTN,GPIO.HIGH)
 				speak("Hashtag Grow Your Own Phone!")
-	return str(phoneNumber)
+	return phoneNumber
 
 def doSomething(message, tempChar):
 	speak(speakChar)
@@ -508,6 +508,8 @@ def main():
 			elif phoneNumber[:2] != "06" or phoneNumber[:2] != "07" or phoneNumber[:5] != "00336" or phoneNumber[:5] != "00337":
 				speak("French mobile numbers begin with either 06 or 07. Try again.")
 				print ("Error. Not French.")
+				print(phoneNumber[:2])
+				print(phoneNumber[:5])
 				continue
 			elif len(phoneNumber) > 13:
 				print len(phoneNumber)
