@@ -467,17 +467,17 @@ def main():
 
 	while True:
 		checkIfModuleFrozen()
-		# while True:
-		#  	speak("Enter a Phone number")
-		# 	phoneNumber = enterPhoneNumber()
+		while True:
+		 	speak("Enter a french mobile phone number")
+			phoneNumber = enterPhoneNumber()
 
-		# 	if len(phoneNumber) > 13 or len(phoneNumber) < 10:
-		# 		print len(phoneNumber)
-		# 		print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
-		# 		continue
-		# 	else:
-		# 		speak("Sending to " + phoneNumber)
-		# 		break
+			if len(phoneNumber) > 13 or len(phoneNumber) < 10:
+				print len(phoneNumber)
+				print "Error. Try entering your number in one of the following formatts::" + "\n" + "0637165118 +33637165118 or 0033637165118"
+				continue
+			else:
+				speak("Sending to " + phoneNumber)
+				break
 
 		phoneNumber = "0637165118"
 
