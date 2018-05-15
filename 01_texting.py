@@ -175,7 +175,7 @@ def enterPhoneNumber():
 			break
 		if ch.strip() == "[":
 			GPIO.setup(sendBTN,GPIO.HIGH)
-			os.system("espeak sending: '" + phoneNumber + "' 2>/dev/null")
+			os.system("espeak 'sending: " + phoneNumber + "' 2>/dev/null")
 			print("sending to: " + phoneNumber)
 			allOff()
 			break
@@ -277,7 +277,7 @@ def enterMessage():
 		if newButton.strip() == "[":
 			GPIO.setup(sendBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak sending: '" + message + "' 2>/dev/null")
+			os.system("espeak 'sending: " + message + "' 2>/dev/null")
 			print("sending: " + message)
 			allOff()
 			break
@@ -498,7 +498,8 @@ def main():
 		checkIfModuleFrozen()
 		while True:
 		 	speak("Enter a french mobile phone number")
-			phoneNumber = enterPhoneNumber()
+# 			phoneNumber = enterPhoneNumber()
+			phoneNumber = "0637165118"
 
 			if len(phoneNumber) < 10:
 				print len(phoneNumber)
@@ -529,7 +530,6 @@ def main():
 				speak("Sending to " + phoneNumber)
 				break
 
-		phoneNumber = "0637165118"
 
 		#message = raw_input("Enter Message::\n")
 		speak("Enter your message")
