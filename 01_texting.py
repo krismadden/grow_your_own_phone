@@ -509,8 +509,16 @@ def enterMessage():
 # 			tempChar = ""
 # 			speak("okay")
 # 		ch = ""
-		
-				   
+
+		timeCheck = time.time() + waitTime
+		if timeCheck < timeLimit:
+				print("timeCheck was" + str(timeCheck))
+				print("timelimit was:" + str(timeLimit))
+				timeLimit = 0
+				message = message + tempChar
+				tempChar = ""
+				print(time.time())
+				speak("okay")		   
 				   	   
 		newButton = getchar()
 		newButton = str(newButton)
@@ -697,15 +705,6 @@ def enterMessage():
 # 			tempChar = ""
 # 			print("time set " + message + tempChar)
 		timeUp = False
-		timeCheck = time.time() + waitTime
-		if timeCheck < timeLimit:
-				print("timeCheck was" + str(timeCheck))
-				print("timelimit was:" + str(timeLimit))
-				timeLimit = 0
-				message = message + tempChar
-				tempChar = ""
-				print(time.time())
-				speak("okay")
 			
 	return message
 
