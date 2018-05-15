@@ -187,7 +187,7 @@ def enterPhoneNumber():
 			GPIO.setup(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			if ch != "*" or "#": 
+			if ch != "*" or "#" or "*": 
 				phoneNumber = phoneNumber + ch
 				print (phoneNumber)
 			else: 
@@ -222,7 +222,7 @@ def enterPhoneNumber():
 				speak(ch)
 			elif ch == "*":
 				GPIO.setup(starBTN,GPIO.HIGH)
-				speak("star")
+				speak("You're a star.")
 			elif ch == "0":
 				GPIO.setup(zeroBTN,GPIO.HIGH)
 				speak(ch)
