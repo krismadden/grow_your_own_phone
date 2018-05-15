@@ -155,7 +155,7 @@ def enterMessage():
 	tempChar = ""
 	oldButton = ""
 	message = ""
-	waitTime = 2 #in seconds
+	waitTime = 5 #in seconds
 	timeUp = False
 	timeLimit = 0
 	lastBTN = ""
