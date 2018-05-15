@@ -11,17 +11,17 @@ sendBTN = 18
 playBTN = 23
 deleteBTN = 24
 oneBTN = 25
-twoBTN = 8
-threeBTN = 7
-fourBTN = 12
-fiveBTN = 16
-sixBTN = 20
-sevenBTN = 2
-eightBTN = 3
-nineBTN = 4
-starBTN = 17
-zeroBTN = 27
-hashBTN = 22
+twoBTN = 12
+threeBTN = 16
+fourBTN = 20
+fiveBTN = 4
+sixBTN = 17
+sevenBTN = 27
+eightBTN = 22
+nineBTN = 5
+starBTN = 6
+zeroBTN = 13
+hashBTN = 19
 
 GPIO.setup(sendBTN,GPIO.OUT)
 GPIO.setup(playBTN,GPIO.OUT)
@@ -228,11 +228,14 @@ def enterPhoneNumber():
 			allOff()
 			break
 		elif ch.strip() == "]":
-			GPIO.output(deleteBTN,GPIO.HIGH)
-			os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
-			tempChar = ""
-			phoneNumber = phoneNumber[:-1]
-			print(phoneNumber)
+			if len(phoneNumber) > 0:
+				GPIO.output(deleteBTN,GPIO.HIGH)
+				os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
+				tempChar = ""
+				phoneNumber = phoneNumber[:-1]
+				print(phoneNumber)
+			else:
+				speak("blank number")
 		elif ch.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
@@ -316,11 +319,14 @@ def enterMessage():
 			allOff()
 			break
 		elif newButton.strip() == "]":
-			GPIO.output(deleteBTN,GPIO.HIGH)
-			message = message + tempChar
-			os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
-			tempChar = ""
-			message = message[:-1]
+			if len(message) > 0:
+				GPIO.output(deleteBTN,GPIO.HIGH)
+				message = message + tempChar
+				os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
+				tempChar = ""
+				message = message[:-1]
+			else:
+				speak("blank message")
 			print("new message " + message)
 		elif newButton.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
