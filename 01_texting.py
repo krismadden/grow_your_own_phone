@@ -511,8 +511,7 @@ def enterMessage():
 # 		ch = ""
 		
 				   
-				   
-			original	   
+				   	   
 		newButton = getchar()
 		newButton = str(newButton)
 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
