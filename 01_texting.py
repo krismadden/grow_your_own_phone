@@ -132,21 +132,70 @@ def checkIfModuleFrozen():
 		print (response)
 
 def allOn():
-	GPIO.output(sendBTN,GPIO.HIGH)
-	GPIO.output(playBTN,GPIO.HIGH)
-	GPIO.output(deleteBTN,GPIO.HIGH)
-	GPIO.output(oneBTN,GPIO.HIGH)
-	GPIO.output(twoBTN,GPIO.HIGH)
-	GPIO.output(threeBTN,GPIO.HIGH)
-	GPIO.output(fourBTN,GPIO.HIGH)
-	GPIO.output(fiveBTN,GPIO.HIGH)
-	GPIO.output(sixBTN,GPIO.HIGH)
-	GPIO.output(sevenBTN,GPIO.HIGH)
-	GPIO.output(eightBTN,GPIO.HIGH)
-	GPIO.output(nineBTN,GPIO.HIGH)
-	GPIO.output(starBTN,GPIO.HIGH)
-	GPIO.output(zeroBTN,GPIO.HIGH)
-	GPIO.output(hashBTN,GPIO.HIGH)
+	ledOnFor = 0.2
+	allOff()
+	
+	for x in xrange(3):
+		GPIO.output(sendBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(sendBTN,GPIO.LOW)
+
+		GPIO.output(sendBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(playBTN,GPIO.LOW)
+
+		GPIO.output(deleteBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(deleteBTN,GPIO.LOW)
+
+		GPIO.output(oneBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(oneBTN,GPIO.LOW)
+
+		GPIO.output(twoBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(twoBTN,GPIO.LOW)
+
+		GPIO.output(threeBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(threeBTN,GPIO.LOW)
+
+		GPIO.output(fourBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(fourBTN,GPIO.LOW)
+
+		GPIO.output(fiveBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(fiveBTN,GPIO.LOW)
+
+		GPIO.output(sixBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(sixBTN,GPIO.LOW)
+
+		GPIO.output(sevenBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(sevenBTN,GPIO.LOW)
+
+		GPIO.output(eightBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(eightBTN,GPIO.LOW)
+
+		GPIO.output(nineBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(nineBTN,GPIO.LOW)
+
+		GPIO.output(starBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(starBTN,GPIO.LOW)
+
+		GPIO.output(zeroBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(zeroBTN,GPIO.LOW)
+
+		GPIO.output(hashBTN,GPIO.HIGH)
+		time.sleep(ledOnFor)
+		GPIO.output(hashBTN,GPIO.LOW)
+	
 
 def allOff():
 	GPIO.output(sendBTN,GPIO.LOW)
@@ -525,7 +574,6 @@ def main():
 # 			print (response)
 
 		allOn()
-		time.sleep(2)
 		allOff()
 
 
