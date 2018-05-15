@@ -514,6 +514,12 @@ def enterMessage():
 				   	   
 		newButton = getchar()
 		newButton = str(newButton)
+		if (time.time() + waitTime) > timeLimit:
+				timeLimit = 0
+				message = message + tempChar
+				tempChar = ""
+				speak("okay")
+				
 # 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
 # 				message = message + tempChar
 # # 				os.system("espeak '" + message + "' 2>/dev/null")
@@ -690,11 +696,6 @@ def enterMessage():
 				print(message + tempChar)
 				timeLimit = time.time()
 			oldButton = newButton
-			if (time.time() + waitTime) > timeLimit:
-				timeLimit = 0
-				message = message + tempChar
-				tempChar = ""
-				speak("okay")
 			
 # 		if tempChar != "" and time.time() >= timeLimit:
 # 			message = message + tempChar
