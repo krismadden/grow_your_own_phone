@@ -160,7 +160,7 @@ def enterMessage():
 	message = ""
 	waitTime = 1 #in seconds
 	timeUp = False
-	timelimit = 0
+	timeLimit = 0
 	while True:
 		lastBTN = ""
 		
