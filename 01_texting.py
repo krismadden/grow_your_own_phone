@@ -505,7 +505,7 @@ def main():
 				speak("Phone number too short. Try again.")
 				print ("Error. Too Short")
 				continue
-			elif len(phoneNumber) == 10 and (phoneNumber[:2] != "06" or phoneNumber[:2] != "07"):
+			elif len(phoneNumber) == 10 and (str(phoneNumber[:2]) != "06" or phoneNumber[:2] != "07"):
 				speak("French mobile numbers begin with either 06 or 07. Try again.")
 				print ("Error. Not French.")
 				print(phoneNumber[:2])
