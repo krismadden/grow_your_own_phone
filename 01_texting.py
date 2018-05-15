@@ -190,7 +190,8 @@ def enterPhoneNumber():
 			if ch != "*": 
 				phoneNumber = phoneNumber + ch
 				print (phoneNumber)
-			else: phoneNumber = phoneNumber + 00
+			else: 
+				phoneNumber = phoneNumber + 00
 				print (phoneNumber)
 			if ch == "1":
 				GPIO.setup(oneBTN,GPIO.HIGH)
