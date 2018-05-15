@@ -2,6 +2,7 @@ from m590_setup import m590
 import time
 import os
 import RPi.GPIO as GPIO
+import keyboard
 
 #not sure if i need this... if so add the file to github
 #from pygame_functions import *
