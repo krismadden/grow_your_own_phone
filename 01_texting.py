@@ -231,7 +231,7 @@ def enterPhoneNumber():
 			elif ch == "#":
 				GPIO.setup(hashBTN,GPIO.HIGH)
 				speak("Hashtag Grow Your Own Phone!")
-	return phoneNumber
+	return str(phoneNumber)
 
 def doSomething(message, tempChar):
 	speak(speakChar)
