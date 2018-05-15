@@ -157,7 +157,7 @@ def enterMessage():
 					tempChar = "1"
 				print(message + tempChar)
 			elif newButton == "2":
-				GPIO.output(18,GPIO.HIGH)
+				GPIO.output(23,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "a"
 				elif(tempChar == "a"):
@@ -170,7 +170,7 @@ def enterMessage():
 					tempChar = "a"
 				print(message + tempChar)
 			elif newButton == "3":
-				GPIO.output(18,GPIO.LOW)
+				GPIO.output(23,GPIO.LOW)
 				if(tempChar == ""):
 					tempChar = "d"
 				elif(tempChar == "d"):
