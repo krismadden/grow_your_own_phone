@@ -161,8 +161,8 @@ def enterMessage():
 	waitTime = 1 #in seconds
 	timeUp = False
 	timeLimit = 0
+	lastBTN = ""
 	while True:
-		lastBTN = ""
 		
 		if keyboard.is_pressed("["):
 			print("pressed")
