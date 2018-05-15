@@ -159,7 +159,7 @@ def enterMessage():
 	timeUp = False
 	timeLimit = 0
 	lastBTN = ""
-# 	while True:
+	while True:
 # 		ch = getchar()
 		
 # 		GPIO.setup(sendBTN,GPIO.LOW)
