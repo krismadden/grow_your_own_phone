@@ -170,7 +170,7 @@ def main():
 				response3 = response2
 				response2 = response1
 				response1 = response
-				print("response1: " + response1)
+				print("response1: " + str(response1))
 				if (len(response1) > 1 and response1[1] == "RING\r\n") or (len(response2) > 1 and response2[1] == "RING\r\n") or (len(response3) > 1 and response3[1] == "RING\r\n") or (len(response4) > 1 and response4[1] == "RING\r\n") or (len(response5) > 1 and response5[1] == "RING\r\n") or (len(response6) > 1 and response6[1] == "RING\r\n") or (len(response7) > 1 and response7[1] == "RING\r\n") or (len(response8) > 1 and response8[1] == "RING\r\n") or (len(response9) > 1 and response9[1] == "RING\r\n") or (len(response10) > 1 and response10[1] == "RING\r\n"):
 					vibrate()
 				else:
