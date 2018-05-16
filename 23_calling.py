@@ -129,6 +129,7 @@ def main():
 				incomingCall = False
 				ringing = False
 			while response[1] == "RING\r\n":
+				vibrate()
 				ringing = True #changed monday morning
 				if not GPIO.input(pad1):
 					m590.ser.write("ata\r")
