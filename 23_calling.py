@@ -17,14 +17,25 @@ pad3 = 20
 GPIO.setup(pad1, GPIO.IN)
 GPIO.setup(pad3, GPIO.IN)
 
-# pad1alreadyPressed = False
-# pad3alreadyPressed = False
-
 GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
 
+ControlPin = [7,11,13,15]
+
+for pin in ControlPin:
+	GPIO.setup(pin,GPIO.OUT)
+	GPIO.output(pin,0)
+	
+seq = [[1,0,0,0],
+       [1,1,0,0],
+       [0,1,0,0],
+       [0,1,1,0],
+       [0,0,1,0],
+       [0,0,1,1],
+       [0,0,0,1],
+       [1,0,0,1]]
 
 
 phoneNumber = "0637165118"
@@ -37,6 +48,14 @@ phoneNumber = "0637165118"
 def speak(str):
 	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
+
+def vibrate():
+	for i in range(512):
+		for halfstep in range(8):
+			for pin in range(4):
+				GPIO.output(ControlPin[pin], seq[halfstep][pin])
+			time.sleep(0.001)
+	GPIO.cleanup()
 
 
 def setUpPin():
@@ -105,7 +124,7 @@ def main():
 	incomingCall = False
 	runProgram = True
 	
-	
+	vibrate()
 	
 	while runProgram:
 # 		if keyboard.is_pressed('space'):
