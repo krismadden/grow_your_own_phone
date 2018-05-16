@@ -113,6 +113,17 @@ def main():
 	outgoingCall = False
 	incomingCall = False
 	runProgram = True
+	
+	response1 = ""
+	response2 = ""
+	response3 = ""
+	response4 = ""
+	response5 = ""
+	response6 = ""
+	response7 = ""
+	response8 = ""
+	response9 = ""
+	response10 = ""
 
 	
 	while runProgram:
@@ -123,16 +134,6 @@ def main():
 		print (response)
 		ringing = False #added monday morning
 		
-		response1 = ""
-		response2 = ""
-		response3 = ""
-		response4 = ""
-		response5 = ""
-		response6 = ""
-		response7 = ""
-		response8 = ""
-		response9 = ""
-		response10 = ""
 		
 		if len(response) > 1:
 			if response[1] == "NO CARRIER\r\n":
