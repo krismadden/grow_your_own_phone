@@ -22,7 +22,7 @@ GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
 
-ControlPin = [7,11,13,15]
+ControlPin = [6,13,19,26]
 
 for pin in ControlPin:
 	GPIO.setup(pin,GPIO.OUT)
