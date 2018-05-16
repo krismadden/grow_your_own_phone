@@ -26,7 +26,7 @@ GPIO.output(18,GPIO.LOW)
 
 GPIO.setup(26,GPIO.OUT)
 p = GPIO.PWM(26,50)
-
+p.start(7.5)
 
 
 phoneNumber = "0637165118"
@@ -41,10 +41,7 @@ def speak(str):
 #end of definintion od speak function for text to speach
 
 def vibrate():
-	p.start(7.5)
-	time.sleep(0.5)
-	p.stop(7.5)
-
+	
 
 def setUpPin():
 	response = ""
