@@ -22,9 +22,11 @@ GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
 
 
-ControlPin = [6,13,19,26]
+
 
 GPIO.setup(7,GPIO.OUT)
+p = GPIO.PWM(7,50)
+p.start(7.5)
 
 
 phoneNumber = "0637165118"
