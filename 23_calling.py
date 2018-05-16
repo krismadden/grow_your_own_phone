@@ -152,9 +152,9 @@ def main():
 				response = m590.ser.readlines() #changed monday morning
 				print (response)
 				if len(response) > 1:
-					response[1] == "RING\r\n":
+					if response[1] == "RING\r\n":
 						vibrate()
-					if response[1] != "RING\r\n":
+					else:
 						ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			print ("placing call")
