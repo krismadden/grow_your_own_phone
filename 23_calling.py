@@ -152,7 +152,7 @@ def main():
 				response = m590.ser.readlines() #changed monday morning
 				print (response)
 				if len(response) > 1:
-					if response[1] == "RING\r\n" and len(response) > 0:
+					if response[1] == "RING\r\n" and len(response) <= 0:
 						print len(response)
 						vibrate()
 					else:
