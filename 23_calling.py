@@ -11,8 +11,8 @@ import keyboard
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-pad1 = 27
-pad3 = 24
+pad1 = 21
+pad3 = 20
 
 GPIO.setup(pad1, GPIO.IN)
 GPIO.setup(pad3, GPIO.IN)
