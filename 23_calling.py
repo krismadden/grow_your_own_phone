@@ -141,6 +141,7 @@ def main():
 				incomingCall = False
 				ringing = False
 			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
+				response = m590.ser.readlines() #changed monday morning
 				ringing = True #changed monday morning
 				if not GPIO.input(pad1):
 					m590.ser.write("ata\r")
@@ -160,7 +161,6 @@ def main():
 					incomingCall = False
 					ringing = False #added monday morning
 					break
-				response = m590.ser.readlines() #changed monday morning
 				response10 = response9
 				response9 = response8
 				response8 = response7
