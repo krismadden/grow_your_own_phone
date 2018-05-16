@@ -24,18 +24,7 @@ GPIO.output(18,GPIO.LOW)
 
 ControlPin = [6,13,19,26]
 
-for pin in ControlPin:
-	GPIO.setup(pin,GPIO.OUT)
-	GPIO.output(pin,0)
-	
-seq = [[1,0,0,0],
-       [1,1,0,0],
-       [0,1,0,0],
-       [0,1,1,0],
-       [0,0,1,0],
-       [0,0,1,1],
-       [0,0,0,1],
-       [1,0,0,1]]
+GPIO.setup(7,GPIO.OUT)
 
 
 phoneNumber = "0637165118"
@@ -50,12 +39,9 @@ def speak(str):
 #end of definintion od speak function for text to speach
 
 def vibrate():
-	for i in range(512):
-		for halfstep in range(8):
-			for pin in range(4):
-				GPIO.output(ControlPin[pin], seq[halfstep][pin])
-			time.sleep(0.001)
-	GPIO.cleanup()
+	GPIO.output(7,1)
+	time.sleep(0.0015)
+	GPIO.output(7,0)
 
 
 def setUpPin():
