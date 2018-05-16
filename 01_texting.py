@@ -240,7 +240,7 @@ def enterPhoneNumber():
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			if ch != "*" or "#" or "*": 
+			if ch != "*" or ch != "#": 
 				phoneNumber = phoneNumber + ch
 				print (phoneNumber)
 			else: 
@@ -481,11 +481,13 @@ def enterMessage():
 				GPIO.output(zeroBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = " "
+					speak("space")
 				elif(tempChar == " "):
 					tempChar = "0"
+					speak(tempChar)
 				elif(tempChar == "0"):
 					tempChar = " "
-				speak(tempChar)
+					speak("space")
 				print(message + tempChar)
 			elif newButton == "#":
 				GPIO.output(hashBTN,GPIO.HIGH)
