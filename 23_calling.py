@@ -41,7 +41,7 @@ def speak(str):
 #end of definintion od speak function for text to speach
 
 def vibrate():
-	
+	print("vibrate")
 
 def setUpPin():
 	response = ""
