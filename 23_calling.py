@@ -42,6 +42,9 @@ def speak(str):
 
 def vibrate():
 	print("vibrate")
+	p.start(7.5)
+	time.sleep(10)
+	p.stop
 
 def setUpPin():
 	response = ""
