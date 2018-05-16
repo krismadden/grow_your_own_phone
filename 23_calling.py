@@ -123,13 +123,23 @@ def main():
 		print (response)
 		ringing = False #added monday morning
 		
+		response1 = ""
+		response2 = ""
+		response3 = ""
+		response4 = ""
+		response5 = ""
+		response6 = ""
+		response7 = ""
+		response8 = ""
+		response9 = ""
+		response10 = ""
+		
 		if len(response) > 1:
 			if response[1] == "NO CARRIER\r\n":
 				outgoingCall = False
 				incomingCall = False
 				ringing = False
 			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
-				vibrate()
 				ringing = True #changed monday morning
 				if not GPIO.input(pad1):
 					m590.ser.write("ata\r")
@@ -150,15 +160,20 @@ def main():
 					ringing = False #added monday morning
 					break
 				response = m590.ser.readlines() #changed monday morning
-				print (response)
-				if len(response) == 0:
-					ringing = False
-				if len(response) > 1:
-					if response[1] == "RING\r\n" and len(response) <= 0:
-						print len(response)
-						vibrate()
-					else:
-						ringing = False #added monday morning
+				response10 = response9
+				response9 = response8
+				response8 = response7
+				response7 = response6
+				response6 = response5
+				response5 = response4
+				response4 = response3
+				response3 = response2
+				response2 = response1
+				response1 = response
+				if (len(response1) > 1 and response1[1] == "RING\r\n") or (len(response2) > 1 and response2[1] == "RING\r\n") or (len(response3) > 1 and response3[1] == "RING\r\n") or (len(response4) > 1 and response4[1] == "RING\r\n") or (len(response5) > 1 and response5[1] == "RING\r\n") or (len(response6) > 1 and response6[1] == "RING\r\n") or (len(response7) > 1 and response7[1] == "RING\r\n") or (len(response8) > 1 and response8[1] == "RING\r\n") or (len(response9) > 1 and response9[1] == "RING\r\n") or (len(response10) > 1 and response10[1] == "RING\r\n"):
+					vibrate()
+				else:
+					ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
