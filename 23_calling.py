@@ -128,7 +128,7 @@ def main():
 				outgoingCall = False
 				incomingCall = False
 				ringing = False
-			while ringing == True or response[1] == "RING\r\n":
+			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
 				vibrate()
 				ringing = True #changed monday morning
 				if not GPIO.input(pad1):
