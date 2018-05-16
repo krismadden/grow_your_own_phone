@@ -3,7 +3,7 @@ import sys
 import time
 import os
 import RPi.GPIO as GPIO
-import keyboard
+# import keyboard
 
 
 
@@ -108,8 +108,8 @@ def main():
 	
 	
 	while runProgram:
-		if keyboard.is_pressed('space'):
-			runProgram = False
+# 		if keyboard.is_pressed('space'):
+# 			runProgram = False
 		#response = m590.ser.readlines(2) #changed monday morning
 		response = m590.ser.readlines()
 		print (response)
@@ -153,8 +153,8 @@ def main():
 				print ("hanging up - THIS END")
 				outgoingCall = False
 				incomingCall = False
-			elif keyboard.is_pressed('space'):
-				runProgram = False
+# 			elif keyboard.is_pressed('space'):
+# 				runProgram = False
 				
 			response = m590.ser.readlines() #changed monday morning
 			
