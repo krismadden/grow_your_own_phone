@@ -24,8 +24,8 @@ GPIO.output(18,GPIO.LOW)
 
 
 
-GPIO.setup(7,GPIO.OUT)
-p = GPIO.PWM(7,50)
+GPIO.setup(26,GPIO.OUT)
+p = GPIO.PWM(26,50)
 p.start(7.5)
 
 
