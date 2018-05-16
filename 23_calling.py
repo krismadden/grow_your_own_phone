@@ -137,6 +137,7 @@ def main():
 					print(response)
 					print ("picking up call")
 					incomingCall = True
+					ringing = False #added monday morning
 					break
 				elif not GPIO.input(pad3):
 					m590.ser.write("ata\r")
@@ -146,8 +147,11 @@ def main():
 					print(response)
 					print ("Rejecting Call - THIS END")
 					incomingCall = False
+					ringing = False #added monday morning
 					break
-				ringing = False #added monday morning
+				response = m590.ser.readlines() #changed monday morning
+				if response[1] != "RING\r\n":
+					ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
