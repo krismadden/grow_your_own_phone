@@ -151,6 +151,8 @@ def main():
 					break
 				response = m590.ser.readlines() #changed monday morning
 				print (response)
+				if len(response) == 0:
+					ringing = False
 				if len(response) > 1:
 					if response[1] == "RING\r\n" and len(response) <= 0:
 						print len(response)
