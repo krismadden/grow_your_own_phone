@@ -116,6 +116,7 @@ def checkIfModuleFrozen():
 def main():
 	modem = m590()
 	modem.init()
+	vibrate()
 	
 	checkIfModuleFrozen()
 	setUpPin()
@@ -123,8 +124,7 @@ def main():
 	outgoingCall = False
 	incomingCall = False
 	runProgram = True
-	
-	vibrate()
+
 	
 	while runProgram:
 # 		if keyboard.is_pressed('space'):
