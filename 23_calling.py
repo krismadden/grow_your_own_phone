@@ -17,8 +17,8 @@ pad3 = 24
 GPIO.setup(pad1, GPIO.IN)
 GPIO.setup(pad3, GPIO.IN)
 
-pad1alreadyPressed = False
-pad3alreadyPressed = False
+# pad1alreadyPressed = False
+# pad3alreadyPressed = False
 
 GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
@@ -122,14 +122,14 @@ def main():
 				ringing = False
 			while response[1] == "RING\r\n":
 				ringing = True #changed monday morning
-				if keyboard.is_pressed('1'):
+				if pad1pressed:
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
 					print ("picking up call")
 					incomingCall = True
 					break
-				elif keyboard.is_pressed('0'):
+				elif pad3pressed:
 					m590.ser.write("ata\r")
 					time.sleep(0.5)
 					m590.ser.write("ath\r")
@@ -139,14 +139,14 @@ def main():
 					incomingCall = False
 					break
 				ringing = False #added monday morning
-		if keyboard.is_pressed('1') and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
+		if pad1pressed and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines() #changed monday morning
 			print (response)
 			outgoingCall = True
 		while outgoingCall == True or incomingCall == True:
-			if keyboard.is_pressed('0'):
+			if pad3pressed:
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines() #changed monday morning
 				print(response)
