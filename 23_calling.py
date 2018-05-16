@@ -150,7 +150,7 @@ def main():
 					ringing = False #added monday morning
 					break
 				response = m590.ser.readlines() #changed monday morning
-				if response > 1:
+				if len(response) > 1:
 					if response[1] != "RING\r\n":
 						ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
