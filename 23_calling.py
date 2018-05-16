@@ -178,9 +178,9 @@ def main():
 				print("response5: " + str(response5))
 				print("response6: " + str(response6))
 				print("response7: " + str(response7))
+				vibrate()
 				if (len(response1) > 1 and response1[1] == "RING\r\n") or (len(response2) > 1 and response2[1] == "RING\r\n") or (len(response3) > 1 and response3[1] == "RING\r\n") or (len(response4) > 1 and response4[1] == "RING\r\n") or (len(response5) > 1 and response5[1] == "RING\r\n") or (len(response6) > 1 and response6[1] == "RING\r\n") or (len(response7) > 1 and response7[1] == "RING\r\n") or (len(response8) > 1 and response8[1] == "RING\r\n") or (len(response9) > 1 and response9[1] == "RING\r\n") or (len(response10) > 1 and response10[1] == "RING\r\n"):
-					print("vibrate")
-					vibrate()
+					ringing = True
 				else:
 					ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
