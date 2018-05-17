@@ -153,7 +153,7 @@ def main():
 			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
 				response = m590.ser.readlines() #changed monday morning
 				ringing = True #changed monday morning
-				if keyboard.is_pressed('1'):
+				if keyboard.is_pressed('9'):
 					GPIO.output(sendBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines() #changed monday morning
@@ -165,7 +165,7 @@ def main():
 					time.sleep(0.5)
 					GPIO.output(sendBTN,GPIO.LOW)
 					break
-				elif keyboard.is_pressed('0'):
+				elif keyboard.is_pressed('8'):
 					GPIO.output(endBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					time.sleep(0.5)
@@ -201,7 +201,7 @@ def main():
 					ringing = True
 				else:
 					ringing = False #added monday morning
-		if keyboard.is_pressed('1') and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
+		if keyboard.is_pressed('9') and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			GPIO.output(sendBTN,GPIO.HIGH)
 			print ("placing call")
 			speak("calling")
@@ -212,7 +212,7 @@ def main():
 			time.sleep(0.5)
 			GPIO.output(sendBTN,GPIO.LOW)
 		while outgoingCall == True or incomingCall == True:
-			if keyboard.is_pressed('0')::
+			if keyboard.is_pressed('8')::
 				GPIO.output(endBTN,GPIO.HIGH)
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines() #changed monday morning
