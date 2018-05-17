@@ -159,6 +159,7 @@ def main():
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
 					print ("picking up call")
+					speak("answering call")
 					incomingCall = True
 					ringing = False #added monday morning
 					time.sleep(0.5)
@@ -172,6 +173,7 @@ def main():
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
 					print ("Rejecting Call - THIS END")
+					speak("rejecting call")
 					incomingCall = False
 					ringing = False #added monday morning
 					time.sleep(0.5)
@@ -202,6 +204,7 @@ def main():
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			GPIO.output(sendBTN,GPIO.HIGH)
 			print ("placing call")
+			speak("calling")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines() #changed monday morning
 			print (response)
@@ -215,6 +218,7 @@ def main():
 				response = m590.ser.readlines() #changed monday morning
 				print(response)
 				print ("hanging up - THIS END")
+				speak("hanging up")
 				outgoingCall = False
 				incomingCall = False
 				time.sleep(0.5)
@@ -230,6 +234,7 @@ def main():
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
 					print ("hanging up - OTHER END")
+					speak("Hanging up")
 					outgoingCall = False
 					incomingCall = False
 				#is this needed?????????????????????????????????????????????????????????????????????	
@@ -238,6 +243,7 @@ def main():
 					response = m590.ser.read(None)
 					print(response)
 					print ("hanging up - OTHER END")
+					speak("Hanging up")
 					outgoingCall = False
 					incomingCall = False
 
