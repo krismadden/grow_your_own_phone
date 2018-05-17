@@ -273,13 +273,13 @@ def enterPhoneNumber():
 			elif ch == "9":
 				GPIO.output(nineBTN,GPIO.HIGH)
 				speak(ch)
-			elif ch == "*":
+			elif ch == "s":
 				GPIO.output(starBTN,GPIO.HIGH)
 				speak("You're a star.")
 			elif ch == "0":
 				GPIO.output(zeroBTN,GPIO.HIGH)
 				speak(ch)
-			elif ch == "#":
+			elif ch == "h":
 				GPIO.output(hashBTN,GPIO.HIGH)
 				speak("Hashtag Grow Your Own Phone!")
 	return phoneNumber
@@ -467,7 +467,7 @@ def enterMessage():
 					tempChar = "w"
 				speak(tempChar)
 				print(message + tempChar)
-			elif newButton == "*":
+			elif newButton == "s":
 				GPIO.output(starBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "/r"
@@ -489,7 +489,7 @@ def enterMessage():
 					tempChar = " "
 					speak("space")
 				print(message + tempChar)
-			elif newButton == "#":
+			elif newButton == "h":
 				GPIO.output(hashBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "."
