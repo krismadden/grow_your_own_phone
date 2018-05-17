@@ -11,6 +11,15 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+sendBTN = 13
+endBTN = 19
+
+GPIO.setup(sendBTN,GPIO.OUT)
+GPIO.setup(endBTN,GPIO.OUT)
+
+GPIO.output(sendBTN,GPIO.LOW)
+GPIO.output(endBTN,GPIO.LOW)
+
 pad1 = 21
 pad3 = 20
 
@@ -20,6 +29,7 @@ GPIO.setup(pad3, GPIO.IN)
 GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
 #end setup for LEDs#
+
 
 
 
@@ -144,14 +154,18 @@ def main():
 				response = m590.ser.readlines() #changed monday morning
 				ringing = True #changed monday morning
 				if not GPIO.input(pad1):
+					GPIO.output(sendBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines() #changed monday morning
 					print(response)
 					print ("picking up call")
 					incomingCall = True
 					ringing = False #added monday morning
+					time.sleep(0.5)
+					GPIO.output(sendBTN,GPIO.LOW)
 					break
 				elif not GPIO.input(pad3):
+					GPIO.output(endBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					time.sleep(0.5)
 					m590.ser.write("ath\r")
@@ -160,6 +174,8 @@ def main():
 					print ("Rejecting Call - THIS END")
 					incomingCall = False
 					ringing = False #added monday morning
+					time.sleep(0.5)
+					GPIO.output(endBTN,GPIO.LOW)
 					break
 				response10 = response9
 				response9 = response8
@@ -184,19 +200,25 @@ def main():
 				else:
 					ringing = False #added monday morning
 		if not GPIO.input(pad1) and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
+			GPIO.output(sendBTN,GPIO.HIGH)
 			print ("placing call")
 			m590.ser.write("atd" + phoneNumber +";\r")
 			response = m590.ser.readlines() #changed monday morning
 			print (response)
 			outgoingCall = True
+			time.sleep(0.5)
+			GPIO.output(sendBTN,GPIO.LOW)
 		while outgoingCall == True or incomingCall == True:
 			if not GPIO.input(pad3):
+				GPIO.output(endBTN,GPIO.HIGH)
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines() #changed monday morning
 				print(response)
 				print ("hanging up - THIS END")
 				outgoingCall = False
 				incomingCall = False
+				time.sleep(0.5)
+				GPIO.output(endBTN,GPIO.LOW)
 # 			elif keyboard.is_pressed('space'):
 # 				runProgram = False
 				
