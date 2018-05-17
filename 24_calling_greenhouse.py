@@ -212,7 +212,7 @@ def main():
 			time.sleep(0.5)
 			GPIO.output(sendBTN,GPIO.LOW)
 		while outgoingCall == True or incomingCall == True:
-			if keyboard.is_pressed('8')::
+			if keyboard.is_pressed('8'):
 				GPIO.output(endBTN,GPIO.HIGH)
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines() #changed monday morning
