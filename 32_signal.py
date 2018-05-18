@@ -62,7 +62,7 @@ def main():
 					strength = signal[6:8]
 				else:
 					strength = 0
-		if int(strength) > 19:
+		if int(strength) > 100:
 			GPIO.output(bar1,GPIO.HIGH)
 			GPIO.output(bar2,GPIO.HIGH)
 			GPIO.output(bar3,GPIO.HIGH)
