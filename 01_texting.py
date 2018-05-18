@@ -240,7 +240,7 @@ def enterPhoneNumber():
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			if ch != "*" or ch != "#": 
+			if ch != "s" or ch != "h": 
 				phoneNumber = phoneNumber + ch
 				print (phoneNumber)
 			else: 
