@@ -55,11 +55,11 @@ def main():
 		if len(response) > 1:
 			signal = response[1]
 			#+CSQ:18,99
-			if len(signal) > 6:
-				if signal[6] == ",":
-					strength = signal[5]
-				elif signal[7] == ",":
-					strength = signal[5:7]
+			if len(signal) > 7:
+				if signal[7] == ",":
+					strength = signal[6]
+				elif signal[8] == ",":
+					strength = signal[6:8]
 				else:
 					strength = 0
 		if strength > bar3max:
