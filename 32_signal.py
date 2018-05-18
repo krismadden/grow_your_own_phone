@@ -11,7 +11,7 @@ GPIO.setwarnings(False)
 #left bottom pins near power usb mini after ground
 bar1 = 6
 bar2 = 13
-bar3 = 19
+bar3 = 5
 bar4 = 26
 
 GPIO.setup(bar1,GPIO.OUT)
