@@ -37,8 +37,10 @@ ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
 	ser.write("AT+IPR=9600/r")
+	time.sleep(0.1)
 	response = ser.readlines(None)
 	print(response)
+	time.sleep(1)
 	checkSignalStrength = True
 	
 	print("checking signal strength")
