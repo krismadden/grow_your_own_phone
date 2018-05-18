@@ -55,12 +55,13 @@ def main():
 		if len(response) > 1:
 			signal = response[1]
 			#+CSQ:18,99
-			if signal[6] == ",":
-				strength = signal[5]
-			elif signal[7] == ",":
-				strength = signal[5:7]
-			else:
-				strength = 0
+			if len(signal) > 6:
+				if signal[6] == ",":
+					strength = signal[5]
+				elif signal[7] == ",":
+					strength = signal[5:7]
+				else:
+					strength = 0
 		if strength > bar3max:
 			GPIO.output(bar1,GPIO.HIGH)
 			GPIO.output(bar2,GPIO.HIGH)
