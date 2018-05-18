@@ -33,10 +33,12 @@ bar3max = 12
 
 
 
-ser = serial.Serial("/dev/ttyAMA0", 12800, timeout=0.5)
+ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
-	
+	ser.write("AT+IPR=9600/r")
+	response = ser.readlines(None)
+	print(response)
 	checkSignalStrength = True
 	
 	print("checking signal strength")
