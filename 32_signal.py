@@ -33,7 +33,7 @@ bar3max = 12
 
 
 
-ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
+ser = serial.Serial("/dev/ttyAMA0", 12800, timeout=0.5)
 
 def main():
 	
