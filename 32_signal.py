@@ -9,22 +9,26 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #left bottom pins near power usb mini after ground
-1bar = 6
-2bar = 13
-3bar = 19
-4bar = 26
+bar1 = 6
+bar2 = 13
+bar3 = 19
+bar4 = 26
 
-GPIO.setup(1bar,GPIO.OUT)
-GPIO.setup(2bar,GPIO.OUT)
-GPIO.setup(3bar,GPIO.OUT)
-GPIO.setup(4bar,GPIO.OUT)
+GPIO.setup(bar1,GPIO.OUT)
+GPIO.setup(bar2,GPIO.OUT)
+GPIO.setup(bar3,GPIO.OUT)
+GPIO.setup(bar4,GPIO.OUT)
 
-GPIO.output(1bar,GPIO.LOW)
-GPIO.output(2bar,GPIO.LOW)
-GPIO.output(3bar,GPIO.LOW)
-GPIO.output(4bar,GPIO.LOW)
+GPIO.output(bar1,GPIO.LOW)
+GPIO.output(bar2,GPIO.LOW)
+GPIO.output(bar3,GPIO.LOW)
+GPIO.output(bar4,GPIO.LOW)
 
 #end setup for LEDs#
+
+bar1max = 8
+bar2max = 10
+bar3max = 12
 
 
 
@@ -32,25 +36,60 @@ GPIO.output(4bar,GPIO.LOW)
 ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
 
 def main():
-	random = 0
-	GPIO.output(23,GPIO.LOW)
-	time.sleep(2)
-	GPIO.output(23,GPIO.HIGH)
-	time.sleep(1)
-	GPIO.output(23,GPIO.LOW)
-	time.sleep(2)
-	GPIO.output(23,GPIO.HIGH)
-	time.sleep(1)
-	GPIO.output(23,GPIO.LOW)
-	time.sleep(2)
+	
 	checkSignalStrength = True
 	
 	print("checking signal strength")
+	
+	strength = 0
 	
 	while checkSignalStrength:
 		ser.write("at+CSQ\r")
 		response = ser.readlines(None)
 		print(response)
+		
+		if response > 1:
+			signal = response[1]
+			#+CSQ:18,99
+			if signal[6] == ",":
+				strength = signal[5]
+			elif signal[7] == ",":
+				strength = signal[5:7]
+			else:
+				strength = 0
+		if strength > bar3max:
+			GPIO.output(bar1,GPIO.HIGH)
+			GPIO.output(bar2,GPIO.HIGH)
+			GPIO.output(bar3,GPIO.HIGH)
+			GPIO.output(bar4,GPIO.HIGH)
+			print ("4 bars")
+		elif strength > bar2max:
+			GPIO.output(bar1,GPIO.HIGH)
+			GPIO.output(bar2,GPIO.HIGH)
+			GPIO.output(bar3,GPIO.HIGH)
+			GPIO.output(bar4,GPIO.LOW)
+			print ("3 bars")
+		elif strength > bar1max:
+			GPIO.output(bar1,GPIO.HIGH)
+			GPIO.output(bar2,GPIO.HIGH)
+			GPIO.output(bar3,GPIO.LOW)
+			GPIO.output(bar4,GPIO.LOW)
+			print ("2 bars")
+		elif strength > 0:
+			GPIO.output(bar1,GPIO.HIGH)
+			GPIO.output(bar2,GPIO.LOW)
+			GPIO.output(bar3,GPIO.LOW)
+			GPIO.output(bar4,GPIO.LOW)
+			print ("1 bar")
+		else: 
+			GPIO.output(bar1,GPIO.LOW)
+			GPIO.output(bar2,GPIO.LOW)
+			GPIO.output(bar3,GPIO.LOW)
+			GPIO.output(bar4,GPIO.LOW)
+			print ("no bars")
+		
+		time.sleep(5)
+			
 
 
 if __name__ == "__main__":
