@@ -48,7 +48,7 @@ def main():
 		response = ser.readlines(None)
 		print(response)
 		
-		if response > 1:
+		if len(response) > 1:
 			signal = response[1]
 			#+CSQ:18,99
 			if signal[6] == ",":
