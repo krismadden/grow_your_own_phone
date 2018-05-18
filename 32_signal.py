@@ -26,9 +26,9 @@ GPIO.output(bar4,GPIO.LOW)
 
 #end setup for LEDs#
 
-bar1max = 8
-bar2max = 10
-bar3max = 12
+bar1max = 10
+bar2max = 15
+bar3max = 20
 
 
 
