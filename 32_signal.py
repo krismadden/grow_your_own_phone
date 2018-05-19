@@ -64,7 +64,7 @@ def main():
 					strength = 0
 		if int(strength) > 28:
 			GPIO.output(bar1,GPIO.HIGH)
-			GPIO.output(bar2,GPIO.HIGH)
+			GPIO.output(bar2,GPIO.LOW)
 			GPIO.output(bar3,GPIO.HIGH)
 			GPIO.output(bar4,GPIO.HIGH)
 			print (int(strength))
