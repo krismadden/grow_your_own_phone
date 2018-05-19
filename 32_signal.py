@@ -62,21 +62,21 @@ def main():
 					strength = signal[6:8]
 				else:
 					strength = 0
-		if int(strength) > 19:
+		if int(strength) > 28:
 			GPIO.output(bar1,GPIO.HIGH)
 			GPIO.output(bar2,GPIO.HIGH)
 			GPIO.output(bar3,GPIO.HIGH)
 			GPIO.output(bar4,GPIO.HIGH)
 			print (int(strength))
 			print ("4 bars")
-		elif int(strength) > 14:
+		elif int(strength) > 20:
 			GPIO.output(bar1,GPIO.HIGH)
 			GPIO.output(bar2,GPIO.HIGH)
 			GPIO.output(bar3,GPIO.HIGH)
 			GPIO.output(bar4,GPIO.LOW)
 			print (strength)
 			print ("3 bars")
-		elif int(strength) > 8:
+		elif int(strength) > 12:
 			GPIO.output(bar1,GPIO.HIGH)
 			GPIO.output(bar2,GPIO.HIGH)
 			GPIO.output(bar3,GPIO.LOW)
