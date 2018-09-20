@@ -218,73 +218,76 @@ def allOff():
 
 def enterPhoneNumber():
 	phoneNumber = ""
-	while True:
-		allOff()
-		ch = getchar()
-		
-		if ch.strip() == "/":
-			break
-		if ch.strip() == "[":
-			GPIO.output(sendBTN,GPIO.HIGH)
-			print("sending to: " + phoneNumber)
+	try:
+		while True:
 			allOff()
-			break
-		elif ch.strip() == "]":
-			if len(phoneNumber) > 0:
-				GPIO.output(deleteBTN,GPIO.HIGH)
-				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' 2>/dev/null")
-				tempChar = ""
-				phoneNumber = phoneNumber[:-1]
-				print(phoneNumber)
+			ch = getchar()
+
+			if ch.strip() == "/":
+				break
+			if ch.strip() == "[":
+				GPIO.output(sendBTN,GPIO.HIGH)
+				print("sending to: " + phoneNumber)
+				allOff()
+				break
+			elif ch.strip() == "]":
+				if len(phoneNumber) > 0:
+					GPIO.output(deleteBTN,GPIO.HIGH)
+					os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' 2>/dev/null")
+					tempChar = ""
+					phoneNumber = phoneNumber[:-1]
+					print(phoneNumber)
+				else:
+					speak("Aucun numéro")
+			elif ch.strip() == "=":
+				GPIO.output(playBTN,GPIO.HIGH)
+				os.system("espeak -v fr '" +  phoneNumber + "' 2>/dev/null")
 			else:
-				speak("Aucun numéro")
-		elif ch.strip() == "=":
-			GPIO.output(playBTN,GPIO.HIGH)
-			os.system("espeak -v fr '" +  phoneNumber + "' 2>/dev/null")
-		else:
-			if ch != "s" or ch != "h": 
-				phoneNumber = phoneNumber + ch
-				print (phoneNumber)
-			else: 
-				phoneNumber = phoneNumber + 00
-				print (phoneNumber)
-			if ch == "1":
-				GPIO.output(oneBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "2":
-				GPIO.output(twoBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "3":
-				GPIO.output(threeBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "4":
-				GPIO.output(fourBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "5":
-				GPIO.output(fiveBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "6":
-				GPIO.output(sixBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "7":
-				GPIO.output(sevenBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "8":
-				GPIO.output(eightBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "9":
-				GPIO.output(nineBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "s":
-				GPIO.output(starBTN,GPIO.HIGH)
-				os.system("espeak -v fr 'You're a star.' 2>/dev/null")
-# 				speak("You're a star.")
-			elif ch == "0":
-				GPIO.output(zeroBTN,GPIO.HIGH)
-				speak(ch)
-			elif ch == "h":
-				GPIO.output(hashBTN,GPIO.HIGH)
-				speak("Hashtag Grow Your Own Phone!")
+				if ch != "s" or ch != "h": 
+					phoneNumber = phoneNumber + ch
+					print (phoneNumber)
+				else: 
+					phoneNumber = phoneNumber + 00
+					print (phoneNumber)
+				if ch == "1":
+					GPIO.output(oneBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "2":
+					GPIO.output(twoBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "3":
+					GPIO.output(threeBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "4":
+					GPIO.output(fourBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "5":
+					GPIO.output(fiveBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "6":
+					GPIO.output(sixBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "7":
+					GPIO.output(sevenBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "8":
+					GPIO.output(eightBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "9":
+					GPIO.output(nineBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "s":
+					GPIO.output(starBTN,GPIO.HIGH)
+# 					os.system("espeak -v fr 'You're a star.' 2>/dev/null")
+	# 				speak("You're a star.")
+				elif ch == "0":
+					GPIO.output(zeroBTN,GPIO.HIGH)
+					speak(ch)
+				elif ch == "h":
+					GPIO.output(hashBTN,GPIO.HIGH)
+# 					speak("Hashtag Grow Your Own Phone!")
+	except KeyboardInterrupt:
+  		print "exit"
 	return phoneNumber
 
 def doSomething(message, tempChar):
