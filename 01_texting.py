@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from m590_setup import m590
 import time
 import os, sys
