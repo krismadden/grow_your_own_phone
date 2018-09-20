@@ -242,7 +242,7 @@ def enterPhoneNumber():
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak -v fr '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			if ch != "s" or ch != "h": 
+			if ch != "s" and ch != "h": 
 				if len(phoneNumber) > 20:
 					phoneNumber = ""
 				else:
@@ -282,7 +282,7 @@ def enterPhoneNumber():
 				GPIO.output(starBTN,GPIO.HIGH)
 # 				os.system("espeak -v fr 'You're a star.' 2>/dev/null")
 # 				speak("You're a star.")
-				ch = "*"
+				ch = "astérisque"
 				speak(ch)
 			elif ch == "0":
 				GPIO.output(zeroBTN,GPIO.HIGH)
@@ -505,18 +505,25 @@ def enterMessage():
 				GPIO.output(hashBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "."
+					speak(tempChar)
 				elif(tempChar == "."):
 					tempChar = "?"
+					speak(tempChar)
 				elif(tempChar == "?"):
 					tempChar = "!"
+					speak(tempChar)
 				elif(tempChar == "!"):
 					tempChar = ","
+					speak(tempChar)
 				elif(tempChar == ","):
 					tempChar = "-"
+					speak(tempChar)
 				elif(tempChar == "-"):
 					tempChar = "#"
+					speak(tempChar)
 				elif(tempChar == "#"):
 					tempChar = "."
+					speak(tempChar)
 				speak(tempChar)
 				print(message + tempChar)
 			oldButton = newButton
