@@ -277,7 +277,8 @@ def enterPhoneNumber():
 				speak(ch)
 			elif ch == "s":
 				GPIO.output(starBTN,GPIO.HIGH)
-				speak("You're a star.")
+				os.system("espeak -v fr 'You're a star.' 2>/dev/null")
+# 				speak("You're a star.")
 			elif ch == "0":
 				GPIO.output(zeroBTN,GPIO.HIGH)
 				speak(ch)
