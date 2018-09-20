@@ -286,8 +286,8 @@ def enterPhoneNumber():
 				elif ch == "h":
 					GPIO.output(hashBTN,GPIO.HIGH)
 # 					speak("Hashtag Grow Your Own Phone!")
-	except KeyboardInterrupt:
-  		print "exit"
+	except (KeyboardInterrupt, SystemExit):
+        	raise
 	return phoneNumber
 
 def doSomething(message, tempChar):
