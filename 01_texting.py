@@ -242,7 +242,7 @@ def enterPhoneNumber():
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak -v fr '" +  phoneNumber + "' 2>/dev/null")
 		else:
-			if ch != "s" or ch != "h": 
+			if ch != "*" or ch != "#": 
 				if len(phoneNumber) > 20:
 					phoneNumber = ""
 				else:
@@ -282,13 +282,15 @@ def enterPhoneNumber():
 				GPIO.output(starBTN,GPIO.HIGH)
 # 				os.system("espeak -v fr 'You're a star.' 2>/dev/null")
 # 				speak("You're a star.")
+				speak(ch)
 			elif ch == "0":
 				GPIO.output(zeroBTN,GPIO.HIGH)
 				speak(ch)
-			elif ch == "h":
+			elif ch == "*":
 				GPIO.output(hashBTN,GPIO.HIGH)
 # 				speak("Hashtag Grow Your Own Phone!")
-			elif ch == "c":
+				speak(ch)
+			elif ch == "#":
 				sys.exit("exited program.")
 	return phoneNumber
 
