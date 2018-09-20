@@ -248,9 +248,9 @@ def enterPhoneNumber():
 				else:
 					phoneNumber = phoneNumber + ch
 					print (phoneNumber)
-# 			else: 
-# 				phoneNumber = phoneNumber + 00
-# 				print (phoneNumber)
+			else: 
+				phoneNumber = phoneNumber
+				print (phoneNumber)
 			if ch == "1":
 				GPIO.output(oneBTN,GPIO.HIGH)
 				speak(ch)
@@ -290,7 +290,7 @@ def enterPhoneNumber():
 			elif ch == "h":
 				GPIO.output(hashBTN,GPIO.HIGH)
 # 				speak("Hashtag Grow Your Own Phone!")
-				ch = "#"
+				ch = "dièse"
 				speak(ch)
 			elif ch == "c":
 				sys.exit("exited program.")
