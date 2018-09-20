@@ -508,16 +508,16 @@ def enterMessage():
 					speak("point")
 				elif(tempChar == "."):
 					tempChar = "?"
-					speak("point " + "d'interrogation")
+					speak("interrogation")
 				elif(tempChar == "?"):
 					tempChar = "!"
-					speak("point" + "d'exclamation")
+					speak("exclamation")
 				elif(tempChar == "!"):
 					tempChar = ","
 					speak("virgule")
 				elif(tempChar == ","):
 					tempChar = "-"
-					speak("trait" + " d'union")
+					speak("trait")
 				elif(tempChar == "-"):
 					tempChar = "#"
 					speak("dièse")
