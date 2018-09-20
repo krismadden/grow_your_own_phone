@@ -505,25 +505,25 @@ def enterMessage():
 				GPIO.output(hashBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = "."
-					speak(tempChar)
+					speak("point")
 				elif(tempChar == "."):
 					tempChar = "?"
-					speak(tempChar)
+					speak("point d'interrogation")
 				elif(tempChar == "?"):
 					tempChar = "!"
-					speak(tempChar)
+					speak("point d'exclamation")
 				elif(tempChar == "!"):
 					tempChar = ","
-					speak(tempChar)
+					speak("virgule")
 				elif(tempChar == ","):
 					tempChar = "-"
-					speak(tempChar)
+					speak("trait d'union")
 				elif(tempChar == "-"):
 					tempChar = "#"
-					speak(tempChar)
+					speak("dièse")
 				elif(tempChar == "#"):
 					tempChar = "."
-					speak(tempChar)
+					speak("point")
 				speak(tempChar)
 				print(message + tempChar)
 			oldButton = newButton
