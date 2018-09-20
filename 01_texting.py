@@ -59,7 +59,9 @@ GPIO.output(hashBTN,GPIO.LOW)
 
 #define function for text to speach
 def speak(str):
-	os.system("espeak '" + str + "' 2>/dev/null")
+	byte_string = str
+	unicode_string = byte_string.decode('utf-8')
+	os.system("espeak '" + unicode_string + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
 def getchar():
