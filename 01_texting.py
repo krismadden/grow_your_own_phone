@@ -230,7 +230,7 @@ def enterPhoneNumber():
 		elif ch.strip() == "]":
 			if len(phoneNumber) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
-				os.system("espeak 'En suppression " +  phoneNumber[-1] + "' 2>/dev/null")
+				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' 2>/dev/null")
 				tempChar = ""
 				phoneNumber = phoneNumber[:-1]
 				print(phoneNumber)
@@ -238,7 +238,7 @@ def enterPhoneNumber():
 				speak("Aucun numéro")
 		elif ch.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
-			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
+			os.system("espeak -v fr '" +  phoneNumber + "' 2>/dev/null")
 		else:
 			if ch != "s" or ch != "h": 
 				phoneNumber = phoneNumber + ch
@@ -314,7 +314,7 @@ def enterMessage():
 		if newButton.strip() == "[":
 			GPIO.output(sendBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak 'En envoi : " + message + "' 2>/dev/null")
+			os.system("espeak -v fr 'En envoi : " + message + "' 2>/dev/null")
 			print("sending: " + message)
 			allOff()
 			break
@@ -322,7 +322,7 @@ def enterMessage():
 			if len(message) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
 				message = message + tempChar
-				os.system("espeak 'En suppression " +  message[-1] + "' 2>/dev/null")
+				os.system("espeak -v fr 'En suppression " +  message[-1] + "' 2>/dev/null")
 				tempChar = ""
 				message = message[:-1]
 			else:
@@ -331,7 +331,7 @@ def enterMessage():
 		elif newButton.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak '" +  message + "' 2>/dev/null")
+			os.system("espeak -v fr '" +  message + "' 2>/dev/null")
 			tempChar = ""
 		else:
 			#everytime a button is pressed it restarts the wait time for setting the character
