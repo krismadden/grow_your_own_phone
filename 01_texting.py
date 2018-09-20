@@ -1,6 +1,6 @@
 from m590_setup import m590
 import time
-import os
+import os, sys
 import RPi.GPIO as GPIO
 
 
