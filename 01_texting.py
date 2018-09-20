@@ -57,7 +57,7 @@ GPIO.output(hashBTN,GPIO.LOW)
 #end setup for LEDs#
 
 
-#define speak function for text to speach
+#define function for text to speach
 def speak(str):
 	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
@@ -230,12 +230,12 @@ def enterPhoneNumber():
 		elif ch.strip() == "]":
 			if len(phoneNumber) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
-				os.system("espeak 'deleting " +  phoneNumber[-1] + "' 2>/dev/null")
+				os.system("espeak 'En suppression " +  phoneNumber[-1] + "' 2>/dev/null")
 				tempChar = ""
 				phoneNumber = phoneNumber[:-1]
 				print(phoneNumber)
 			else:
-				speak("blank number")
+				speak("Aucun numéro")
 		elif ch.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
 			os.system("espeak '" +  phoneNumber + "' 2>/dev/null")
@@ -314,7 +314,7 @@ def enterMessage():
 		if newButton.strip() == "[":
 			GPIO.output(sendBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak 'sending: " + message + "' 2>/dev/null")
+			os.system("espeak 'En envoi : " + message + "' 2>/dev/null")
 			print("sending: " + message)
 			allOff()
 			break
@@ -322,11 +322,11 @@ def enterMessage():
 			if len(message) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
 				message = message + tempChar
-				os.system("espeak 'deleting " +  message[-1] + "' 2>/dev/null")
+				os.system("espeak 'En suppression " +  message[-1] + "' 2>/dev/null")
 				tempChar = ""
 				message = message[:-1]
 			else:
-				speak("blank message")
+				speak("Aucun message")
 			print("new message " + message)
 		elif newButton.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
@@ -481,13 +481,13 @@ def enterMessage():
 				GPIO.output(zeroBTN,GPIO.HIGH)
 				if(tempChar == ""):
 					tempChar = " "
-					speak("space")
+					speak("Espace")
 				elif(tempChar == " "):
 					tempChar = "0"
 					speak(tempChar)
 				elif(tempChar == "0"):
 					tempChar = " "
-					speak("space")
+					speak("Espace")
 				print(message + tempChar)
 			elif newButton == "h":
 				GPIO.output(hashBTN,GPIO.HIGH)
@@ -523,49 +523,49 @@ def main():
 	while True:
 		checkIfModuleFrozen()
 		while True:
-		 	speak("Enter a french mobile phone number")
+		 	speak("Entrer un numéro frqnçqis de téléphone portable.")
 			phoneNumber = enterPhoneNumber()
 # 			phoneNumber = "0637165118"
 
 			if len(phoneNumber) < 10:
 				print len(phoneNumber)
-				speak("Phone number too short. Try again.")
+				speak("Numéro de téléphone trop court. Essayer encore.")
 				print ("Error. Too Short")
 				continue
 			elif len(phoneNumber) == 10 and (phoneNumber[:2] != "06" and phoneNumber[:2] != "07"):
-				speak("French mobile numbers begin with either 06 or 07. Try again.")
+				speak("Les numéros francais de téléphone portable commencent soit par un 06, soit par un 07. Essayer encore.")
 				print ("Error. Not French.")
 				print(phoneNumber[:2])
 				continue
 			elif len(phoneNumber) == 13 and (phoneNumber[:5] != "00336" and phoneNumber[:5] != "00337"):
-				speak("French mobile numbers begin with either 00336 or 00367. Try again.")
+				speak("Les numéros francais de téléphone portable commencent soit par un 00336, soit par un 00337. Essayer encore.")
 				print ("Error. Not French.")
 				print(phoneNumber[:5])
 				continue
 			elif len(phoneNumber) == 12:
 				print len(phoneNumber)
-				speak("Phone number too long. Phone numbers starting with 06 or 07 should only be 10 digits. Try again.")
+				speak("Numéro de téléphone trop long. les numéros de téléphone commencent par un 06 ou un 07 et doivent seulement avoir 10 caractères. Essayer encore.")
 				print ("Error. Too Short")
 				continue
 			elif len(phoneNumber) > 13:
 				print len(phoneNumber)
-				speak("Phone number too long. Try again.")
+				speak("Numéro de téléphone trop long. Essayer encore.")
 				print ("Error. Too Short")
 				continue
 			else:
-				speak("Sending to " + phoneNumber)
+				speak("Envoi à" + phoneNumber)
 				break
 
 
 		#message = raw_input("Enter Message::\n")
-		speak("Enter your message")
+		speak("Ecrire votre message.")
 		print ("Enter message.\n")
 		message = enterMessage()
 
 
 		#SEND SMS
-		print ("Sending text..")
-		speak("Sending text")
+		print ("Sending text.")
+		speak("Envoi message.")
 		modem.send_sms(phoneNumber, message)
 		
 # 		time.sleep(1)
