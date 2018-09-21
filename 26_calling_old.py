@@ -5,9 +5,6 @@ import os
 import RPi.GPIO as GPIO
 import keyboard
 
-from threading import Thread, Event
-import time
-
 
 
 #setup LEDs#
@@ -44,8 +41,6 @@ p = GPIO.PWM(26,50)
 phoneNumber = "0637165118"
 
 
-stop_it = Event()
-
 
 
 
@@ -65,15 +60,6 @@ def getchar():
 	finally:
 		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 	return ch
-
-	i = 0
-	while True:
-		i += 1
-		print(i)
-		time.sleep(1)
-	
-		if stop_it.is_set():
-	    		break
 
 def vibrate():
 	print("vibrate")
@@ -280,12 +266,4 @@ def main():
 	modem.deinit()
 
 if __name__ == "__main__":
-	main()
-	# Create a thread that needs to run for 5 seconds
-	stuff_doing_thread = Thread(target=getchar)
-
-	stuff_doing_thread.start()
-	stuff_doing_thread.join(timeout=.05)
-
-	stop_it.set()
-
+    main()
