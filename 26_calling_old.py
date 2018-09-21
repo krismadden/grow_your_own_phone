@@ -285,7 +285,7 @@ if __name__ == "__main__":
 	stuff_doing_thread = Thread(target=getchar)
 
 	stuff_doing_thread.start()
-	stuff_doing_thread.join(timeout=.5)
+	stuff_doing_thread.join(timeout=.05)
 
 	stop_it.set()
 
