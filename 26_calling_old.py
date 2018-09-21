@@ -49,6 +49,18 @@ def speak(str):
 	os.system("espeak '" + str + "' 2>/dev/null")
 #end of definintion od speak function for text to speach
 
+def getchar():
+   #Returns a single character from standard input
+	import tty, termios, sys
+	fd = sys.stdin.fileno()
+	old_settings = termios.tcgetattr(fd)
+	try:
+		tty.setraw(sys.stdin.fileno())
+		ch = sys.stdin.read(1)
+	finally:
+		termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+	return ch
+
 def vibrate():
 	print("vibrate")
 	p.start(7.5)
@@ -144,6 +156,8 @@ def main():
 		print (response)
 		ringing = False #added monday morning
 		
+		ch = getChar()
+		
 		
 		if len(response) > 1:
 			if response[1] == "NO CARRIER\r\n":
@@ -153,7 +167,7 @@ def main():
 			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
 				response = m590.ser.readlines() #changed monday morning
 				ringing = True #changed monday morning
-				if keyboard.is_pressed('9'):
+				if ch == '9':
 					GPIO.output(sendBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					response = m590.ser.readlines() #changed monday morning
@@ -165,7 +179,7 @@ def main():
 					time.sleep(0.5)
 					GPIO.output(sendBTN,GPIO.LOW)
 					break
-				elif keyboard.is_pressed('8'):
+				elif ch == '8':
 					GPIO.output(endBTN,GPIO.HIGH)
 					m590.ser.write("ata\r")
 					time.sleep(0.5)
@@ -201,7 +215,7 @@ def main():
 					ringing = True
 				else:
 					ringing = False #added monday morning
-		if keyboard.is_pressed('9') and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
+		if ch == '9' and (ringing == False) and (outgoingCall == False) and (incomingCall == False): #changed monday morning
 			GPIO.output(sendBTN,GPIO.HIGH)
 			print ("placing call")
 			speak("calling")
@@ -212,7 +226,7 @@ def main():
 			time.sleep(0.5)
 			GPIO.output(sendBTN,GPIO.LOW)
 		while outgoingCall == True or incomingCall == True:
-			if keyboard.is_pressed('8'):
+			if ch == '8':
 				GPIO.output(endBTN,GPIO.HIGH)
 				m590.ser.write("ath\r")
 				response = m590.ser.readlines() #changed monday morning
