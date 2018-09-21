@@ -282,10 +282,10 @@ def main():
 if __name__ == "__main__":
 	main()
 	# Create a thread that needs to run for 5 seconds
-	    stuff_doing_thread = Thread(target=do_stuff)
+	stuff_doing_thread = Thread(target=getchar)
 
-	    stuff_doing_thread.start()
-	    stuff_doing_thread.join(timeout=.5)
+	stuff_doing_thread.start()
+	stuff_doing_thread.join(timeout=.5)
 
-	    stop_it.set()
+	stop_it.set()
 
