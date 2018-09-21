@@ -149,14 +149,13 @@ def main():
 
 	
 	while runProgram:
+		ch = getchar()
 # 		if keyboard.is_pressed('space'):
 # 			runProgram = False
 		#response = m590.ser.readlines(2) #changed monday morning
 		response = m590.ser.readlines()
 		print (response)
 		ringing = False #added monday morning
-		
-		ch = getchar()
 		
 		
 		if len(response) > 1:
