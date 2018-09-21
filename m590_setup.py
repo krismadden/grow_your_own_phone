@@ -5,7 +5,7 @@ import time
 
 class m590:
 # 	ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=5)
-	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.1)
+	ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.3)
 	SMS = {}
 	PHONE = {}
 
