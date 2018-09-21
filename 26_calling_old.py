@@ -160,11 +160,13 @@ def main():
 		
 		
 		if len(response) > 1:
+			ch = getchar()
 			if response[1] == "NO CARRIER\r\n":
 				outgoingCall = False
 				incomingCall = False
 				ringing = False
 			while len(response) > 1 and (ringing == True or response[1] == "RING\r\n"):
+				ch = getchar()
 				response = m590.ser.readlines() #changed monday morning
 				ringing = True #changed monday morning
 				if ch == '9':
@@ -226,6 +228,7 @@ def main():
 			time.sleep(0.5)
 			GPIO.output(sendBTN,GPIO.LOW)
 		while outgoingCall == True or incomingCall == True:
+			ch = getchar()
 			if ch == '8':
 				GPIO.output(endBTN,GPIO.HIGH)
 				m590.ser.write("ath\r")
