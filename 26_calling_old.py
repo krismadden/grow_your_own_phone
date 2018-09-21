@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 sendBTN = 13
-endBTN = 19
+endBTN = 6
 
 GPIO.setup(sendBTN,GPIO.OUT)
 GPIO.setup(endBTN,GPIO.OUT)
