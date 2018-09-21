@@ -156,7 +156,7 @@ def main():
 		print (response)
 		ringing = False #added monday morning
 		
-		ch = getChar()
+		ch = getchar()
 		
 		
 		if len(response) > 1:
