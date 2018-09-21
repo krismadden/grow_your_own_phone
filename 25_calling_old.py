@@ -20,11 +20,11 @@ GPIO.setup(endBTN,GPIO.OUT)
 GPIO.output(sendBTN,GPIO.LOW)
 GPIO.output(endBTN,GPIO.LOW)
 
-pad1 = 21
-pad3 = 20
+# pad1 = 21
+# pad3 = 20
 
-GPIO.setup(pad1, GPIO.IN)
-GPIO.setup(pad3, GPIO.IN)
+# GPIO.setup(pad1, GPIO.IN)
+# GPIO.setup(pad3, GPIO.IN)
 
 GPIO.setup(18,GPIO.OUT)
 GPIO.output(18,GPIO.LOW)
