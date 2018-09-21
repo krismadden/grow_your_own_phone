@@ -67,13 +67,13 @@ def getchar():
 	return ch
 
 	i = 0
-	    while True:
+	while True:
 		i += 1
 		print(i)
 		time.sleep(1)
-
+	
 		if stop_it.is_set():
-		    break
+	    		break
 
 def vibrate():
 	print("vibrate")
