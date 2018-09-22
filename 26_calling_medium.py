@@ -38,8 +38,7 @@ GPIO.setup(26,GPIO.OUT)
 p = GPIO.PWM(26,50)
 
 
-# phoneNumber = "0605561598"
-phoneNumber = "0637165118"
+phoneNumber = "0605561598"
 
 
 
