@@ -97,7 +97,11 @@ def setUpPin():
 			else:
 				print (response[1] + "\n")
 				print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
-
+		m590.ser.write("at+ccwa=0\r")
+		response = m590.ser.readlines(None)
+		time.sleep(0.5)
+		print (response)
+				
 def restart():
 	command = "/usr/bin/sudo /sbin/shutdown -r now"
 	import subprocess
