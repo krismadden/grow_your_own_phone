@@ -544,6 +544,7 @@ def main():
 		while True:
 		 	speak("Oui oui oui oui. Entrer un numéro français de téléphone portable.")
 			phoneNumber = enterPhoneNumber()
+			spokenPhoneNumber = phoneNumber.replace("", " ")[1: -1]
 # 			phoneNumber = "0637165118"
 
 			if len(phoneNumber) < 10:
