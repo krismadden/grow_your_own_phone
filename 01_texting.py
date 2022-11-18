@@ -542,7 +542,7 @@ def main():
 	while True:
 		checkIfModuleFrozen()
 		while True:
-		 	speak("Oui oui oui oui. Entrer un numéro français de téléphone portable.")
+		 	speak("Entrer un numéro français de téléphone portable.")
 			phoneNumber = enterPhoneNumber()
 # 			phoneNumber = "0637165118"
 
@@ -572,7 +572,7 @@ def main():
 				print ("Error. Too Short")
 				continue
 			else:
-				speak("Envoi à" + phoneNumber.replace("", "... ")[1: -1])
+				speak("Envoi à" + phoneNumber.replace("", ". ")[1: -1])
 				break
 
 
