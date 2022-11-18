@@ -573,7 +573,7 @@ def main():
 				print ("Error. Too Short")
 				continue
 			else:
-				speak("Envoi à" + phoneNumber)
+				speak("Envoi à" + phoneNumber + " " + spokenPhoneNumber)
 				break
 
 
