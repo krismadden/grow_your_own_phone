@@ -62,7 +62,7 @@ GPIO.output(hashBTN,GPIO.LOW)
 #define function for text to speach
 def speak(str):
 	#speaking speed is default to 160 wpm
-	os.system("espeak -v fr '" + str + "'-s 100 2>/dev/null")
+	os.system("espeak -v fr '" + str + "' -s 50 2>/dev/null")
 #end of definintion od speak function for text to speach
 
 def getchar():
@@ -233,7 +233,7 @@ def enterPhoneNumber():
 		elif ch.strip() == "]":
 			if len(phoneNumber) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
-				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1].replace("", ", ")[1: -1] + "' 2>/dev/null")
+				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' -s 10 2>/dev/null")
 				tempChar = ""
 				phoneNumber = phoneNumber[:-1]
 				print(phoneNumber)
