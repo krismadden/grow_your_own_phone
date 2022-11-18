@@ -542,7 +542,7 @@ def main():
 	while True:
 		checkIfModuleFrozen()
 		while True:
-		 	speak("Entrer un numéro français de téléphone portable.")
+		 	speak("Oui oui oui oui. Entrer un numéro français de téléphone portable.")
 			phoneNumber = enterPhoneNumber()
 # 			phoneNumber = "0637165118"
 
