@@ -80,6 +80,7 @@ def getchar():
 def setUpPin():
 	response = ""
 	pin = ""
+	errorCount = 0
 
 	# speak("Initialising")
 	print ("Initialising Modem & Checking PIN..")
@@ -96,7 +97,9 @@ def setUpPin():
 		
 		if not response:
 			print ("error with gem module")
-			break
+			errorCount = errorCount + 1
+			if errorCount < 100:
+				break
 		else:
 			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
 				print ("pin okay. let's go.")
