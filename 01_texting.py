@@ -95,7 +95,7 @@ def setUpPin():
 		response = m590.ser.readlines(None)
 		print (response)
 
-		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
+		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n" or response[3] == "OK\r\n" or response[4] == "OK\r\n":
 			print ("pin okay. let's go.")
 	# 		speak("pin okay. let's go.")
 			break
