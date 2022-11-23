@@ -25,8 +25,7 @@ starBTN = 6
 zeroBTN = 13
 hashBTN = 19
 
-#setup speaking speed 
-speakSpeed = "160"
+
 
 GPIO.setup(sendBTN,GPIO.OUT)
 GPIO.setup(playBTN,GPIO.OUT)
@@ -62,13 +61,11 @@ GPIO.output(hashBTN,GPIO.LOW)
 #end setup for LEDs#
 
 
-#define speak speed 
-speakSpeed = "' -s 160 2>/dev/null"
 
 #define function for text to speach
 def speak(str):
 	#speaking speed is default to 160 wpm. it is handled cuurently in the variable "speakSpeed"
-	os.system("espeak -v fr '" + str + speakSpeed)
+	os.system("espeak -v fr '" + str + "' -s 160 2>/dev/null")
 #end of definintion od speak function for text to speach
 
 def getchar():
@@ -239,7 +236,7 @@ def enterPhoneNumber():
 		elif ch.strip() == "]":
 			if len(phoneNumber) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
-				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' -s " + speakSpeed + " 2>/dev/null")
+				os.system("espeak -v fr 'En suppression " +  phoneNumber[-1] + "' -s 160 2>/dev/null")
 				tempChar = ""
 				phoneNumber = phoneNumber[:-1]
 				print(phoneNumber)
@@ -247,7 +244,7 @@ def enterPhoneNumber():
 				speak("Aucun numéro")
 		elif ch.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
-			os.system("espeak -v fr '" +  phoneNumber + "' -s " + speakSpeed + " 2>/dev/null")
+			os.system("espeak -v fr '" +  phoneNumber + "' -s 160 2>/dev/null")
 		else:
 			if ch != "s" and ch != "h": 
 				if len(phoneNumber) > 20:
@@ -287,7 +284,7 @@ def enterPhoneNumber():
 				speak(ch)
 			elif ch == "s":
 				GPIO.output(starBTN,GPIO.HIGH)
-# 				os.system("espeak -v fr 'You're a star.' -s " + speakSpeed + " 2>/dev/null")
+# 				os.system("espeak -v fr 'You're a star.' -s 160 2>/dev/null")
 # 				speak("You're a star.")
 				ch = "astérisque"
 				speak(ch)
@@ -325,7 +322,7 @@ def enterMessage():
 				
 		if (tempChar != "") and (time.time() >= timeLimit) and (newButton.strip() != "*") and (newButton.strip() != "/") and (newButton.strip() != "="):
 				message = message + tempChar
-# 				os.system("espeak '" + message + "' -s " + speakSpeed + " 2>/dev/null")
+# 				os.system("espeak '" + message + "' -s 160 2>/dev/null")
 				tempChar = ""
 				print("time set " + message + tempChar)
 				timeUp = True
@@ -333,7 +330,7 @@ def enterMessage():
 		if newButton.strip() == "[":
 			GPIO.output(sendBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak -v fr 'En envoi : " + message + "' -s " + speakSpeed + " 2>/dev/null")
+			os.system("espeak -v fr 'En envoi : " + message + "' -s 160 2>/dev/null")
 			print("sending: " + message)
 			allOff()
 			break
@@ -341,7 +338,7 @@ def enterMessage():
 			if len(message) > 0:
 				GPIO.output(deleteBTN,GPIO.HIGH)
 				message = message + tempChar
-				os.system("espeak -v fr 'En suppression " +  message[-1] + "' -s " + speakSpeed + " 2>/dev/null")
+				os.system("espeak -v fr 'En suppression " +  message[-1] + "' -s 160 2>/dev/null")
 				tempChar = ""
 				message = message[:-1]
 			else:
@@ -350,7 +347,7 @@ def enterMessage():
 		elif newButton.strip() == "=":
 			GPIO.output(playBTN,GPIO.HIGH)
 			message = message + tempChar
-			os.system("espeak -v fr '" +  message + "' -s " + speakSpeed + " 2>/dev/null")
+			os.system("espeak -v fr '" +  message + "' -s 160 2>/dev/null")
 			tempChar = ""
 		else:
 			#everytime a button is pressed it restarts the wait time for setting the character
@@ -359,7 +356,7 @@ def enterMessage():
 			if newButton != oldButton and oldButton != "":
 				if (timeUp == False) or (newButton.strip() != "*") or (newButton.strip() != "="):
 					message = message + tempChar
-					#os.system("espeak 'new button " + message + "' -s " + speakSpeed + " 2>/dev/null")
+					#os.system("espeak 'new button " + message + "' -s 160 2>/dev/null")
 					tempChar = ""
 					print("new button set " + message + tempChar)
 			if newButton == "1":
