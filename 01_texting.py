@@ -90,11 +90,13 @@ def setUpPin():
 		time.sleep(0.3)
 		m590.ser.write("at+cpin?\r")
 		response = m590.ser.readlines(None)
-		print ("response is:    ")
-		print(response)
+		
 		
 		if response == "":
-			response[0] = "error with gsm module"
+			response.append('error with gsm module')
+		
+		print ("response is:    ")
+		print(response)
 		
 		
 		if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
