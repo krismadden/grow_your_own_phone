@@ -26,7 +26,7 @@ zeroBTN = 13
 hashBTN = 19
 
 #setup speaking speed 
-speakSpeed = 160
+speakSpeed = "160"
 
 GPIO.setup(sendBTN,GPIO.OUT)
 GPIO.setup(playBTN,GPIO.OUT)
