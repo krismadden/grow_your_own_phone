@@ -98,7 +98,7 @@ def setUpPin():
 		if not response:
 			print ("error with gem module")
 			errorCount = errorCount + 1
-			if errorCount > 100:
+			if errorCount > 5:
 				break
 		else:
 			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
