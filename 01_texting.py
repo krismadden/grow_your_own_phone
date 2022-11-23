@@ -95,7 +95,7 @@ def setUpPin():
 		
 		
 		if not response:
-			print ("errrror")
+			print ("error with gem module")
 			break
 		else:
 			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
