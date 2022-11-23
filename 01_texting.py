@@ -93,31 +93,26 @@ def setUpPin():
 		
 		
 		if response != "":
-			checkResponse()
-		
-		
-		
-		
-def checkReponse():
-	if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
-		print ("pin okay. let's go.")
-		# speak("pin okay. let's go.")
-		break
-	elif response[2] != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
-		print ("pin okay. let's go.")
-		# speak("pin okay. let's go.")
-		break
-	elif response[2] == "+CPIN: SIM PIN\r\n":
-		m590.ser.write("at+cpin=\"1234\"\r")
-		time.sleep(0.5)
-		continue
-	elif response[1] == "ERROR/r/n" or response[2] == "ERROR/r/n":
-		print (response[1] + "\n")
-		print ("Error. Restart the Module")
-	else:
-		print (response[1] + "\n")
-		print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
-
+			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
+				print ("pin okay. let's go.")
+				# speak("pin okay. let's go.")
+				break
+			elif response[2] != "+CPIN: READY\r\n" or response[1] == "+CPIN: READY\r\n":
+				print ("pin okay. let's go.")
+				# speak("pin okay. let's go.")
+				break
+			elif response[2] == "+CPIN: SIM PIN\r\n":
+				m590.ser.write("at+cpin=\"1234\"\r")
+				time.sleep(0.5)
+				continue
+			elif response[1] == "ERROR/r/n" or response[2] == "ERROR/r/n":
+				print (response[1] + "\n")
+				print ("Error. Restart the Module")
+			else:
+				print (response[1] + "\n")
+				print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
+		else:
+			print ("error with gsm module")
 def restart():
 	command = "/usr/bin/sudo /sbin/shutdown -r now"
 	import subprocess
