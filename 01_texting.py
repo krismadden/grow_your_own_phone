@@ -91,6 +91,9 @@ def setUpPin():
 		m590.ser.write("at+cpin?\r")
 		response = m590.ser.readlines(None)
 		
+		responseRecieved = "'" + response + "'" + "-end response"
+		print(responseRecieved)
+		
 		
 		if response != "":
 			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
