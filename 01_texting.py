@@ -62,10 +62,13 @@ GPIO.output(hashBTN,GPIO.LOW)
 #end setup for LEDs#
 
 
+#define speak speed 
+speakSpeed = "' -s 160 2>/dev/null"
+
 #define function for text to speach
 def speak(str):
 	#speaking speed is default to 160 wpm. it is handled cuurently in the variable "speakSpeed"
-	os.system("espeak -v fr '" + str + "' -s " + speakSpeed + " 2>/dev/null")
+	os.system("espeak -v fr '" + str + speakSpeed)
 #end of definintion od speak function for text to speach
 
 def getchar():
