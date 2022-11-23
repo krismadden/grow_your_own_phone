@@ -93,7 +93,7 @@ def setUpPin():
 		print ("response is:    ")
 		print(response)
 		
-		if !response:
+		if response == "":
 			print("you have an error with the gsm module."
 			break
 		elif response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
