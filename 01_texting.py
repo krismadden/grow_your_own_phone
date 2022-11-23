@@ -114,6 +114,7 @@ def setUpPin():
 				print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
 		else:
 			print("you have an error with the gsm module."
+			break
 
 def restart():
 	command = "/usr/bin/sudo /sbin/shutdown -r now"
