@@ -93,7 +93,7 @@ def setUpPin():
 		print ("response is:    ")
 		print(response)
 		
-		if resonse == "":
+		if response == "":
 			response[0] = "error with gsm module"
 		
 		
