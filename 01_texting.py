@@ -93,7 +93,7 @@ def setUpPin():
 		print ("response is:    ")
 		print(response)
 		
-		if response != "":
+		#if response != "":
 			if response[0] == "OK\r\n" or response[1] == "OK\r\n" or response[2] == "OK\r\n":
 				print ("pin okay. let's go.")
 		# 		speak("pin okay. let's go.")
@@ -112,9 +112,8 @@ def setUpPin():
 			else:
 				print (response[1] + "\n")
 				print ("check your SIM card is inserted and the light on the GSM module is flashing./nIf all looks good, get Kris.")
-		else:
-			print("you have an error with the gsm module."
-			break
+	#	else:
+	#		print("you have an error with the gsm module."
 
 def restart():
 	command = "/usr/bin/sudo /sbin/shutdown -r now"
