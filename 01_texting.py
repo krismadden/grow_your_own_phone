@@ -91,8 +91,7 @@ def setUpPin():
 		m590.ser.write("at+cpin?\r")
 		response = m590.ser.readlines(None)
 		
-		responseRecieved = "'" + response + "'" + "-end response"
-		print(responseRecieved)
+		print(response, '-response')
 		
 		
 		if response != "":
